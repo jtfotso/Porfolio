@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JULES Taptso | SAP B1 & .NET Solutions Architect</title>
+    <meta name="description" content="Portfolio of JULES Taptso — SAP Business One solutions architect specializing in AI-powered assistants, data synchronization, and developer tooling built with .NET.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+                   CSS CUSTOM PROPERTIES
+                ============================================ */
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #161d2a;
+            --bg-card-hover: #1c2538;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-medium: rgba(255,255,255,0.10);
+            --text-primary: #e8ecf1;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #1a73e8;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-violet: #8b5cf6;
+            --accent-rose: #f43f5e;
+            --gradient-hero: linear-gradient(135deg, #1a73e8 0%, #8b5cf6 50%, #06b6d4 100%);
+            --gradient-card-1: linear-gradient(135deg, #1a73e8, #06b6d4);
+            --gradient-card-2: linear-gradient(135deg, #8b5cf6, #d946ef);
+            --gradient-card-3: linear-gradient(135deg, #10b981, #06b6d4);
+            --gradient-card-4: linear-gradient(135deg, #f59e0b, #f43f5e);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 8px 30px rgba(0,0,0,0.3);
+            --shadow-glow-blue: 0 0 40px rgba(26,115,232,0.15);
+            --shadow-glow-purple: 0 0 40px rgba(139,92,246,0.15);
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        /* ============================================
+                   RESET & BASE
+                ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+                   BACKGROUND EFFECTS
+                ============================================ */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-glow--top {
+            top: -20%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: rgba(26,115,232,0.07);
+            animation: driftTop 20s ease-in-out infinite;
+        }
+        .bg-glow--bottom {
+            bottom: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(139,92,246,0.07);
+            animation: driftBottom 25s ease-in-out infinite;
+        }
+
+        @keyframes driftTop {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(80px, 40px) scale(1.15); }
+            66% { transform: translate(-40px, -20px) scale(0.9); }
+        }
+        @keyframes driftBottom {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-60px, -30px) scale(1.1); }
+            66% { transform: translate(30px, 20px) scale(0.95); }
+        }
+
+        /* Grid pattern overlay */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 70%);
+        }
+
+        /* ============================================
+                   NAVIGATION
+                ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        .nav--scrolled {
+            background: rgba(10,14,23,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .nav__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav__logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav__links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav__links a:hover { color: var(--text-primary); }
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+        .nav__links a:hover::after { width: 100%; }
+
+        /* Mobile nav */
+        .nav__toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ============================================
+                   HERO SECTION
+                ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero__content {
+            max-width: 900px;
+            text-align: center;
+        }
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1.1rem;
+            border-radius: 100px;
+            background: rgba(26,115,232,0.1);
+            border: 1px solid rgba(26,115,232,0.25);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .hero__badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        .hero__name {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s 0.1s ease forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .hero__name-gradient {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero__title {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s 0.2s ease forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .hero__title strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .hero__cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s 0.3s ease forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+                   BUTTONS
+                ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+            font-family: var(--font-sans);
+        }
+        .btn--primary {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(26,115,232,0.35);
+        }
+        .btn--primary:hover {
+            background: #1b83ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(26,115,232,0.5);
+        }
+        .btn--ghost {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+        }
+        .btn--ghost:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+                   SECTION SHARED
+                ============================================ */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .section__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .section__label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+        }
+        .section__heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+        .section__subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+                   STATS STRIP
+                ============================================ */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s 0.4s ease forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .stats__item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .stats__item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+        .stats__number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .stats__label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        /* ============================================
+                   PROJECT CARDS
+                ============================================ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 2.25rem;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .project-card:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 3px;
+        }
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .project-card--1::before { background: var(--gradient-card-1); }
+        .project-card--2::before { background: var(--gradient-card-2); }
+        .project-card--3::before { background: var(--gradient-card-3); }
+        .project-card--4::before { background: var(--gradient-card-4); }
+
+        .project-card__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+            flex-shrink: 0;
+        }
+        .project-card--1 .project-card__icon { background: rgba(26,115,232,0.15); color: var(--accent-blue); }
+        .project-card--2 .project-card__icon { background: rgba(139,92,246,0.15); color: var(--accent-violet); }
+        .project-card--3 .project-card__icon { background: rgba(16,185,129,0.15); color: var(--accent-emerald); }
+        .project-card--4 .project-card__icon { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+
+        .project-card__image {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-subtle);
+            transition: border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .project-card:hover .project-card__image {
+            border-color: var(--border-medium);
+        }
+        .project-card__image svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .project-card--1 .project-card__image { background: linear-gradient(160deg, rgba(26,115,232,0.08) 0%, rgba(6,182,212,0.04) 100%); }
+        .project-card--2 .project-card__image { background: linear-gradient(160deg, rgba(139,92,246,0.08) 0%, rgba(217,70,239,0.04) 100%); }
+        .project-card--3 .project-card__image { background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.04) 100%); }
+        .project-card--4 .project-card__image { background: linear-gradient(160deg, rgba(245,158,11,0.08) 0%, rgba(244,63,94,0.04) 100%); }
+
+        .project-card__title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        .project-card__desc {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.5rem;
+        }
+        .tag {
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            letter-spacing: 0.01em;
+            transition: all 0.2s;
+        }
+        .project-card:hover .tag {
+            border-color: var(--border-medium);
+        }
+        .tag--dotnet { color: #8b5cf6; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.08); }
+        .tag--ai { color: #06b6d4; border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.08); }
+        .tag--sap { color: #1a73e8; border-color: rgba(26,115,232,0.3); background: rgba(26,115,232,0.08); }
+        .tag--rag { color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
+        .project-card__footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .project-card__stat {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+        .project-card__stat svg { width: 14px; height: 14px; opacity: 0.6; }
+        .project-card__link {
+            margin-left: auto;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: gap 0.3s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            padding: 0;
+        }
+        .project-card__link:hover { gap: 0.6rem; }
+        .project-card__link:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+                   TECH STACK SECTION
+                ============================================ */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            transform: translateY(-3px);
+        }
+        .tech-card__icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .tech-card__name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+        .tech-card__count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* ============================================
+                   MODAL / PROJECT DETAIL
+                ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay--open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-xl);
+            max-width: 850px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay--open .modal { transform: translateY(0); }
+        .modal__close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .modal__close:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); }
+        .modal__title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .modal__subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .modal__section {
+            margin-bottom: 1.5rem;
+        }
+        .modal__section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+        .modal__section p, .modal__section li {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+        .modal__section ul { padding-left: 1.25rem; }
+        .modal__section li { margin-bottom: 0.35rem; }
+        .modal__section code {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.06);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            color: var(--accent-cyan);
+        }
+        .modal pre {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+                   CTA / CONTACT SECTION
+                ============================================ */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+        }
+        .cta-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(26,115,232,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta-card__heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .cta-card__text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-card__buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+                   FOOTER
+                ============================================ */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .footer__text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+                   REVEAL ANIMATIONS
+                ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal--visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.05s; }
+        .reveal-delay-2 { transition-delay: 0.1s; }
+        .reveal-delay-3 { transition-delay: 0.15s; }
+        .reveal-delay-4 { transition-delay: 0.2s; }
+
+        /* ============================================
+                   RESPONSIVE
+                ============================================ */
+        @media (max-width: 1024px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .nav__toggle { display: block; }
+            .nav--open .nav__links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 1rem;
+                right: 1rem;
+                background: rgba(17,24,39,0.98);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--border-subtle);
+                border-radius: var(--radius-lg);
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+            .hero { padding: 6rem 1.25rem 4rem; }
+            .section { padding: 4rem 1.25rem; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .stats__number { font-size: 1.7rem; }
+            .tech-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+            .cta-card { padding: 2rem 1.5rem; }
+            .modal { padding: 1.5rem; }
+            .project-card__image { height: 140px; }
+        }
+        @media (max-width: 480px) {
+            .hero__cta { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .stats { grid-template-columns: 1fr; }
+            .project-card__image { height: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background effects -->
+    <div class="bg-glow bg-glow--top"></div>
+    <div class="bg-glow bg-glow--bottom"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <div class="nav__logo">JT</div>
+            <ul class="nav__links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                Available for Projects
+            </div>
+            <h1 class="hero__name">
+                <span class="hero__name-gradient">Jean Taptso</span>
+            </h1>
+            <p class="hero__title">
+                I build <strong>SAP Business One solutions</strong> — AI-powered assistants, real-time data sync, and developer tooling — using <strong>.NET &amp; Clean Architecture</strong>.
+            </p>
+            <div class="hero__cta">
+                <a href="#projects" class="btn btn--primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    View Projects
+                </a>
+                <a href="#contact" class="btn btn--ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Get In Touch
+                </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stats__item">
+                    <div class="stats__number">4</div>
+                    <div class="stats__label">Production-Ready Projects</div>
+                </div>
+                <div class="stats__item">
+                    <div class="stats__number">.NET 10</div>
+                    <div class="stats__label">Latest Framework</div>
+                </div>
+                <div class="stats__item">
+                    <div class="stats__number">Clean</div>
+                    <div class="stats__label">Architecture Pattern</div>
+                </div>
+                <div class="stats__item">
+                    <div class="stats__number">SAP B1</div>
+                    <div class="stats__label">Platform Specialization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+        <div class="section__inner">
+            <div class="section__label reveal">What I Build</div>
+            <h2 class="section__heading reveal">Featured Projects</h2>
+            <p class="section__subtitle reveal">
+                Each project follows <strong>Clean Architecture</strong>, is built on <strong>.NET</strong>, and targets real-world <strong>SAP Business One</strong> challenges.
+            </p>
+
+            <div class="projects-grid">
+                <!-- Project 1: KnowledgeAssistant -->
+                <article class="project-card project-card--1 reveal reveal-delay-1" data-project="knowledge">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g1a" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1a73e8" stop-opacity="0.3"/>
+                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
+                                </linearGradient>
+                                <linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#1a73e8"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Animated particles -->
+                            <circle cx="40" cy="30" r="2" fill="#1a73e8" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
+                            <circle cx="200" cy="25" r="1.5" fill="#06b6d4" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+                            <circle cx="320" cy="50" r="2" fill="#1a73e8" opacity="0.3"><animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/></circle>
+                            <!-- Document icon -->
+                            <rect x="20" y="65" width="36" height="45" rx="4" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.7"/>
+                            <line x1="28" y1="78" x2="48" y2="78" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/><line x1="28" y1="86" x2="44" y2="86" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/><line x1="28" y1="94" x2="46" y2="94" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/>
+                            <!-- Arrow doc->chunks -->
+                            <line x1="60" y1="87" x2="90" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/>
+                            <polygon points="90,87 84,82 84,92" fill="#1a73e8" opacity="0.5"/>
+                            <!-- Chunks -->
+                            <rect x="96" y="70" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
+                            <rect x="96" y="87" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
+                            <rect x="96" y="104" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
+                            <!-- Arrow chunks->embeddings -->
+                            <line x1="128" y1="87" x2="156" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/>
+                            <polygon points="156,87 150,82 150,92" fill="#06b6d4" opacity="0.5"/>
+                            <!-- Embedding vectors -->
+                            <rect x="162" y="75" width="6" height="30" rx="2" fill="#06b6d4" opacity="0.6"/>
+                            <rect x="172" y="78" width="6" height="24" rx="2" fill="#06b6d4" opacity="0.5"/>
+                            <rect x="182" y="72" width="6" height="36" rx="2" fill="#06b6d4" opacity="0.6"/>
+                            <!-- Arrow embeddings->Qdrant -->
+                            <line x1="192" y1="87" x2="220" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/>
+                            <polygon points="220,87 214,82 214,92" fill="#1a73e8" opacity="0.5"/>
+                            <!-- Qdrant DB -->
+                            <ellipse cx="250" cy="87" rx="22" ry="14" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.7"/>
+                            <ellipse cx="250" cy="81" rx="22" ry="5" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/>
+                            <circle cx="242" cy="87" r="2" fill="#06b6d4" opacity="0.7"/><circle cx="250" cy="90" r="1.5" fill="#06b6d4" opacity="0.5"/><circle cx="258" cy="85" r="2" fill="#06b6d4" opacity="0.6"/>
+                            <!-- Arrow to LLM -->
+                            <line x1="276" y1="87" x2="304" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/>
+                            <polygon points="304,87 298,82 298,92" fill="#06b6d4" opacity="0.5"/>
+                            <!-- LLM brain -->
+                            <circle cx="326" cy="87" r="14" fill="none" stroke="url(#g1b)" stroke-width="1.5" opacity="0.8"/>
+                            <path d="M321,87a5,5 0 0,1 10,0" fill="none" stroke="#06b6d4" stroke-width="1.2" opacity="0.7"/>
+                            <text x="250" y="145" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">PDF → Chunk → Embed → Qdrant → LLM Answer</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3 class="project-card__title">KnowledgeAssistant</h3>
+                    <p class="project-card__desc">
+                        RAG-powered AI assistant for SAP Business One. Ingests PDFs, indexes with OpenAI embeddings into Qdrant, and answers questions with context-aware LLM responses.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 8</span>
+                        <span class="tag tag--ai">OpenAI</span>
+                        <span class="tag tag--rag">RAG</span>
+                        <span class="tag">Qdrant</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Blazor</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            4-layer Clean Architecture
+                        </span>
+                        <button class="project-card__link" data-open="knowledge">Details →</button>
+                    </div>
+                </article>
+
+                <!-- Project 2: SAP B1 AI Assistant -->
+                <article class="project-card project-card--2 reveal reveal-delay-2" data-project="aiassistant">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g2a" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#d946ef" stop-opacity="0.25"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- SAP B1 Server -->
+                            <rect x="20" y="30" width="60" height="70" rx="6" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
+                            <rect x="30" y="40" width="40" height="8" rx="2" fill="#8b5cf6" opacity="0.3"/>
+                            <rect x="30" y="55" width="40" height="8" rx="2" fill="#8b5cf6" opacity="0.2"/>
+                            <rect x="30" y="70" width="25" height="8" rx="2" fill="#8b5cf6" opacity="0.15"/>
+                            <text x="50" y="95" text-anchor="middle" fill="#8b5cf6" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Service</text>
+                            <text x="50" y="103" text-anchor="middle" fill="#8b5cf6" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Layer</text>
+                            <!-- Data line SAP -> AI -->
+                            <path d="M80,55 Q130,55 140,70" fill="none" stroke="#d946ef" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- AI Core -->
+                            <rect x="145" y="55" width="60" height="50" rx="8" fill="url(#g2a)" stroke="#8b5cf6" stroke-width="1.5" opacity="0.8"/>
+                            <text x="175" y="70" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="8" font-weight="600">Ollama</text>
+                            <text x="175" y="82" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="7" opacity="0.7">LLM Engine</text>
+                            <circle cx="163" cy="70" r="2" fill="#d946ef" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/></circle>
+                            <circle cx="187" cy="68" r="1.5" fill="#d946ef" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.8s" repeatCount="indefinite"/></circle>
+                            <!-- Output to chat -->
+                            <path d="M205,80 Q230,80 240,70" fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Chat UI -->
+                            <rect x="245" y="25" width="100" height="110" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0.5"/>
+                            <!-- Business User bubble -->
+                            <rect x="255" y="35" width="55" height="18" rx="6" fill="#8b5cf6" opacity="0.2"/>
+                            <text x="282" y="48" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="6" font-weight="500">Business Q&amp;A</text>
+                            <!-- Developer bubble -->
+                            <rect x="260" y="62" width="55" height="18" rx="6" fill="#d946ef" opacity="0.2"/>
+                            <text x="287" y="75" text-anchor="middle" fill="#f0abfc" font-family="Inter,sans-serif" font-size="6" font-weight="500">C# Code Gen</text>
+                            <!-- Mode labels -->
+                            <text x="230" y="45" text-anchor="end" fill="#64748b" font-family="Inter,sans-serif" font-size="6">mode</text>
+                            <text x="230" y="72" text-anchor="end" fill="#64748b" font-family="Inter,sans-serif" font-size="6">mode</text>
+                            <!-- Knowledge base chip -->
+                            <rect x="255" y="100" width="45" height="14" rx="4" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.5"/>
+                            <text x="277" y="110" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">RAG KB</text>
+                            <text x="175" y="150" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Dual-Mode AI with SAP Data Grounding &amp; RAG</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="project-card__title">SAP B1 AI Assistant</h3>
+                    <p class="project-card__desc">
+                        Dual-mode .NET 10 assistant with local Ollama LLMs. Business mode for SAP data lookup and developer mode for C# code generation — with RAG knowledge base and Service Layer grounding.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 10</span>
+                        <span class="tag tag--ai">Ollama</span>
+                        <span class="tag tag--sap">SAP Service Layer</span>
+                        <span class="tag tag--rag">RAG</span>
+                        <span class="tag">Blazor</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            60 tests · Health Checks
+                        </span>
+                        <button class="project-card__link" data-open="aiassistant">Details →</button>
+                    </div>
+                </article>
+
+                <!-- Project 3: CleanSync -->
+                <article class="project-card project-card--3 reveal reveal-delay-3" data-project="cleansync">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g3a" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.25"/>
+                                </linearGradient>
+                                <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                    <polygon points="0,0 8,4 0,8" fill="#10b981" opacity="0.6"/>
+                                </marker>
+                                <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                    <polygon points="0,0 8,4 0,8" fill="#06b6d4" opacity="0.6"/>
+                                </marker>
+                            </defs>
+                            <!-- SAP B1 Database (left) -->
+                            <rect x="20" y="30" width="80" height="100" rx="8" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6"/>
+                            <ellipse cx="60" cy="30" rx="32" ry="8" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+                            <text x="60" y="55" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="8" font-weight="700" opacity="0.8">SAP</text>
+                            <text x="60" y="67" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.6">Business One</text>
+                            <!-- SAP data rows -->
+                            <rect x="28" y="78" width="64" height="4" rx="2" fill="#10b981" opacity="0.15"/>
+                            <rect x="28" y="86" width="52" height="4" rx="2" fill="#10b981" opacity="0.15"/>
+                            <rect x="28" y="94" width="58" height="4" rx="2" fill="#10b981" opacity="0.15"/>
+                            <rect x="28" y="102" width="44" height="4" rx="2" fill="#10b981" opacity="0.15"/>
+                            <text x="60" y="122" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="6.5" opacity="0.5">Business Partners</text>
+                            <!-- E-commerce Database (right) -->
+                            <rect x="260" y="30" width="80" height="100" rx="8" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6"/>
+                            <ellipse cx="300" cy="30" rx="32" ry="8" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
+                            <text x="300" y="50" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.8">E-Commerce</text>
+                            <text x="300" y="65" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="6" opacity="0.6">Platforms</text>
+                            <!-- E-com logos -->
+                            <rect x="268" y="74" width="28" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
+                            <text x="282" y="86" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">Shopify</text>
+                            <rect x="304" y="74" width="28" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
+                            <text x="318" y="86" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">Amazon</text>
+                            <rect x="268" y="98" width="30" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.35"/>
+                            <text x="283" y="110" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">WooCom</text>
+                            <text x="300" y="130" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="6.5" opacity="0.5">Customers</text>
+                            <!-- Sync arrows (center, bidirectional) -->
+                            <!-- SAP → E-com (dashed animated) -->
+                            <path d="M100,65 L250,65" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
+                            <!-- SAP → E-com (solid with arrow marker) -->
+                            <path d="M100,65 L250,65" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6" marker-end="url(#arrowGreen)">
+                                <animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- E-com → SAP (dashed animated) -->
+                            <path d="M250,95 L100,95" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
+                            <!-- E-com → SAP (solid with arrow marker) -->
+                            <path d="M250,95 L100,95" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6" marker-end="url(#arrowCyan)">
+                                <animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Sync engine center -->
+                            <rect x="155" y="55" width="45" height="50" rx="12" fill="url(#g3a)" stroke="#10b981" stroke-width="1.2" opacity="0.8"/>
+                            <text x="177" y="73" text-anchor="middle" fill="#34d399" font-family="Inter,sans-serif" font-size="9" font-weight="700">Sync</text>
+                            <text x="177" y="87" text-anchor="middle" fill="#34d399" font-family="Inter,sans-serif" font-size="7" opacity="0.7">Engine</text>
+                            <circle cx="177" cy="100" r="2" fill="#10b981"><animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite"/></circle>
+                            <text x="180" y="155" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Bidirectional SAP ↔ E-Commerce Sync with Blazor Dashboard</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    </div>
+                    <h3 class="project-card__title">CleanSync</h3>
+                    <p class="project-card__desc">
+                        Bidirectional Business Partner sync between SAP B1 and e-commerce platforms (Shopify, Amazon). REST API with Blazor monitoring dashboard and mock services for development.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 10</span>
+                        <span class="tag tag--sap">SAP Service Layer</span>
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Blazor</span>
+                        <span class="tag">EF Core</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            MIT Licensed
+                        </span>
+                        <button class="project-card__link" data-open="cleansync">Details →</button>
+                    </div>
+                </article>
+
+                <!-- Project 4: SAP B1 Inspector -->
+                <article class="project-card project-card--4 reveal reveal-delay-4" data-project="inspector">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g4a" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.25"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- SAP B1 Form Window (left) -->
+                            <rect x="15" y="25" width="95" height="120" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.6"/>
+                            <!-- Title bar -->
+                            <rect x="15" y="25" width="95" height="20" rx="6" fill="#f59e0b" opacity="0.15"/>
+                            <rect x="15" y="39" width="95" height="6" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
+                            <text x="62" y="39" text-anchor="middle" fill="#f59e0b" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">SAP B1 Form</text>
+                            <!-- Form fields -->
+                            <rect x="25" y="52" width="75" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
+                            <rect x="25" y="67" width="45" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
+                            <rect x="25" y="82" width="60" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
+                            <rect x="25" y="97" width="35" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
+                            <!-- Grid/matrix -->
+                            <rect x="25" y="114" width="75" height="22" rx="2" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.3"/>
+                            <line x1="45" y1="114" x2="45" y2="136" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
+                            <line x1="65" y1="114" x2="65" y2="136" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
+                            <line x1="25" y1="125" x2="100" y2="125" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
+                            <!-- Addon tag -->
+                            <rect x="30" y="148" width="65" height="14" rx="4" fill="#f43f5e" opacity="0.2"/>
+                            <text x="62" y="158" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="6" font-weight="600">SwissAddonFramework</text>
+                            <!-- Connection line (SAP → Backend) with animation -->
+                            <path d="M110,85 L145,85" fill="none" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- SignalR hub (center) -->
+                            <circle cx="165" cy="85" r="24" fill="url(#g4a)" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+                            <text x="165" y="81" text-anchor="middle" fill="#fbbf24" font-family="Inter,sans-serif" font-size="7" font-weight="700">SignalR</text>
+                            <text x="165" y="93" text-anchor="middle" fill="#fbbf24" font-family="Inter,sans-serif" font-size="6" opacity="0.7">Hub</text>
+                            <!-- Signal broadcast waves -->
+                            <circle cx="165" cy="85" r="30" fill="none" stroke="#f59e0b" stroke-width="0.7" opacity="0.2"><animate attributeName="r" values="30;38" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;0" dur="1.5s" repeatCount="indefinite"/></circle>
+                            <circle cx="165" cy="85" r="34" fill="none" stroke="#f59e0b" stroke-width="0.6" opacity="0.15"><animate attributeName="r" values="34;44" dur="1.5s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0" dur="1.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+                            <!-- Connection line (Backend → Viewer) -->
+                            <path d="M189,85 L225,85" fill="none" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Blazor Viewer (right) -->
+                            <rect x="240" y="35" width="110" height="110" rx="6" fill="none" stroke="#f43f5e" stroke-width="1.5" opacity="0.6"/>
+                            <rect x="240" y="35" width="110" height="18" rx="6" fill="#f43f5e" opacity="0.12"/>
+                            <text x="295" y="48" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Blazor Viewer</text>
+                            <!-- Tree view -->
+                            <text x="250" y="65" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="6" opacity="0.7">▼ Form: 142</text>
+                            <text x="258" y="78" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Item: btnOk</text>
+                            <text x="258" y="88" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Item: txtCode</text>
+                            <text x="258" y="98" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Matrix: mtxItems</text>
+                            <text x="258" y="108" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">└─ Item: btnCancel</text>
+                            <!-- Live indicator -->
+                            <rect x="270" y="120" width="50" height="16" rx="4" fill="#f43f5e" opacity="0.15"/>
+                            <circle cx="282" cy="128" r="3" fill="#f43f5e"><animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/></circle>
+                            <text x="299" y="131" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="6" font-weight="600">Live</text>
+                            <text x="180" y="160" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">SAP Addon → SignalR Hub → Blazor Live Form Tree Viewer</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3 class="project-card__title">Form Metadata Inspector</h3>
+                    <p class="project-card__desc">
+                        Semi-live SAP B1 UI inspection system capturing form metadata at runtime via SwissAddonFramework, exposed through Blazor Server with SignalR real-time updates.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 10</span>
+                        <span class="tag tag--sap">SAP Addon SDK</span>
+                        <span class="tag">SignalR</span>
+                        <span class="tag">Blazor</span>
+                        <span class="tag">Swagger</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            Real-time · SignalR
+                        </span>
+                        <button class="project-card__link" data-open="inspector">Details →</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="section" id="tech">
+        <div class="section__inner">
+            <div class="section__label reveal">Technologies</div>
+            <h2 class="section__heading reveal">Tech Stack &amp; Expertise</h2>
+            <p class="section__subtitle reveal">
+                Tools and frameworks I use across all projects to deliver production-quality solutions.
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card reveal reveal-delay-1">
+                    <div class="tech-card__icon">⚡</div>
+                    <div class="tech-card__name">.NET 8/10</div>
+                    <div class="tech-card__count">4 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-1">
+                    <div class="tech-card__icon">🏗️</div>
+                    <div class="tech-card__name">Clean Architecture</div>
+                    <div class="tech-card__count">4 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-1">
+                    <div class="tech-card__icon">🧩</div>
+                    <div class="tech-card__name">Blazor Server</div>
+                    <div class="tech-card__count">4 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-2">
+                    <div class="tech-card__icon">🤖</div>
+                    <div class="tech-card__name">OpenAI / Ollama</div>
+                    <div class="tech-card__count">2 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-2">
+                    <div class="tech-card__icon">🔍</div>
+                    <div class="tech-card__name">RAG / Qdrant</div>
+                    <div class="tech-card__count">2 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-2">
+                    <div class="tech-card__icon">🏢</div>
+                    <div class="tech-card__name">SAP Service Layer</div>
+                    <div class="tech-card__count">2 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-3">
+                    <div class="tech-card__icon">📡</div>
+                    <div class="tech-card__name">SignalR</div>
+                    <div class="tech-card__count">1 project</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-3">
+                    <div class="tech-card__icon">🗄️</div>
+                    <div class="tech-card__name">EF Core</div>
+                    <div class="tech-card__count">4 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-3">
+                    <div class="tech-card__icon">📊</div>
+                    <div class="tech-card__name">SQL Server</div>
+                    <div class="tech-card__count">2 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-3">
+                    <div class="tech-card__icon">🪶</div>
+                    <div class="tech-card__name">SQLite</div>
+                    <div class="tech-card__count">1 project</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-4">
+                    <div class="tech-card__icon">📄</div>
+                    <div class="tech-card__name">Swagger / OpenAPI</div>
+                    <div class="tech-card__count">4 projects</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-4">
+                    <div class="tech-card__icon">🐳</div>
+                    <div class="tech-card__name">Docker</div>
+                    <div class="tech-card__count">1 project</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta-section" id="contact">
+        <div class="cta-card reveal">
+            <div class="section__label">Let's Work Together</div>
+            <h2 class="cta-card__heading">Need an SAP B1 Solution?</h2>
+            <p class="cta-card__text">
+                I specialize in building AI-powered tools, data synchronization systems, and developer tooling for the SAP Business One ecosystem. All built with Clean Architecture on .NET.
+            </p>
+            <div class="cta-card__buttons">
+                <a href="mailto:taptso@yahoo.fr" class="btn btn--primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email Me
+                </a>
+                <a href="https://github.com/jtaptso" target="_blank" rel="noopener" class="btn btn--ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer__text">&copy; 2025 Jean Taptso. Built with care for the SAP B1 community.</p>
+    </footer>
+
+    <!-- ============================================
+         MODAL: Project Details
+         ============================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal__close" id="modalClose" aria-label="Close">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        /* ============================================
+           PROJECT DATA
+           ============================================ */
+        const projects = {
+            knowledge: {
+                title: 'KnowledgeAssistant',
+                gradient: 'var(--gradient-card-1)',
+                tagline: 'RAG-powered AI assistant for SAP Business One documentation',
+                overview: 'A Retrieval-Augmented Generation (RAG) application built with .NET that ingests PDF documents, indexes them with OpenAI embeddings into a Qdrant vector database, and answers user questions by retrieving the most relevant document chunks and passing them as context to an LLM.',
+                architecture: 'Clean Architecture with four layers: Domain (core entities & DTOs), Application (interfaces & service orchestration), Infrastructure (OpenAI, Qdrant, PDF extraction, EF Core + SQL Server), API (REST API with <code>/api/chat</code>), and BlazorUI (Blazor Server frontend).',
+                highlights: [
+                    'OpenAI text-embedding-3-small for embeddings + GPT for chat',
+                    'Qdrant vector database for similarity search',
+                    'PdfPig for PDF text extraction',
+                    'Entity Framework Core with SQL Server for document metadata',
+                    'Swagger UI for API documentation and testing',
+                    'Blazor Server UI (scaffolded)'
+                ],
+                endpoint: 'POST /api/chat — Ask questions about SAP B1 procedures'
+            },
+            aiassistant: {
+                title: 'SAP B1 AI Assistant',
+                gradient: 'var(--gradient-card-2)',
+                tagline: 'Dual-mode AI assistant with local Ollama LLMs and live SAP data',
+                overview: 'A clean-architecture .NET 10 AI assistant for SAP Business One, powered by local Ollama LLMs. Supports two modes — a business-user mode for SAP data lookup and Q&A, and a developer mode for SAP B1 C# code generation.',
+                architecture: 'Domain → Application → Infrastructure pattern. Features include multi-model support (switchable per message), live SAP Service Layer data grounding, persistent SQLite conversation history, and a RAG knowledge base with nomic-embed-text embeddings.',
+                highlights: [
+                    'Multiple Ollama models switchable via UI dropdown',
+                    'Live SAP Business One data grounding via Service Layer',
+                    'Two modes: BusinessUser (Q&A) and Developer (code generation)',
+                    'RAG knowledge base with text document upload and cosine similarity retrieval',
+                    '60 tests (48 unit + 12 integration)',
+                    'Health checks for Ollama, SQLite, and SAP connectivity',
+                    'Correlation ID tracing + RFC 9457 ProblemDetails error handling'
+                ],
+                endpoint: 'POST /api/chat/messages — Send messages with mode & model selection'
+            },
+            cleansync: {
+                title: 'CleanSync',
+                gradient: 'var(--gradient-card-3)',
+                tagline: 'Bidirectional Business Partner sync between SAP B1 and E-commerce',
+                overview: 'A .NET 10 solution that facilitates bidirectional synchronization of Business Partners (customers) between SAP Business One and various e-commerce platforms (Shopify, Amazon, etc.). Provides a REST API for managing sync operations and a Blazor Web interface for monitoring.',
+                architecture: 'Clean Architecture with four projects: CleanSync.Api (REST API), CleanSync.Application (business logic & DTOs), CleanSync.Domain (entities & interfaces), and CleanSync.Infrastructure (data access & external services). Features demo mode with in-memory database and mock services for development.',
+                highlights: [
+                    'Bidirectional sync: E-commerce ↔ SAP and vice versa',
+                    'Interface-based design for Shopify, Amazon, and other platforms',
+                    'Demo mode with in-memory database and mock services',
+                    'Health checks for database, SAP, and e-commerce connectivity',
+                    'Swagger documentation at /swagger',
+                    'Blazor Server monitoring dashboard',
+                    'MIT Licensed'
+                ],
+                endpoint: 'POST /api/sync/start — Trigger synchronization jobs'
+            },
+            inspector: {
+                title: 'Form Metadata Inspector',
+                gradient: 'var(--gradient-card-4)',
+                tagline: 'Semi-live SAP B1 UI form inspection with Blazor + SignalR',
+                overview: 'A semi-live inspection system that captures SAP Business One UI form metadata at runtime via the SwissAddonFramework and exposes it through a Blazor Server viewer with SignalR real-time updates. Read-only by design — never modifies SAP UI or data.',
+                architecture: 'Split into three tiers: SAP B1 Add-on (SwissAddonFramework event listeners, form/field/matrix inspectors, JSON snapshot builder, REST publisher), Clean Architecture Backend (Domain → Application → Infrastructure → Presentation with REST API + SignalR hub), and Blazor Server Viewer with live form tree and semi-live updates.',
+                highlights: [
+                    'Captures form-level, item-level, and matrix/grid column metadata',
+                    'SignalR hub at /snapshothub for real-time SnapshotUpdated broadcasts',
+                    'Event throttling prevents SAP client UI freezes (1000ms per form type)',
+                    'Schema versioning for forward compatibility',
+                    'In-memory storage with swappable persistence (SQLite/SQL Server)',
+                    'Zero external dependencies in Domain layer',
+                    'Structural UI events only — FormLoad, FormActivate, FormVisible, FormModeChange'
+                ],
+                endpoint: 'POST /api/snapshot — Receive snapshots from SAP add-on'
+            }
+        };
+
+        /* ============================================
+           MODAL LOGIC
+           ============================================ */
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(projectKey) {
+            const p = projects[projectKey];
+            if (!p) return;
+
+            modalContent.innerHTML = `
+                <div style="height: 4px; background: ${p.gradient}; border-radius: 2px; margin-bottom: 1.5rem;"></div>
+                <h2 class="modal__title">${p.title}</h2>
+                <p class="modal__subtitle" style="color: var(--text-secondary); font-weight: 500;">${p.tagline}</p>
+
+                <div class="modal__section">
+                    <h3>Overview</h3>
+                    <p>${p.overview}</p>
+                </div>
+
+                <div class="modal__section">
+                    <h3>Architecture</h3>
+                    <p>${p.architecture}</p>
+                </div>
+
+                <div class="modal__section">
+                    <h3>Key Highlights</h3>
+                    <ul>
+                        ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal__section">
+                    <h3>Primary Endpoint</h3>
+                    <pre>${p.endpoint}</pre>
+                </div>
+            `;
+
+            modalOverlay.classList.add('modal-overlay--open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('modal-overlay--open');
+            document.body.style.overflow = '';
+        }
+
+        // Click-to-open for project cards (entire card)
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('[data-open]')) return;
+                const key = card.dataset.project;
+                if (key) openModal(key);
+            });
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (e.target.closest('[data-open]')) return;
+                    const key = card.dataset.project;
+                    if (key) openModal(key);
+                }
+            });
+        });
+
+        // "Details" buttons inside cards
+        document.querySelectorAll('[data-open]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const key = btn.dataset.open;
+                if (key) openModal(key);
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        /* ============================================
+           NAVIGATION SCROLL EFFECT
+           ============================================ */
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                nav.classList.add('nav--scrolled');
+            } else {
+                nav.classList.remove('nav--scrolled');
+            }
+        });
+
+        /* ============================================
+           MOBILE NAV TOGGLE
+           ============================================ */
+        const navToggle = document.getElementById('navToggle');
+        navToggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('nav--open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav__links a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav--open');
+            });
+        });
+
+        /* ============================================
+           SCROLL REVEAL ANIMATIONS
+           ============================================ */
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal--visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
