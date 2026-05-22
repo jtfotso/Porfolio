@@ -33,6 +33,7 @@
             --gradient-card-2: linear-gradient(135deg, #8b5cf6, #d946ef);
             --gradient-card-3: linear-gradient(135deg, #10b981, #06b6d4);
             --gradient-card-4: linear-gradient(135deg, #f59e0b, #f43f5e);
+            --gradient-card-5: linear-gradient(135deg, #14b8a6, #6366f1);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
@@ -427,6 +428,7 @@
         .project-card--2::before { background: var(--gradient-card-2); }
         .project-card--3::before { background: var(--gradient-card-3); }
         .project-card--4::before { background: var(--gradient-card-4); }
+        .project-card--5::before { background: var(--gradient-card-5); }
 
         .project-card__icon {
             width: 48px;
@@ -443,6 +445,7 @@
         .project-card--2 .project-card__icon { background: rgba(139,92,246,0.15); color: var(--accent-violet); }
         .project-card--3 .project-card__icon { background: rgba(16,185,129,0.15); color: var(--accent-emerald); }
         .project-card--4 .project-card__icon { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+        .project-card--5 .project-card__icon { background: rgba(20,184,166,0.15); color: #14b8a6; }
 
         .project-card__image {
             width: 100%;
@@ -466,6 +469,7 @@
         .project-card--2 .project-card__image { background: linear-gradient(160deg, rgba(139,92,246,0.08) 0%, rgba(217,70,239,0.04) 100%); }
         .project-card--3 .project-card__image { background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.04) 100%); }
         .project-card--4 .project-card__image { background: linear-gradient(160deg, rgba(245,158,11,0.08) 0%, rgba(244,63,94,0.04) 100%); }
+        .project-card--5 .project-card__image { background: linear-gradient(160deg, rgba(20,184,166,0.08) 0%, rgba(99,102,241,0.04) 100%); }
 
         .project-card__title {
             font-size: 1.35rem;
@@ -763,6 +767,7 @@
         .reveal-delay-2 { transition-delay: 0.1s; }
         .reveal-delay-3 { transition-delay: 0.15s; }
         .reveal-delay-4 { transition-delay: 0.2s; }
+        .reveal-delay-5 { transition-delay: 0.25s; }
 
         /* ============================================
                    RESPONSIVE
@@ -852,7 +857,7 @@
             <!-- Stats -->
             <div class="stats">
                 <div class="stats__item">
-                    <div class="stats__number">4</div>
+                    <div class="stats__number">5</div>
                     <div class="stats__label">Production-Ready Projects</div>
                 </div>
                 <div class="stats__item">
@@ -1195,6 +1200,85 @@
                         <button class="project-card__link" data-open="inspector">Details →</button>
                     </div>
                 </article>
+
+                <!-- Project 5: ServiceLayer.DTW -->
+                <article class="project-card project-card--5 reveal reveal-delay-5" data-project="dtwservicelayer">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="g5a" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.25"/>
+                                </linearGradient>
+                                <marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                    <polygon points="0,0 8,4 0,8" fill="#14b8a6" opacity="0.6"/>
+                                </marker>
+                            </defs>
+                            <rect x="15" y="25" width="36" height="45" rx="4" fill="none" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
+                            <text x="33" y="40" text-anchor="middle" fill="#14b8a6" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.7">CSV</text>
+                            <line x1="21" y1="48" x2="45" y2="48" stroke="#14b8a6" stroke-width="1" opacity="0.3"/>
+                            <line x1="21" y1="54" x2="39" y2="54" stroke="#14b8a6" stroke-width="1" opacity="0.3"/>
+                            <line x1="21" y1="60" x2="42" y2="60" stroke="#14b8a6" stroke-width="1" opacity="0.3"/>
+                            <rect x="15" y="78" width="36" height="45" rx="4" fill="none" stroke="#14b8a6" stroke-width="1.5" opacity="0.45"/>
+                            <text x="33" y="93" text-anchor="middle" fill="#14b8a6" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" opacity="0.6">XLSX</text>
+                            <line x1="21" y1="100" x2="45" y2="100" stroke="#14b8a6" stroke-width="1" opacity="0.25"/>
+                            <line x1="21" y1="106" x2="36" y2="106" stroke="#14b8a6" stroke-width="1" opacity="0.25"/>
+                            <path d="M55,47 Q70,47 75,65" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M55,100 Q70,100 75,90" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5">
+                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <rect x="80" y="40" width="65" height="55" rx="10" fill="url(#g5a)" stroke="#14b8a6" stroke-width="1.2" opacity="0.85"/>
+                            <text x="112" y="60" text-anchor="middle" fill="#5eead4" font-family="Inter,sans-serif" font-size="8" font-weight="700">Parse &amp;</text>
+                            <text x="112" y="74" text-anchor="middle" fill="#5eead4" font-family="Inter,sans-serif" font-size="8" font-weight="700">Validate</text>
+                            <path d="M96,85 L104,93 L130,67" fill="none" stroke="#5eead4" stroke-width="2" opacity="0.8">
+                                <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M148,67 L182,67" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.6" marker-end="url(#arrowTeal)">
+                                <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.8s" repeatCount="indefinite"/>
+                            </path>
+                            <rect x="190" y="30" width="75" height="95" rx="8" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+                            <text x="227" y="48" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.8">SAP B1</text>
+                            <text x="227" y="60" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600" opacity="0.6">Service</text>
+                            <text x="227" y="72" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600" opacity="0.6">Layer</text>
+                            <rect x="200" y="82" width="55" height="8" rx="2" fill="#6366f1" opacity="0.15"/>
+                            <text x="227" y="89" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="5.5" opacity="0.5">POST /BusinessPartners</text>
+                            <rect x="200" y="96" width="40" height="8" rx="2" fill="#6366f1" opacity="0.12"/>
+                            <text x="220" y="103" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="5.5" opacity="0.45">JSON payloads</text>
+                            <rect x="275" y="35" width="70" height="45" rx="6" fill="none" stroke="#6366f1" stroke-width="1.2" opacity="0.45"/>
+                            <text x="310" y="50" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600" opacity="0.6">Result</text>
+                            <text x="310" y="62" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="6" opacity="0.5">Log (CSV)</text>
+                            <line x1="282" y1="68" x2="338" y2="68" stroke="#6366f1" stroke-width="0.8" opacity="0.25"/>
+                            <rect x="282" y="72" width="20" height="3" rx="1" fill="#14b8a6" opacity="0.3"/>
+                            <rect x="282" y="77" width="24" height="3" rx="1" fill="#14b8a6" opacity="0.2"/>
+                            <path d="M265,70 L272,60" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+                            <text x="180" y="148" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">CSV/XLSX → Parse &amp; Validate → Service Layer → SAP B1</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <h3 class="project-card__title">ServiceLayer.DTW</h3>
+                    <p class="project-card__desc">
+                        Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel — no SAP client installation required.
+                    </p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 10</span>
+                        <span class="tag tag--sap">SAP Service Layer</span>
+                        <span class="tag">Blazor WASM</span>
+                        <span class="tag">MediatR</span>
+                        <span class="tag">FluentValidation</span>
+                        <span class="tag">CsvHelper</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            Add · Update · Upsert modes
+                        </span>
+                        <button class="project-card__link" data-open="dtwservicelayer">Details →</button>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1212,17 +1296,17 @@
                 <div class="tech-card reveal reveal-delay-1">
                     <div class="tech-card__icon">⚡</div>
                     <div class="tech-card__name">.NET 8/10</div>
-                    <div class="tech-card__count">4 projects</div>
+                    <div class="tech-card__count">5 projects</div>
                 </div>
                 <div class="tech-card reveal reveal-delay-1">
                     <div class="tech-card__icon">🏗️</div>
                     <div class="tech-card__name">Clean Architecture</div>
-                    <div class="tech-card__count">4 projects</div>
+                    <div class="tech-card__count">5 projects</div>
                 </div>
                 <div class="tech-card reveal reveal-delay-1">
                     <div class="tech-card__icon">🧩</div>
-                    <div class="tech-card__name">Blazor Server</div>
-                    <div class="tech-card__count">4 projects</div>
+                    <div class="tech-card__name">Blazor</div>
+                    <div class="tech-card__count">5 projects</div>
                 </div>
                 <div class="tech-card reveal reveal-delay-2">
                     <div class="tech-card__icon">🤖</div>
@@ -1237,7 +1321,7 @@
                 <div class="tech-card reveal reveal-delay-2">
                     <div class="tech-card__icon">🏢</div>
                     <div class="tech-card__name">SAP Service Layer</div>
-                    <div class="tech-card__count">2 projects</div>
+                    <div class="tech-card__count">3 projects</div>
                 </div>
                 <div class="tech-card reveal reveal-delay-3">
                     <div class="tech-card__icon">📡</div>
@@ -1261,12 +1345,22 @@
                 </div>
                 <div class="tech-card reveal reveal-delay-4">
                     <div class="tech-card__icon">📄</div>
-                    <div class="tech-card__name">Swagger / OpenAPI</div>
-                    <div class="tech-card__count">4 projects</div>
+                    <div class="tech-card__name">Swagger / Scalar</div>
+                    <div class="tech-card__count">5 projects</div>
                 </div>
                 <div class="tech-card reveal reveal-delay-4">
                     <div class="tech-card__icon">🐳</div>
                     <div class="tech-card__name">Docker</div>
+                    <div class="tech-card__count">1 project</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-5">
+                    <div class="tech-card__icon">📨</div>
+                    <div class="tech-card__name">MediatR</div>
+                    <div class="tech-card__count">1 project</div>
+                </div>
+                <div class="tech-card reveal reveal-delay-5">
+                    <div class="tech-card__icon">✅</div>
+                    <div class="tech-card__name">FluentValidation</div>
                     <div class="tech-card__count">1 project</div>
                 </div>
             </div>
@@ -1363,6 +1457,26 @@
                     'MIT Licensed'
                 ],
                 endpoint: 'POST /api/sync/start — Trigger synchronization jobs'
+            },
+            dtwservicelayer: {
+                title: 'ServiceLayer.DTW',
+                gradient: 'var(--gradient-card-5)',
+                tagline: 'Bulk import master data into SAP B1 via Service Layer — no DTW, no DI API, no SAP client',
+                overview: 'A modern replacement for SAP Business One\'s Data Transfer Workbench (DTW), built entirely on the Service Layer REST API. Accepts CSV, TXT, and Excel (.xlsx) files and bulk-imports Business Partners (with addresses and contacts) into SAP B1 via HTTP — no SAP client installation or DI API required.',
+                architecture: 'Clean Architecture with five layers: Domain (entities, enums, interfaces), Application (use cases via MediatR, validators via FluentValidation), Infrastructure (Service Layer client, CsvHelper/EPPlus parsers, mappers), Shared (DTOs), API (ASP.NET Core Web API with Scalar docs), and Web (Blazor WebAssembly UI).',
+                highlights: [
+                    'Bulk import from CSV, TXT (tab/delimiter), and Excel (.xlsx) files',
+                    'Three import modes: Add Only, Update Only, Upsert',
+                    'Per-row validation with detailed, human-readable error messages',
+                    'Stop-on-error or continue-and-collect-errors strategies',
+                    'Downloadable result log (CSV) with row-by-row status',
+                    'CsvHelper for robust CSV/TXT parsing, EPPlus for Excel',
+                    'MediatR for clean CQRS-style request handling',
+                    'FluentValidation for declarative input validation',
+                    'Blazor WebAssembly frontend with file upload UI',
+                    'Scalar interactive API docs at /scalar/v1'
+                ],
+                endpoint: 'POST /api/import/business-partners — Upload file and run import'
             },
             inspector: {
                 title: 'Form Metadata Inspector',
