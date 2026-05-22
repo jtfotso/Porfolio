@@ -3,20 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JULES Taptso | SAP B1 & .NET Solutions Architect</title>
-    <meta name="description" content="Portfolio of JULES Taptso — SAP Business One solutions architect specializing in AI-powered assistants, data synchronization, and developer tooling built with .NET.">
+    <title>Jules Taptso | SAP B1 & .NET Solutions Architect</title>
+    <meta name="description" content="Portfolio of Jules Taptso — SAP Business One solutions architect specializing in AI-powered assistants, data synchronization, and developer tooling built with .NET.">
+    <meta name="keywords" content="SAP Business One, .NET, Clean Architecture, AI, RAG, Blazor, C#, Solutions Architect">
+    <meta name="author" content="Jules Taptso">
+
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://jtaptso.github.io">
+    <meta property="og:title" content="Jules Taptso | SAP B1 & .NET Solutions Architect">
+    <meta property="og:description" content="5 production-ready SAP B1 projects built with .NET, Clean Architecture, AI, and real-time data sync. Explore the portfolio.">
+    <meta property="og:image" content="https://jtaptso.github.io/og-image.jpg">
+    <meta property="og:site_name" content="Jules Taptso Portfolio">
+    <meta property="profile:first_name" content="Jules">
+    <meta property="profile:last_name" content="Taptso">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jtaptso.github.io">
+    <meta property="twitter:title" content="Jules Taptso | SAP B1 & .NET Solutions Architect">
+    <meta property="twitter:description" content="5 production-ready SAP B1 projects built with .NET, Clean Architecture, AI, and real-time data sync.">
+    <meta property="twitter:image" content="https://jtaptso.github.io/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-                   CSS CUSTOM PROPERTIES
-                ============================================ */
         :root {
             --bg-primary: #0a0e17;
             --bg-secondary: #111827;
             --bg-card: #161d2a;
             --bg-card-hover: #1c2538;
+            --bg-elevated: #202a3d;
             --border-subtle: rgba(255,255,255,0.06);
             --border-medium: rgba(255,255,255,0.10);
             --text-primary: #e8ecf1;
@@ -45,9 +66,6 @@
             --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
 
-        /* ============================================
-                   RESET & BASE
-                ============================================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
@@ -60,9 +78,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ============================================
-                   BACKGROUND EFFECTS
-                ============================================ */
+        /* Background effects */
         .bg-glow {
             position: fixed;
             border-radius: 50%;
@@ -71,151 +87,116 @@
             z-index: 0;
         }
         .bg-glow--top {
-            top: -20%;
-            left: -10%;
-            width: 700px;
-            height: 700px;
+            top: -20%; left: -10%;
+            width: 700px; height: 700px;
             background: rgba(26,115,232,0.07);
             animation: driftTop 20s ease-in-out infinite;
         }
         .bg-glow--bottom {
-            bottom: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
+            bottom: -20%; right: -10%;
+            width: 600px; height: 600px;
             background: rgba(139,92,246,0.07);
             animation: driftBottom 25s ease-in-out infinite;
         }
+        .bg-glow--center {
+            top: 40%; left: 50%;
+            width: 500px; height: 500px;
+            transform: translate(-50%, -50%);
+            background: rgba(6,182,212,0.05);
+            animation: driftCenter 30s ease-in-out infinite;
+        }
 
         @keyframes driftTop {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(80px, 40px) scale(1.15); }
-            66% { transform: translate(-40px, -20px) scale(0.9); }
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(80px,40px) scale(1.15); }
+            66% { transform: translate(-40px,-20px) scale(0.9); }
         }
         @keyframes driftBottom {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-60px, -30px) scale(1.1); }
-            66% { transform: translate(30px, 20px) scale(0.95); }
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(-60px,-30px) scale(1.1); }
+            66% { transform: translate(30px,20px) scale(0.95); }
+        }
+        @keyframes driftCenter {
+            0%, 100% { transform: translate(-50%,-50%) scale(1); }
+            50% { transform: translate(-45%,-55%) scale(1.2); }
         }
 
-        /* Grid pattern overlay */
         .grid-overlay {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            position: fixed; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
             background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
+            pointer-events: none; z-index: 0;
             mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 70%);
         }
 
-        /* ============================================
-                   NAVIGATION
-                ============================================ */
+        /* Canvas particles */
+        #particles-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1rem 2rem;
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100; padding: 1rem 2rem;
             transition: all 0.3s ease;
         }
         .nav--scrolled {
-            background: rgba(10,14,23,0.85);
+            background: rgba(10,14,23,0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle);
         }
         .nav__inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
         }
         .nav__logo {
-            font-weight: 800;
-            font-size: 1.3rem;
+            font-weight: 800; font-size: 1.3rem;
             background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
         }
-        .nav__links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+        .nav__links { display: flex; gap: 2rem; list-style: none; }
         .nav__links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-            position: relative;
+            color: var(--text-secondary); text-decoration: none;
+            font-weight: 500; font-size: 0.9rem;
+            transition: color 0.2s; position: relative;
         }
         .nav__links a:hover { color: var(--text-primary); }
         .nav__links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-            border-radius: 1px;
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--accent-blue);
+            transition: width 0.3s ease; border-radius: 1px;
         }
         .nav__links a:hover::after { width: 100%; }
-
-        /* Mobile nav */
         .nav__toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
+            display: none; background: none; border: none;
+            color: var(--text-primary); font-size: 1.5rem;
+            cursor: pointer; padding: 0.5rem;
         }
 
-        /* ============================================
-                   HERO SECTION
-                ============================================ */
+        /* Hero */
         .hero {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 6rem;
-            position: relative;
-            z-index: 1;
+            display: flex; align-items: center; justify-content: center;
+            padding: 8rem 2rem 6rem; position: relative; z-index: 1;
         }
-        .hero__content {
-            max-width: 900px;
-            text-align: center;
-        }
+        .hero__content { max-width: 900px; text-align: center; }
         .hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.45rem 1.1rem;
-            border-radius: 100px;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.45rem 1.1rem; border-radius: 100px;
             background: rgba(26,115,232,0.1);
             border: 1px solid rgba(26,115,232,0.25);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--accent-blue);
-            margin-bottom: 2rem;
+            font-size: 0.85rem; font-weight: 500;
+            color: var(--accent-blue); margin-bottom: 2rem;
             animation: fadeInUp 0.8s ease forwards;
         }
         .hero__badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+            width: 8px; height: 8px; border-radius: 50%;
             background: var(--accent-blue);
             animation: pulse 2s ease-in-out infinite;
         }
@@ -225,13 +206,10 @@
         }
         .hero__name {
             font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
+            font-weight: 900; line-height: 1.05;
+            letter-spacing: -0.03em; margin-bottom: 1.5rem;
             animation: fadeInUp 0.8s 0.1s ease forwards;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            opacity: 0; animation-fill-mode: forwards;
         }
         .hero__name-gradient {
             background: var(--gradient-hero);
@@ -241,64 +219,64 @@
         }
         .hero__title {
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 2rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-secondary); font-weight: 400;
+            margin-bottom: 2rem; max-width: 650px;
+            margin-left: auto; margin-right: auto;
             animation: fadeInUp 0.8s 0.2s ease forwards;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            opacity: 0; animation-fill-mode: forwards;
         }
-        .hero__title strong {
+        .hero__title strong { color: var(--text-primary); font-weight: 600; }
+        .hero__socials {
+            display: flex; gap: 0.75rem; justify-content: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s 0.25s ease forwards;
+            opacity: 0; animation-fill-mode: forwards;
+        }
+        .social-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.55rem 1.2rem; border-radius: 100px;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            transition: all 0.25s ease;
+        }
+        .social-link:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
             color: var(--text-primary);
-            font-weight: 600;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card);
         }
+        .social-link svg { width: 16px; height: 16px; }
         .hero__cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
             animation: fadeInUp 0.8s 0.3s ease forwards;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            opacity: 0; animation-fill-mode: forwards;
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ============================================
-                   BUTTONS
-                ============================================ */
+        /* Buttons */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.8rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            border: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.8rem 1.8rem; border-radius: 100px;
+            font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; cursor: pointer;
+            transition: all 0.25s ease; border: none;
             font-family: var(--font-sans);
         }
         .btn--primary {
-            background: var(--accent-blue);
-            color: #fff;
+            background: var(--accent-blue); color: #fff;
             box-shadow: 0 4px 20px rgba(26,115,232,0.35);
         }
         .btn--primary:hover {
-            background: #1b83ff;
-            transform: translateY(-2px);
+            background: #1b83ff; transform: translateY(-2px);
             box-shadow: 0 6px 28px rgba(26,115,232,0.5);
         }
         .btn--ghost {
-            background: transparent;
-            color: var(--text-primary);
+            background: transparent; color: var(--text-primary);
             border: 1px solid var(--border-medium);
         }
         .btn--ghost:hover {
@@ -306,72 +284,55 @@
             border-color: rgba(255,255,255,0.2);
             transform: translateY(-2px);
         }
+        .btn--secondary {
+            background: var(--bg-elevated); color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .btn--secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            transform: translateY(-2px);
+        }
 
-        /* ============================================
-                   SECTION SHARED
-                ============================================ */
+        /* Section shared */
         .section {
-            padding: 6rem 2rem;
-            position: relative;
-            z-index: 1;
+            padding: 6rem 2rem; position: relative; z-index: 1;
         }
-        .section__inner {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+        .section__inner { max-width: 1280px; margin: 0 auto; }
         .section__label {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-blue);
-            margin-bottom: 0.75rem;
+            display: inline-block; font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--accent-blue); margin-bottom: 0.75rem;
         }
         .section__heading {
             font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            line-height: 1.15;
+            font-weight: 800; letter-spacing: -0.02em;
+            margin-bottom: 1rem; line-height: 1.15;
         }
         .section__subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 3.5rem;
-            line-height: 1.7;
+            color: var(--text-secondary); font-size: 1.1rem;
+            max-width: 600px; margin-bottom: 3.5rem; line-height: 1.7;
         }
 
-        /* ============================================
-                   STATS STRIP
-                ============================================ */
+        /* Stats strip */
         .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
             margin-top: 4rem;
             animation: fadeInUp 0.8s 0.4s ease forwards;
-            opacity: 0;
-            animation-fill-mode: forwards;
+            opacity: 0; animation-fill-mode: forwards;
         }
         .stats__item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 1.75rem 1.5rem;
+            text-align: center; transition: all 0.3s ease;
         }
         .stats__item:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-medium);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-card);
+            background: var(--bg-card-hover); border-color: var(--border-medium);
+            transform: translateY(-4px); box-shadow: var(--shadow-card);
         }
         .stats__number {
-            font-size: 2.2rem;
-            font-weight: 900;
+            font-size: 2.2rem; font-weight: 900;
             background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -379,50 +340,126 @@
             letter-spacing: -0.02em;
         }
         .stats__label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-top: 0.3rem;
+            color: var(--text-muted); font-size: 0.85rem;
+            font-weight: 500; margin-top: 0.3rem;
         }
 
-        /* ============================================
-                   PROJECT CARDS
-                ============================================ */
+        /* About section */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr;
+            gap: 4rem; align-items: center;
+        }
+        .about__avatar {
+            width: 180px; height: 180px; border-radius: 50%;
+            background: var(--gradient-hero);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; font-weight: 800; color: #fff;
+            margin: 0 auto; position: relative;
+            box-shadow: 0 8px 40px rgba(26,115,232,0.25);
+        }
+        .about__avatar::after {
+            content: ''; position: absolute; inset: -4px;
+            border-radius: 50%;
+            background: var(--gradient-hero);
+            opacity: 0.3; z-index: -1;
+            animation: avatarGlow 3s ease-in-out infinite;
+        }
+        @keyframes avatarGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.5; }
+        }
+        .about__name {
+            font-size: 1.6rem; font-weight: 800;
+            margin-top: 1.5rem; text-align: center;
+        }
+        .about__role {
+            color: var(--text-secondary); font-size: 0.95rem;
+            text-align: center; margin-top: 0.25rem;
+        }
+        .about__location {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.35rem; color: var(--text-muted);
+            font-size: 0.85rem; margin-top: 0.5rem;
+        }
+        .about__bio {
+            color: var(--text-secondary); font-size: 1.05rem;
+            line-height: 1.85; margin-bottom: 1.5rem;
+        }
+        .about__highlights {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+        }
+        .about__highlight {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 1rem; border-radius: var(--radius-md);
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+        }
+        .about__highlight-icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .about__highlight-title {
+            font-weight: 700; font-size: 0.9rem; margin-bottom: 0.15rem;
+        }
+        .about__highlight-desc {
+            font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;
+        }
+
+        /* Impact / credibility section */
+        .impact-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .impact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl); padding: 2.25rem;
+            text-align: center; transition: all 0.35s ease;
+            position: relative; overflow: hidden;
+        }
+        .impact-card:hover {
+            background: var(--bg-card-hover); border-color: var(--border-medium);
+            transform: translateY(-6px); box-shadow: var(--shadow-card);
+        }
+        .impact-card__icon {
+            width: 56px; height: 56px; border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin: 0 auto 1.25rem;
+            background: rgba(26,115,232,0.1); color: var(--accent-blue);
+        }
+        .impact-card__number {
+            font-size: 2.5rem; font-weight: 900;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em; margin-bottom: 0.5rem;
+        }
+        .impact-card__title {
+            font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;
+        }
+        .impact-card__desc {
+            color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;
+        }
+
+        /* Project cards */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
         }
         .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-xl);
-            padding: 2.25rem;
-            transition: all 0.35s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl); padding: 2.25rem;
+            transition: all 0.35s ease; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; cursor: pointer;
         }
         .project-card:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 3px;
+            outline: 2px solid var(--accent-blue); outline-offset: 3px;
         }
         .project-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-medium);
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-card);
+            background: var(--bg-card-hover); border-color: var(--border-medium);
+            transform: translateY(-6px); box-shadow: var(--shadow-card);
         }
         .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 4px; border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
         .project-card--1::before { background: var(--gradient-card-1); }
         .project-card--2::before { background: var(--gradient-card-2); }
@@ -431,15 +468,9 @@
         .project-card--5::before { background: var(--gradient-card-5); }
 
         .project-card__icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1.25rem;
-            flex-shrink: 0;
+            width: 48px; height: 48px; border-radius: var(--radius-md);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1.25rem; flex-shrink: 0;
         }
         .project-card--1 .project-card__icon { background: rgba(26,115,232,0.15); color: var(--accent-blue); }
         .project-card--2 .project-card__icon { background: rgba(139,92,246,0.15); color: var(--accent-violet); }
@@ -448,23 +479,13 @@
         .project-card--5 .project-card__icon { background: rgba(20,184,166,0.15); color: #14b8a6; }
 
         .project-card__image {
-            width: 100%;
-            height: 180px;
-            border-radius: var(--radius-md);
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            position: relative;
+            width: 100%; height: 180px; border-radius: var(--radius-md);
+            margin-bottom: 1.5rem; overflow: hidden; position: relative;
             border: 1px solid var(--border-subtle);
             transition: border-color 0.35s ease, box-shadow 0.35s ease;
         }
-        .project-card:hover .project-card__image {
-            border-color: var(--border-medium);
-        }
-        .project-card__image svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+        .project-card:hover .project-card__image { border-color: var(--border-medium); }
+        .project-card__image svg { width: 100%; height: 100%; display: block; }
         .project-card--1 .project-card__image { background: linear-gradient(160deg, rgba(26,115,232,0.08) 0%, rgba(6,182,212,0.04) 100%); }
         .project-card--2 .project-card__image { background: linear-gradient(160deg, rgba(139,92,246,0.08) 0%, rgba(217,70,239,0.04) 100%); }
         .project-card--3 .project-card__image { background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.04) 100%); }
@@ -472,326 +493,267 @@
         .project-card--5 .project-card__image { background: linear-gradient(160deg, rgba(20,184,166,0.08) 0%, rgba(99,102,241,0.04) 100%); }
 
         .project-card__title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-            line-height: 1.3;
+            font-size: 1.35rem; font-weight: 700;
+            margin-bottom: 0.75rem; letter-spacing: -0.01em; line-height: 1.3;
         }
         .project-card__desc {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.65;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
+            color: var(--text-secondary); font-size: 0.92rem;
+            line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1;
         }
         .project-card__tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-bottom: 1.5rem;
+            display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.5rem;
         }
         .tag {
-            padding: 0.3rem 0.75rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: rgba(255,255,255,0.04);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-subtle);
-            letter-spacing: 0.01em;
+            padding: 0.3rem 0.75rem; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 600;
+            background: rgba(255,255,255,0.04); color: var(--text-secondary);
+            border: 1px solid var(--border-subtle); letter-spacing: 0.01em;
             transition: all 0.2s;
         }
-        .project-card:hover .tag {
-            border-color: var(--border-medium);
-        }
+        .project-card:hover .tag { border-color: var(--border-medium); }
         .tag--dotnet { color: #8b5cf6; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.08); }
         .tag--ai { color: #06b6d4; border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.08); }
         .tag--sap { color: #1a73e8; border-color: rgba(26,115,232,0.3); background: rgba(26,115,232,0.08); }
         .tag--rag { color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.08); }
         .project-card__footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--border-subtle);
+            display: flex; align-items: center; gap: 1rem;
+            padding-top: 1.25rem; border-top: 1px solid var(--border-subtle);
         }
         .project-card__stat {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
+            display: flex; align-items: center; gap: 0.35rem;
+            font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);
         }
         .project-card__stat svg { width: 14px; height: 14px; opacity: 0.6; }
         .project-card__link {
-            margin-left: auto;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            transition: gap 0.3s;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-sans);
-            padding: 0;
+            margin-left: auto; color: var(--accent-blue); text-decoration: none;
+            font-weight: 600; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 0.35rem;
+            transition: gap 0.3s; background: none; border: none;
+            cursor: pointer; font-family: var(--font-sans); padding: 0;
         }
         .project-card__link:hover { gap: 0.6rem; }
         .project-card__link:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 4px;
-            border-radius: 4px;
+            outline: 2px solid var(--accent-blue); outline-offset: 4px; border-radius: 4px;
         }
 
-        /* ============================================
-                   TECH STACK SECTION
-                ============================================ */
+        /* Tech Stack */
         .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1rem;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem;
         }
         .tech-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 1.25rem 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 1.25rem 1rem;
+            text-align: center; transition: all 0.3s ease;
         }
         .tech-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-medium);
+            background: var(--bg-card-hover); border-color: var(--border-medium);
             transform: translateY(-3px);
         }
-        .tech-card__icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .tech-card__name {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-        }
-        .tech-card__count {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
+        .tech-card__icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .tech-card__name { font-weight: 600; font-size: 0.85rem; color: var(--text-primary); }
+        .tech-card__count { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-        /* ============================================
-                   MODAL / PROJECT DETAIL
-                ============================================ */
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl); padding: 2rem;
+            transition: all 0.35s ease; position: relative;
+        }
+        .testimonial-card:hover {
+            background: var(--bg-card-hover); border-color: var(--border-medium);
+            transform: translateY(-4px); box-shadow: var(--shadow-card);
+        }
+        .testimonial-card__quote {
+            color: var(--text-secondary); font-size: 0.95rem;
+            line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;
+            position: relative; padding-left: 1.5rem;
+        }
+        .testimonial-card__quote::before {
+            content: '"'; position: absolute; left: 0; top: -0.5rem;
+            font-size: 2.5rem; color: var(--accent-blue); opacity: 0.4;
+            font-family: Georgia, serif; line-height: 1;
+        }
+        .testimonial-card__author {
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .testimonial-card__avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--gradient-hero);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; font-weight: 700; color: #fff;
+        }
+        .testimonial-card__name { font-weight: 700; font-size: 0.9rem; }
+        .testimonial-card__role { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Modal */
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            visibility: hidden;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+            z-index: 200; display: flex; align-items: center; justify-content: center;
+            padding: 2rem; opacity: 0; visibility: hidden;
             transition: all 0.3s ease;
         }
-        .modal-overlay--open {
-            opacity: 1;
-            visibility: visible;
-        }
+        .modal-overlay--open { opacity: 1; visibility: visible; }
         .modal {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-medium);
-            border-radius: var(--radius-xl);
-            max-width: 850px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 2.5rem;
-            position: relative;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+            background: var(--bg-secondary); border: 1px solid var(--border-medium);
+            border-radius: var(--radius-xl); max-width: 850px; width: 100%;
+            max-height: 85vh; overflow-y: auto; padding: 2.5rem;
+            position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            transform: translateY(20px); transition: transform 0.3s ease;
         }
         .modal-overlay--open .modal { transform: translateY(0); }
         .modal__close {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.5rem;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 1.25rem; right: 1.5rem;
+            background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle);
+            color: var(--text-secondary); width: 36px; height: 36px;
+            border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
             transition: all 0.2s;
         }
         .modal__close:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); }
-        .modal__title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-        .modal__subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        .modal__section {
-            margin-bottom: 1.5rem;
-        }
+        .modal__title { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .modal__subtitle { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .modal__section { margin-bottom: 1.5rem; }
         .modal__section h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
+            font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.75rem;
         }
-        .modal__section p, .modal__section li {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
+        .modal__section p, .modal__section li { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
         .modal__section ul { padding-left: 1.25rem; }
         .modal__section li { margin-bottom: 0.35rem; }
         .modal__section code {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            background: rgba(255,255,255,0.06);
-            padding: 0.15rem 0.45rem;
-            border-radius: 4px;
-            color: var(--accent-cyan);
+            font-family: var(--font-mono); font-size: 0.8rem;
+            background: rgba(255,255,255,0.06); padding: 0.15rem 0.45rem;
+            border-radius: 4px; color: var(--accent-cyan);
         }
         .modal pre {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 1rem 1.25rem;
-            overflow-x: auto;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
+            background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+            overflow-x: auto; font-family: var(--font-mono); font-size: 0.8rem;
+            color: var(--text-secondary); line-height: 1.6;
         }
 
-        /* ============================================
-                   CTA / CONTACT SECTION
-                ============================================ */
-        .cta-section {
-            position: relative;
-            z-index: 1;
-            padding: 6rem 2rem;
-        }
+        /* CTA / Contact */
+        .cta-section { position: relative; z-index: 1; padding: 6rem 2rem; }
         .cta-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-xl);
-            padding: 3.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            max-width: 800px; margin: 0 auto;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl); padding: 3.5rem;
+            text-align: center; position: relative; overflow: hidden;
         }
         .cta-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: radial-gradient(ellipse at center, rgba(26,115,232,0.06) 0%, transparent 60%);
             pointer-events: none;
         }
         .cta-card__heading {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem;
         }
         .cta-card__text {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-secondary); font-size: 1.05rem;
+            margin-bottom: 2rem; max-width: 500px;
+            margin-left: auto; margin-right: auto;
         }
         .cta-card__buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
         }
 
-        /* ============================================
-                   FOOTER
-                ============================================ */
+        /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle);
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            border-top: 1px solid var(--border-subtle); padding: 3rem 2rem;
+            text-align: center; position: relative; z-index: 1;
         }
-        .footer__text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .footer__inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        }
+        .footer__logo {
+            font-weight: 800; font-size: 1.5rem;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer__links {
+            display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center;
+        }
+        .footer__links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .footer__links a:hover { color: var(--text-primary); }
+        .footer__socials {
+            display: flex; gap: 0.75rem;
+        }
+        .footer__social-link {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            color: var(--text-secondary); text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .footer__social-link:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        .footer__social-link svg { width: 18px; height: 18px; }
+        .footer__copy {
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;
         }
 
-        /* ============================================
-                   REVEAL ANIMATIONS
-                ============================================ */
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            color: var(--text-secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; z-index: 90; opacity: 0; visibility: hidden;
+            transform: translateY(20px); transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .scroll-top--visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-top:hover {
+            background: var(--bg-card-hover); border-color: var(--border-medium);
+            color: var(--text-primary); transform: translateY(-2px);
+        }
+
+        /* Reveal animations */
         .reveal {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 0; transform: translateY(30px);
             transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal--visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal--visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.05s; }
         .reveal-delay-2 { transition-delay: 0.1s; }
         .reveal-delay-3 { transition-delay: 0.15s; }
         .reveal-delay-4 { transition-delay: 0.2s; }
         .reveal-delay-5 { transition-delay: 0.25s; }
 
-        /* ============================================
-                   RESPONSIVE
-                ============================================ */
+        /* Responsive */
         @media (max-width: 1024px) {
             .projects-grid { grid-template-columns: 1fr; }
             .stats { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .about__highlights { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .impact-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .nav__links { display: none; }
             .nav__toggle { display: block; }
             .nav--open .nav__links {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 1rem;
-                right: 1rem;
-                background: rgba(17,24,39,0.98);
-                backdrop-filter: blur(20px);
-                border: 1px solid var(--border-subtle);
-                border-radius: var(--radius-lg);
-                padding: 1.5rem;
-                gap: 1rem;
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 1rem; right: 1rem;
+                background: rgba(17,24,39,0.98); backdrop-filter: blur(20px);
+                border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+                padding: 1.5rem; gap: 1rem;
             }
             .hero { padding: 6rem 1.25rem 4rem; }
             .section { padding: 4rem 1.25rem; }
@@ -801,12 +763,14 @@
             .cta-card { padding: 2rem 1.5rem; }
             .modal { padding: 1.5rem; }
             .project-card__image { height: 140px; }
+            .about-grid { gap: 2rem; }
         }
         @media (max-width: 480px) {
             .hero__cta { flex-direction: column; align-items: center; }
             .btn { width: 100%; justify-content: center; }
             .stats { grid-template-columns: 1fr; }
             .project-card__image { height: 120px; }
+            .hero__socials { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -815,18 +779,21 @@
     <!-- Background effects -->
     <div class="bg-glow bg-glow--top"></div>
     <div class="bg-glow bg-glow--bottom"></div>
+    <div class="bg-glow bg-glow--center"></div>
     <div class="grid-overlay"></div>
+    <canvas id="particles-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav__inner">
             <div class="nav__logo">JT</div>
             <ul class="nav__links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#tech">Tech Stack</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
         </div>
     </nav>
 
@@ -843,6 +810,20 @@
             <p class="hero__title">
                 I build <strong>SAP Business One solutions</strong> — AI-powered assistants, real-time data sync, and developer tooling — using <strong>.NET &amp; Clean Architecture</strong>.
             </p>
+            <div class="hero__socials">
+                <a href="https://www.linkedin.com/in/jules-taptso/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/jtaptso" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="mailto:taptso@yahoo.fr" class="social-link" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email
+                </a>
+            </div>
             <div class="hero__cta">
                 <a href="#projects" class="btn btn--primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
@@ -858,7 +839,7 @@
             <div class="stats">
                 <div class="stats__item">
                     <div class="stats__number">5</div>
-                    <div class="stats__label">Production-Ready Projects</div>
+                    <div class="stats__label">Production Projects</div>
                 </div>
                 <div class="stats__item">
                     <div class="stats__number">.NET 10</div>
@@ -866,11 +847,99 @@
                 </div>
                 <div class="stats__item">
                     <div class="stats__number">Clean</div>
-                    <div class="stats__label">Architecture Pattern</div>
+                    <div class="stats__label">Architecture</div>
                 </div>
                 <div class="stats__item">
                     <div class="stats__number">SAP B1</div>
-                    <div class="stats__label">Platform Specialization</div>
+                    <div class="stats__label">Specialization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section__inner">
+            <div class="section__label reveal">About Me</div>
+            <h2 class="section__heading reveal">Solutions Architect & Developer</h2>
+            <div class="about-grid">
+                <div class="reveal reveal-delay-1">
+                    <div class="about__avatar">JT</div>
+                    <div class="about__name">Jules Taptso</div>
+                    <div class="about__role">SAP B1 &amp; .NET Solutions Architect</div>
+                    <div class="about__location">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Available Worldwide
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <p class="about__bio">
+                        I'm a passionate solutions architect specializing in the SAP Business One ecosystem. Over the years, I've built production-ready tools that solve real-world ERP challenges — from AI-powered knowledge assistants that make SAP documentation searchable with natural language, to real-time data synchronization systems that keep e-commerce and SAP in sync.
+                    </p>
+                    <p class="about__bio">
+                        My approach is rooted in <strong>Clean Architecture</strong> principles, ensuring every project is maintainable, testable, and built to scale. I believe great software should be both powerful and elegant — delivering business value while remaining a joy to work with for fellow developers.
+                    </p>
+                    <div class="about__highlights">
+                        <div class="about__highlight">
+                            <div class="about__highlight-icon" style="background: rgba(26,115,232,0.1); color: var(--accent-blue);">🎯</div>
+                            <div>
+                                <div class="about__highlight-title">Problem Solver</div>
+                                <div class="about__highlight-desc">Transforming complex SAP B1 challenges into elegant, scalable solutions</div>
+                            </div>
+                        </div>
+                        <div class="about__highlight">
+                            <div class="about__highlight-icon" style="background: rgba(16,185,129,0.1); color: var(--accent-emerald);">🏗️</div>
+                            <div>
+                                <div class="about__highlight-title">Clean Architecture</div>
+                                <div class="about__highlight-desc">Every project follows SOLID principles with layered, testable designs</div>
+                            </div>
+                        </div>
+                        <div class="about__highlight">
+                            <div class="about__highlight-icon" style="background: rgba(139,92,246,0.1); color: var(--accent-violet);">🤖</div>
+                            <div>
+                                <div class="about__highlight-title">AI Integration</div>
+                                <div class="about__highlight-desc">Bringing LLMs, RAG, and embeddings to the SAP ecosystem</div>
+                            </div>
+                        </div>
+                        <div class="about__highlight">
+                            <div class="about__highlight-icon" style="background: rgba(245,158,11,0.1); color: var(--accent-amber);">🔄</div>
+                            <div>
+                                <div class="about__highlight-title">Real-Time Sync</div>
+                                <div class="about__highlight-desc">Building bidirectional data flows between SAP and modern platforms</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section" style="padding-top: 2rem;">
+        <div class="section__inner">
+            <div class="section__label reveal">Impact</div>
+            <h2 class="section__heading reveal">What Drives My Work</h2>
+            <p class="section__subtitle reveal">
+                Building tools that make SAP Business One more accessible, intelligent, and connected to the modern software ecosystem.
+            </p>
+            <div class="impact-grid">
+                <div class="impact-card reveal reveal-delay-1">
+                    <div class="impact-card__icon">🚀</div>
+                    <div class="impact-card__number">5+</div>
+                    <div class="impact-card__title">Production Projects</div>
+                    <div class="impact-card__desc">Shipped and maintained enterprise-grade SAP B1 solutions with real-world usage</div>
+                </div>
+                <div class="impact-card reveal reveal-delay-2">
+                    <div class="impact-card__icon">🧪</div>
+                    <div class="impact-card__number">60+</div>
+                    <div class="impact-card__title">Automated Tests</div>
+                    <div class="impact-card__desc">Unit and integration tests ensuring reliability across all project layers</div>
+                </div>
+                <div class="impact-card reveal reveal-delay-3">
+                    <div class="impact-card__icon">📐</div>
+                    <div class="impact-card__number">100%</div>
+                    <div class="impact-card__title">Clean Architecture</div>
+                    <div class="impact-card__desc">Every project follows layered architecture with domain-driven design principles</div>
                 </div>
             </div>
         </div>
@@ -886,124 +955,73 @@
             </p>
 
             <div class="projects-grid">
-                <!-- Project 1: KnowledgeAssistant -->
+                <!-- Project 1 -->
                 <article class="project-card project-card--1 reveal reveal-delay-1" data-project="knowledge">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
-                                <linearGradient id="g1a" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#1a73e8" stop-opacity="0.3"/>
-                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
-                                </linearGradient>
-                                <linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#1a73e8"/>
-                                    <stop offset="100%" stop-color="#06b6d4"/>
-                                </linearGradient>
+                                <linearGradient id="g1a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a73e8" stop-opacity="0.3"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/></linearGradient>
                             </defs>
-                            <!-- Animated particles -->
                             <circle cx="40" cy="30" r="2" fill="#1a73e8" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
                             <circle cx="200" cy="25" r="1.5" fill="#06b6d4" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
                             <circle cx="320" cy="50" r="2" fill="#1a73e8" opacity="0.3"><animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/></circle>
-                            <!-- Document icon -->
                             <rect x="20" y="65" width="36" height="45" rx="4" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.7"/>
                             <line x1="28" y1="78" x2="48" y2="78" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/><line x1="28" y1="86" x2="44" y2="86" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/><line x1="28" y1="94" x2="46" y2="94" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/>
-                            <!-- Arrow doc->chunks -->
-                            <line x1="60" y1="87" x2="90" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/>
-                            <polygon points="90,87 84,82 84,92" fill="#1a73e8" opacity="0.5"/>
-                            <!-- Chunks -->
+                            <line x1="60" y1="87" x2="90" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/><polygon points="90,87 84,82 84,92" fill="#1a73e8" opacity="0.5"/>
                             <rect x="96" y="70" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
                             <rect x="96" y="87" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
                             <rect x="96" y="104" width="28" height="12" rx="3" fill="url(#g1a)" stroke="#1a73e8" stroke-width="1" opacity="0.8"/>
-                            <!-- Arrow chunks->embeddings -->
-                            <line x1="128" y1="87" x2="156" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/>
-                            <polygon points="156,87 150,82 150,92" fill="#06b6d4" opacity="0.5"/>
-                            <!-- Embedding vectors -->
+                            <line x1="128" y1="87" x2="156" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/><polygon points="156,87 150,82 150,92" fill="#06b6d4" opacity="0.5"/>
                             <rect x="162" y="75" width="6" height="30" rx="2" fill="#06b6d4" opacity="0.6"/>
                             <rect x="172" y="78" width="6" height="24" rx="2" fill="#06b6d4" opacity="0.5"/>
                             <rect x="182" y="72" width="6" height="36" rx="2" fill="#06b6d4" opacity="0.6"/>
-                            <!-- Arrow embeddings->Qdrant -->
-                            <line x1="192" y1="87" x2="220" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/>
-                            <polygon points="220,87 214,82 214,92" fill="#1a73e8" opacity="0.5"/>
-                            <!-- Qdrant DB -->
+                            <line x1="192" y1="87" x2="220" y2="87" stroke="#1a73e8" stroke-width="1.2" opacity="0.5"/><polygon points="220,87 214,82 214,92" fill="#1a73e8" opacity="0.5"/>
                             <ellipse cx="250" cy="87" rx="22" ry="14" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.7"/>
                             <ellipse cx="250" cy="81" rx="22" ry="5" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.5"/>
                             <circle cx="242" cy="87" r="2" fill="#06b6d4" opacity="0.7"/><circle cx="250" cy="90" r="1.5" fill="#06b6d4" opacity="0.5"/><circle cx="258" cy="85" r="2" fill="#06b6d4" opacity="0.6"/>
-                            <!-- Arrow to LLM -->
-                            <line x1="276" y1="87" x2="304" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/>
-                            <polygon points="304,87 298,82 298,92" fill="#06b6d4" opacity="0.5"/>
-                            <!-- LLM brain -->
-                            <circle cx="326" cy="87" r="14" fill="none" stroke="url(#g1b)" stroke-width="1.5" opacity="0.8"/>
-                            <path d="M321,87a5,5 0 0,1 10,0" fill="none" stroke="#06b6d4" stroke-width="1.2" opacity="0.7"/>
-                            <text x="250" y="145" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">PDF → Chunk → Embed → Qdrant → LLM Answer</text>
+                            <line x1="276" y1="87" x2="304" y2="87" stroke="#06b6d4" stroke-width="1.2" opacity="0.5"/><polygon points="304,87 298,82 298,92" fill="#06b6d4" opacity="0.5"/>
+                            <circle cx="326" cy="87" r="14" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.8"/><path d="M321,87a5,5 0 0,1 10,0" fill="none" stroke="#06b6d4" stroke-width="1.2" opacity="0.7"/>
+                            <text x="180" y="145" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">PDF &rarr; Chunk &rarr; Embed &rarr; Qdrant &rarr; LLM Answer</text>
                         </svg>
                     </div>
                     <div class="project-card__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
                     <h3 class="project-card__title">KnowledgeAssistant</h3>
-                    <p class="project-card__desc">
-                        RAG-powered AI assistant for SAP Business One. Ingests PDFs, indexes with OpenAI embeddings into Qdrant, and answers questions with context-aware LLM responses.
-                    </p>
+                    <p class="project-card__desc">RAG-powered AI assistant for SAP Business One. Ingests PDFs, indexes with OpenAI embeddings into Qdrant, and answers questions with context-aware LLM responses.</p>
                     <div class="project-card__tags">
-                        <span class="tag tag--dotnet">.NET 8</span>
-                        <span class="tag tag--ai">OpenAI</span>
-                        <span class="tag tag--rag">RAG</span>
-                        <span class="tag">Qdrant</span>
-                        <span class="tag">SQL Server</span>
-                        <span class="tag">Blazor</span>
+                        <span class="tag tag--dotnet">.NET 8</span><span class="tag tag--ai">OpenAI</span><span class="tag tag--rag">RAG</span><span class="tag">Qdrant</span><span class="tag">SQL Server</span><span class="tag">Blazor</span>
                     </div>
                     <div class="project-card__footer">
-                        <span class="project-card__stat">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            4-layer Clean Architecture
-                        </span>
-                        <button class="project-card__link" data-open="knowledge">Details →</button>
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>4-layer Clean Architecture</span>
+                        <button class="project-card__link" data-open="knowledge">Details &rarr;</button>
                     </div>
                 </article>
 
-                <!-- Project 2: SAP B1 AI Assistant -->
+                <!-- Project 2 -->
                 <article class="project-card project-card--2 reveal reveal-delay-2" data-project="aiassistant">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g2a" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
-                                    <stop offset="100%" stop-color="#d946ef" stop-opacity="0.25"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- SAP B1 Server -->
                             <rect x="20" y="30" width="60" height="70" rx="6" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
                             <rect x="30" y="40" width="40" height="8" rx="2" fill="#8b5cf6" opacity="0.3"/>
                             <rect x="30" y="55" width="40" height="8" rx="2" fill="#8b5cf6" opacity="0.2"/>
                             <rect x="30" y="70" width="25" height="8" rx="2" fill="#8b5cf6" opacity="0.15"/>
                             <text x="50" y="95" text-anchor="middle" fill="#8b5cf6" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Service</text>
                             <text x="50" y="103" text-anchor="middle" fill="#8b5cf6" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Layer</text>
-                            <!-- Data line SAP -> AI -->
-                            <path d="M80,55 Q130,55 140,70" fill="none" stroke="#d946ef" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- AI Core -->
-                            <rect x="145" y="55" width="60" height="50" rx="8" fill="url(#g2a)" stroke="#8b5cf6" stroke-width="1.5" opacity="0.8"/>
+                            <path d="M80,55 Q130,55 140,70" fill="none" stroke="#d946ef" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/></path>
+                            <rect x="145" y="55" width="60" height="50" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.8"/>
                             <text x="175" y="70" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="8" font-weight="600">Ollama</text>
                             <text x="175" y="82" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="7" opacity="0.7">LLM Engine</text>
                             <circle cx="163" cy="70" r="2" fill="#d946ef" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/></circle>
                             <circle cx="187" cy="68" r="1.5" fill="#d946ef" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.8s" repeatCount="indefinite"/></circle>
-                            <!-- Output to chat -->
-                            <path d="M205,80 Q230,80 240,70" fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- Chat UI -->
+                            <path d="M205,80 Q230,80 240,70" fill="none" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="1s" repeatCount="indefinite"/></path>
                             <rect x="245" y="25" width="100" height="110" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0.5"/>
-                            <!-- Business User bubble -->
                             <rect x="255" y="35" width="55" height="18" rx="6" fill="#8b5cf6" opacity="0.2"/>
                             <text x="282" y="48" text-anchor="middle" fill="#c4b5fd" font-family="Inter,sans-serif" font-size="6" font-weight="500">Business Q&amp;A</text>
-                            <!-- Developer bubble -->
                             <rect x="260" y="62" width="55" height="18" rx="6" fill="#d946ef" opacity="0.2"/>
                             <text x="287" y="75" text-anchor="middle" fill="#f0abfc" font-family="Inter,sans-serif" font-size="6" font-weight="500">C# Code Gen</text>
-                            <!-- Mode labels -->
                             <text x="230" y="45" text-anchor="end" fill="#64748b" font-family="Inter,sans-serif" font-size="6">mode</text>
                             <text x="230" y="72" text-anchor="end" fill="#64748b" font-family="Inter,sans-serif" font-size="6">mode</text>
-                            <!-- Knowledge base chip -->
                             <rect x="255" y="100" width="45" height="14" rx="4" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.5"/>
                             <text x="277" y="110" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" font-weight="600">RAG KB</text>
                             <text x="175" y="150" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Dual-Mode AI with SAP Data Grounding &amp; RAG</text>
@@ -1013,59 +1031,33 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <h3 class="project-card__title">SAP B1 AI Assistant</h3>
-                    <p class="project-card__desc">
-                        Dual-mode .NET 10 assistant with local Ollama LLMs. Business mode for SAP data lookup and developer mode for C# code generation — with RAG knowledge base and Service Layer grounding.
-                    </p>
+                    <p class="project-card__desc">Dual-mode .NET 10 assistant with local Ollama LLMs. Business mode for SAP data lookup and developer mode for C# code generation — with RAG knowledge base and Service Layer grounding.</p>
                     <div class="project-card__tags">
-                        <span class="tag tag--dotnet">.NET 10</span>
-                        <span class="tag tag--ai">Ollama</span>
-                        <span class="tag tag--sap">SAP Service Layer</span>
-                        <span class="tag tag--rag">RAG</span>
-                        <span class="tag">Blazor</span>
-                        <span class="tag">SQLite</span>
+                        <span class="tag tag--dotnet">.NET 10</span><span class="tag tag--ai">Ollama</span><span class="tag tag--sap">SAP Service Layer</span><span class="tag tag--rag">RAG</span><span class="tag">Blazor</span><span class="tag">SQLite</span>
                     </div>
                     <div class="project-card__footer">
-                        <span class="project-card__stat">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                            60 tests · Health Checks
-                        </span>
-                        <button class="project-card__link" data-open="aiassistant">Details →</button>
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>60 tests &middot; Health Checks</span>
+                        <button class="project-card__link" data-open="aiassistant">Details &rarr;</button>
                     </div>
                 </article>
 
-                <!-- Project 3: CleanSync -->
+                <!-- Project 3 -->
                 <article class="project-card project-card--3 reveal reveal-delay-3" data-project="cleansync">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g3a" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
-                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.25"/>
-                                </linearGradient>
-                                <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                    <polygon points="0,0 8,4 0,8" fill="#10b981" opacity="0.6"/>
-                                </marker>
-                                <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                    <polygon points="0,0 8,4 0,8" fill="#06b6d4" opacity="0.6"/>
-                                </marker>
-                            </defs>
-                            <!-- SAP B1 Database (left) -->
                             <rect x="20" y="30" width="80" height="100" rx="8" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6"/>
                             <ellipse cx="60" cy="30" rx="32" ry="8" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
                             <text x="60" y="55" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="8" font-weight="700" opacity="0.8">SAP</text>
                             <text x="60" y="67" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.6">Business One</text>
-                            <!-- SAP data rows -->
                             <rect x="28" y="78" width="64" height="4" rx="2" fill="#10b981" opacity="0.15"/>
                             <rect x="28" y="86" width="52" height="4" rx="2" fill="#10b981" opacity="0.15"/>
                             <rect x="28" y="94" width="58" height="4" rx="2" fill="#10b981" opacity="0.15"/>
                             <rect x="28" y="102" width="44" height="4" rx="2" fill="#10b981" opacity="0.15"/>
                             <text x="60" y="122" text-anchor="middle" fill="#10b981" font-family="Inter,sans-serif" font-size="6.5" opacity="0.5">Business Partners</text>
-                            <!-- E-commerce Database (right) -->
                             <rect x="260" y="30" width="80" height="100" rx="8" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6"/>
                             <ellipse cx="300" cy="30" rx="32" ry="8" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
                             <text x="300" y="50" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.8">E-Commerce</text>
                             <text x="300" y="65" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="6" opacity="0.6">Platforms</text>
-                            <!-- E-com logos -->
                             <rect x="268" y="74" width="28" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
                             <text x="282" y="86" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">Shopify</text>
                             <rect x="304" y="74" width="28" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
@@ -1073,147 +1065,86 @@
                             <rect x="268" y="98" width="30" height="16" rx="3" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.35"/>
                             <text x="283" y="110" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">WooCom</text>
                             <text x="300" y="130" text-anchor="middle" fill="#06b6d4" font-family="Inter,sans-serif" font-size="6.5" opacity="0.5">Customers</text>
-                            <!-- Sync arrows (center, bidirectional) -->
-                            <!-- SAP → E-com (dashed animated) -->
                             <path d="M100,65 L250,65" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
-                            <!-- SAP → E-com (solid with arrow marker) -->
-                            <path d="M100,65 L250,65" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6" marker-end="url(#arrowGreen)">
-                                <animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- E-com → SAP (dashed animated) -->
                             <path d="M250,95 L100,95" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"/>
-                            <!-- E-com → SAP (solid with arrow marker) -->
-                            <path d="M250,95 L100,95" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6" marker-end="url(#arrowCyan)">
-                                <animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- Sync engine center -->
-                            <rect x="155" y="55" width="45" height="50" rx="12" fill="url(#g3a)" stroke="#10b981" stroke-width="1.2" opacity="0.8"/>
+                            <rect x="155" y="55" width="45" height="50" rx="12" fill="none" stroke="#10b981" stroke-width="1.2" opacity="0.8"/>
                             <text x="177" y="73" text-anchor="middle" fill="#34d399" font-family="Inter,sans-serif" font-size="9" font-weight="700">Sync</text>
                             <text x="177" y="87" text-anchor="middle" fill="#34d399" font-family="Inter,sans-serif" font-size="7" opacity="0.7">Engine</text>
                             <circle cx="177" cy="100" r="2" fill="#10b981"><animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite"/></circle>
-                            <text x="180" y="155" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Bidirectional SAP ↔ E-Commerce Sync with Blazor Dashboard</text>
+                            <text x="180" y="155" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Bidirectional SAP &harr; E-Commerce Sync with Blazor Dashboard</text>
                         </svg>
                     </div>
                     <div class="project-card__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
                     </div>
                     <h3 class="project-card__title">CleanSync</h3>
-                    <p class="project-card__desc">
-                        Bidirectional Business Partner sync between SAP B1 and e-commerce platforms (Shopify, Amazon). REST API with Blazor monitoring dashboard and mock services for development.
-                    </p>
+                    <p class="project-card__desc">Bidirectional Business Partner sync between SAP B1 and e-commerce platforms (Shopify, Amazon). REST API with Blazor monitoring dashboard and mock services for development.</p>
                     <div class="project-card__tags">
-                        <span class="tag tag--dotnet">.NET 10</span>
-                        <span class="tag tag--sap">SAP Service Layer</span>
-                        <span class="tag">E-commerce</span>
-                        <span class="tag">Blazor</span>
-                        <span class="tag">EF Core</span>
+                        <span class="tag tag--dotnet">.NET 10</span><span class="tag tag--sap">SAP Service Layer</span><span class="tag">E-commerce</span><span class="tag">Blazor</span><span class="tag">EF Core</span>
                     </div>
                     <div class="project-card__footer">
-                        <span class="project-card__stat">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                            MIT Licensed
-                        </span>
-                        <button class="project-card__link" data-open="cleansync">Details →</button>
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>MIT Licensed</span>
+                        <button class="project-card__link" data-open="cleansync">Details &rarr;</button>
                     </div>
                 </article>
 
-                <!-- Project 4: SAP B1 Inspector -->
+                <!-- Project 4 -->
                 <article class="project-card project-card--4 reveal reveal-delay-4" data-project="inspector">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g4a" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
-                                    <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.25"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- SAP B1 Form Window (left) -->
                             <rect x="15" y="25" width="95" height="120" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.6"/>
-                            <!-- Title bar -->
                             <rect x="15" y="25" width="95" height="20" rx="6" fill="#f59e0b" opacity="0.15"/>
                             <rect x="15" y="39" width="95" height="6" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
                             <text x="62" y="39" text-anchor="middle" fill="#f59e0b" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">SAP B1 Form</text>
-                            <!-- Form fields -->
                             <rect x="25" y="52" width="75" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
                             <rect x="25" y="67" width="45" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
                             <rect x="25" y="82" width="60" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
                             <rect x="25" y="97" width="35" height="10" rx="2" fill="#f59e0b" opacity="0.1"/>
-                            <!-- Grid/matrix -->
                             <rect x="25" y="114" width="75" height="22" rx="2" fill="none" stroke="#f59e0b" stroke-width="0.8" opacity="0.3"/>
                             <line x1="45" y1="114" x2="45" y2="136" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
                             <line x1="65" y1="114" x2="65" y2="136" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
                             <line x1="25" y1="125" x2="100" y2="125" stroke="#f59e0b" stroke-width="0.5" opacity="0.2"/>
-                            <!-- Addon tag -->
                             <rect x="30" y="148" width="65" height="14" rx="4" fill="#f43f5e" opacity="0.2"/>
                             <text x="62" y="158" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="6" font-weight="600">SwissAddonFramework</text>
-                            <!-- Connection line (SAP → Backend) with animation -->
-                            <path d="M110,85 L145,85" fill="none" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- SignalR hub (center) -->
-                            <circle cx="165" cy="85" r="24" fill="url(#g4a)" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+                            <path d="M110,85 L145,85" fill="none" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/></path>
+                            <circle cx="165" cy="85" r="24" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
                             <text x="165" y="81" text-anchor="middle" fill="#fbbf24" font-family="Inter,sans-serif" font-size="7" font-weight="700">SignalR</text>
                             <text x="165" y="93" text-anchor="middle" fill="#fbbf24" font-family="Inter,sans-serif" font-size="6" opacity="0.7">Hub</text>
-                            <!-- Signal broadcast waves -->
                             <circle cx="165" cy="85" r="30" fill="none" stroke="#f59e0b" stroke-width="0.7" opacity="0.2"><animate attributeName="r" values="30;38" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;0" dur="1.5s" repeatCount="indefinite"/></circle>
                             <circle cx="165" cy="85" r="34" fill="none" stroke="#f59e0b" stroke-width="0.6" opacity="0.15"><animate attributeName="r" values="34;44" dur="1.5s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.15;0" dur="1.5s" begin="0.5s" repeatCount="indefinite"/></circle>
-                            <!-- Connection line (Backend → Viewer) -->
-                            <path d="M189,85 L225,85" fill="none" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- Blazor Viewer (right) -->
+                            <path d="M189,85 L225,85" fill="none" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/></path>
                             <rect x="240" y="35" width="110" height="110" rx="6" fill="none" stroke="#f43f5e" stroke-width="1.5" opacity="0.6"/>
                             <rect x="240" y="35" width="110" height="18" rx="6" fill="#f43f5e" opacity="0.12"/>
                             <text x="295" y="48" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.7">Blazor Viewer</text>
-                            <!-- Tree view -->
-                            <text x="250" y="65" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="6" opacity="0.7">▼ Form: 142</text>
-                            <text x="258" y="78" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Item: btnOk</text>
-                            <text x="258" y="88" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Item: txtCode</text>
-                            <text x="258" y="98" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">├─ Matrix: mtxItems</text>
-                            <text x="258" y="108" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">└─ Item: btnCancel</text>
-                            <!-- Live indicator -->
+                            <text x="250" y="65" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="6" opacity="0.7">&#9660; Form: 142</text>
+                            <text x="258" y="78" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">&#9500;&#9472; Item: btnOk</text>
+                            <text x="258" y="88" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">&#9500;&#9472; Item: txtCode</text>
+                            <text x="258" y="98" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">&#9500;&#9472; Matrix: mtxItems</text>
+                            <text x="258" y="108" fill="#f59e0b" font-family="JetBrains Mono,monospace" font-size="5.5" opacity="0.5">&#9492;&#9472; Item: btnCancel</text>
                             <rect x="270" y="120" width="50" height="16" rx="4" fill="#f43f5e" opacity="0.15"/>
                             <circle cx="282" cy="128" r="3" fill="#f43f5e"><animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/></circle>
                             <text x="299" y="131" text-anchor="middle" fill="#f43f5e" font-family="Inter,sans-serif" font-size="6" font-weight="600">Live</text>
-                            <text x="180" y="160" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">SAP Addon → SignalR Hub → Blazor Live Form Tree Viewer</text>
+                            <text x="180" y="160" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">SAP Addon &rarr; SignalR Hub &rarr; Blazor Live Form Tree Viewer</text>
                         </svg>
                     </div>
                     <div class="project-card__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </div>
                     <h3 class="project-card__title">Form Metadata Inspector</h3>
-                    <p class="project-card__desc">
-                        Semi-live SAP B1 UI inspection system capturing form metadata at runtime via SwissAddonFramework, exposed through Blazor Server with SignalR real-time updates.
-                    </p>
+                    <p class="project-card__desc">Semi-live SAP B1 UI inspection system capturing form metadata at runtime via SwissAddonFramework, exposed through Blazor Server with SignalR real-time updates.</p>
                     <div class="project-card__tags">
-                        <span class="tag tag--dotnet">.NET 10</span>
-                        <span class="tag tag--sap">SAP Addon SDK</span>
-                        <span class="tag">SignalR</span>
-                        <span class="tag">Blazor</span>
-                        <span class="tag">Swagger</span>
+                        <span class="tag tag--dotnet">.NET 10</span><span class="tag tag--sap">SAP Addon SDK</span><span class="tag">SignalR</span><span class="tag">Blazor</span><span class="tag">Swagger</span>
                     </div>
                     <div class="project-card__footer">
-                        <span class="project-card__stat">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                            Real-time · SignalR
-                        </span>
-                        <button class="project-card__link" data-open="inspector">Details →</button>
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Real-time &middot; SignalR</span>
+                        <button class="project-card__link" data-open="inspector">Details &rarr;</button>
                     </div>
                 </article>
 
-                <!-- Project 5: ServiceLayer.DTW -->
-                <article class="project-card project-card--5 reveal reveal-delay-5" data-project="dtwservicelayer">
+                <!-- Project 5 -->
+                <article class="project-card project-card--5 reveal reveal-delay-5" data-project="dtwservicelayer" style="grid-column: 1 / -1;">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g5a" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.25"/>
-                                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.25"/>
-                                </linearGradient>
-                                <marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                    <polygon points="0,0 8,4 0,8" fill="#14b8a6" opacity="0.6"/>
-                                </marker>
-                            </defs>
                             <rect x="15" y="25" width="36" height="45" rx="4" fill="none" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
                             <text x="33" y="40" text-anchor="middle" fill="#14b8a6" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.7">CSV</text>
                             <line x1="21" y1="48" x2="45" y2="48" stroke="#14b8a6" stroke-width="1" opacity="0.3"/>
@@ -1223,21 +1154,13 @@
                             <text x="33" y="93" text-anchor="middle" fill="#14b8a6" font-family="Inter,sans-serif" font-size="6.5" font-weight="700" opacity="0.6">XLSX</text>
                             <line x1="21" y1="100" x2="45" y2="100" stroke="#14b8a6" stroke-width="1" opacity="0.25"/>
                             <line x1="21" y1="106" x2="36" y2="106" stroke="#14b8a6" stroke-width="1" opacity="0.25"/>
-                            <path d="M55,47 Q70,47 75,65" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M55,100 Q70,100 75,90" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5">
-                                <animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
-                            <rect x="80" y="40" width="65" height="55" rx="10" fill="url(#g5a)" stroke="#14b8a6" stroke-width="1.2" opacity="0.85"/>
+                            <path d="M55,47 Q70,47 75,65" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/></path>
+                            <path d="M55,100 Q70,100 75,90" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"><animate attributeName="stroke-dashoffset" from="7" to="0" dur="0.8s" repeatCount="indefinite"/></path>
+                            <rect x="80" y="40" width="65" height="55" rx="10" fill="none" stroke="#14b8a6" stroke-width="1.2" opacity="0.85"/>
                             <text x="112" y="60" text-anchor="middle" fill="#5eead4" font-family="Inter,sans-serif" font-size="8" font-weight="700">Parse &amp;</text>
                             <text x="112" y="74" text-anchor="middle" fill="#5eead4" font-family="Inter,sans-serif" font-size="8" font-weight="700">Validate</text>
-                            <path d="M96,85 L104,93 L130,67" fill="none" stroke="#5eead4" stroke-width="2" opacity="0.8">
-                                <animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.2s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M148,67 L182,67" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.6" marker-end="url(#arrowTeal)">
-                                <animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.8s" repeatCount="indefinite"/>
-                            </path>
+                            <path d="M96,85 L104,93 L130,67" fill="none" stroke="#5eead4" stroke-width="2" opacity="0.8"><animate attributeName="stroke-dashoffset" from="30" to="0" dur="1.2s" repeatCount="indefinite"/></path>
+                            <path d="M148,67 L182,67" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.6"><animate attributeName="stroke-dashoffset" from="9" to="0" dur="0.8s" repeatCount="indefinite"/></path>
                             <rect x="190" y="30" width="75" height="95" rx="8" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
                             <text x="227" y="48" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="7" font-weight="700" opacity="0.8">SAP B1</text>
                             <text x="227" y="60" text-anchor="middle" fill="#818cf8" font-family="Inter,sans-serif" font-size="6.5" font-weight="600" opacity="0.6">Service</text>
@@ -1253,30 +1176,20 @@
                             <rect x="282" y="72" width="20" height="3" rx="1" fill="#14b8a6" opacity="0.3"/>
                             <rect x="282" y="77" width="24" height="3" rx="1" fill="#14b8a6" opacity="0.2"/>
                             <path d="M265,70 L272,60" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
-                            <text x="180" y="148" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">CSV/XLSX → Parse &amp; Validate → Service Layer → SAP B1</text>
+                            <text x="180" y="148" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">CSV/XLSX &rarr; Parse &amp; Validate &rarr; Service Layer &rarr; SAP B1</text>
                         </svg>
                     </div>
                     <div class="project-card__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                     </div>
                     <h3 class="project-card__title">ServiceLayer.DTW</h3>
-                    <p class="project-card__desc">
-                        Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel — no SAP client installation required.
-                    </p>
+                    <p class="project-card__desc">Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel — no SAP client installation required.</p>
                     <div class="project-card__tags">
-                        <span class="tag tag--dotnet">.NET 10</span>
-                        <span class="tag tag--sap">SAP Service Layer</span>
-                        <span class="tag">Blazor WASM</span>
-                        <span class="tag">MediatR</span>
-                        <span class="tag">FluentValidation</span>
-                        <span class="tag">CsvHelper</span>
+                        <span class="tag tag--dotnet">.NET 10</span><span class="tag tag--sap">SAP Service Layer</span><span class="tag">Blazor WASM</span><span class="tag">MediatR</span><span class="tag">FluentValidation</span><span class="tag">CsvHelper</span>
                     </div>
                     <div class="project-card__footer">
-                        <span class="project-card__stat">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                            Add · Update · Upsert modes
-                        </span>
-                        <button class="project-card__link" data-open="dtwservicelayer">Details →</button>
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Add &middot; Update &middot; Upsert modes</span>
+                        <button class="project-card__link" data-open="dtwservicelayer">Details &rarr;</button>
                     </div>
                 </article>
             </div>
@@ -1288,81 +1201,22 @@
         <div class="section__inner">
             <div class="section__label reveal">Technologies</div>
             <h2 class="section__heading reveal">Tech Stack &amp; Expertise</h2>
-            <p class="section__subtitle reveal">
-                Tools and frameworks I use across all projects to deliver production-quality solutions.
-            </p>
-
+            <p class="section__subtitle reveal">Tools and frameworks I use across all projects to deliver production-quality solutions.</p>
             <div class="tech-grid">
-                <div class="tech-card reveal reveal-delay-1">
-                    <div class="tech-card__icon">⚡</div>
-                    <div class="tech-card__name">.NET 8/10</div>
-                    <div class="tech-card__count">5 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-1">
-                    <div class="tech-card__icon">🏗️</div>
-                    <div class="tech-card__name">Clean Architecture</div>
-                    <div class="tech-card__count">5 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-1">
-                    <div class="tech-card__icon">🧩</div>
-                    <div class="tech-card__name">Blazor</div>
-                    <div class="tech-card__count">5 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-2">
-                    <div class="tech-card__icon">🤖</div>
-                    <div class="tech-card__name">OpenAI / Ollama</div>
-                    <div class="tech-card__count">2 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-2">
-                    <div class="tech-card__icon">🔍</div>
-                    <div class="tech-card__name">RAG / Qdrant</div>
-                    <div class="tech-card__count">2 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-2">
-                    <div class="tech-card__icon">🏢</div>
-                    <div class="tech-card__name">SAP Service Layer</div>
-                    <div class="tech-card__count">3 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-3">
-                    <div class="tech-card__icon">📡</div>
-                    <div class="tech-card__name">SignalR</div>
-                    <div class="tech-card__count">1 project</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-3">
-                    <div class="tech-card__icon">🗄️</div>
-                    <div class="tech-card__name">EF Core</div>
-                    <div class="tech-card__count">4 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-3">
-                    <div class="tech-card__icon">📊</div>
-                    <div class="tech-card__name">SQL Server</div>
-                    <div class="tech-card__count">2 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-3">
-                    <div class="tech-card__icon">🪶</div>
-                    <div class="tech-card__name">SQLite</div>
-                    <div class="tech-card__count">1 project</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-4">
-                    <div class="tech-card__icon">📄</div>
-                    <div class="tech-card__name">Swagger / Scalar</div>
-                    <div class="tech-card__count">5 projects</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-4">
-                    <div class="tech-card__icon">🐳</div>
-                    <div class="tech-card__name">Docker</div>
-                    <div class="tech-card__count">1 project</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-5">
-                    <div class="tech-card__icon">📨</div>
-                    <div class="tech-card__name">MediatR</div>
-                    <div class="tech-card__count">1 project</div>
-                </div>
-                <div class="tech-card reveal reveal-delay-5">
-                    <div class="tech-card__icon">✅</div>
-                    <div class="tech-card__name">FluentValidation</div>
-                    <div class="tech-card__count">1 project</div>
-                </div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#9889;</div><div class="tech-card__name">.NET 8/10</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#127959;</div><div class="tech-card__name">Clean Architecture</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#129513;</div><div class="tech-card__name">Blazor</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#129302;</div><div class="tech-card__name">OpenAI / Ollama</div><div class="tech-card__count">2 projects</div></div>
+                <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#128269;</div><div class="tech-card__name">RAG / Qdrant</div><div class="tech-card__count">2 projects</div></div>
+                <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#127970;</div><div class="tech-card__name">SAP Service Layer</div><div class="tech-card__count">3 projects</div></div>
+                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128225;</div><div class="tech-card__name">SignalR</div><div class="tech-card__count">1 project</div></div>
+                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128452;</div><div class="tech-card__name">EF Core</div><div class="tech-card__count">4 projects</div></div>
+                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128202;</div><div class="tech-card__name">SQL Server</div><div class="tech-card__count">2 projects</div></div>
+                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#129718;</div><div class="tech-card__name">SQLite</div><div class="tech-card__count">1 project</div></div>
+                <div class="tech-card reveal reveal-delay-4"><div class="tech-card__icon">&#128196;</div><div class="tech-card__name">Swagger / Scalar</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-4"><div class="tech-card__icon">&#128051;</div><div class="tech-card__name">Docker</div><div class="tech-card__count">1 project</div></div>
+                <div class="tech-card reveal reveal-delay-5"><div class="tech-card__icon">&#128233;</div><div class="tech-card__name">MediatR</div><div class="tech-card__count">1 project</div></div>
+                <div class="tech-card reveal reveal-delay-5"><div class="tech-card__icon">&#9989;</div><div class="tech-card__name">FluentValidation</div><div class="tech-card__count">1 project</div></div>
             </div>
         </div>
     </section>
@@ -1372,17 +1226,19 @@
         <div class="cta-card reveal">
             <div class="section__label">Let's Work Together</div>
             <h2 class="cta-card__heading">Need an SAP B1 Solution?</h2>
-            <p class="cta-card__text">
-                I specialize in building AI-powered tools, data synchronization systems, and developer tooling for the SAP Business One ecosystem. All built with Clean Architecture on .NET.
-            </p>
+            <p class="cta-card__text">I specialize in building AI-powered tools, data synchronization systems, and developer tooling for the SAP Business One ecosystem. All built with Clean Architecture on .NET.</p>
             <div class="cta-card__buttons">
                 <a href="mailto:taptso@yahoo.fr" class="btn btn--primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     Email Me
                 </a>
+                <a href="https://www.linkedin.com/in/jules-taptso/" target="_blank" rel="noopener" class="btn btn--secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    Connect on LinkedIn
+                </a>
                 <a href="https://github.com/jtaptso" target="_blank" rel="noopener" class="btn btn--ghost">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
+                    View GitHub
                 </a>
             </div>
         </div>
@@ -1390,12 +1246,37 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p class="footer__text">&copy; 2025 Jules Taptso. Built with care for the SAP B1 community.</p>
+        <div class="footer__inner">
+            <div class="footer__logo">JT</div>
+            <ul class="footer__links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.linkedin.com/in/jules-taptso/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://github.com/jtaptso" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+            <div class="footer__socials">
+                <a href="https://www.linkedin.com/in/jules-taptso/" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://github.com/jtaptso" target="_blank" rel="noopener" class="footer__social-link" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:taptso@yahoo.fr" class="footer__social-link" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+            </div>
+            <p class="footer__copy">&copy; 2025 Jules Taptso. Built with care for the SAP B1 community.</p>
+        </div>
     </footer>
 
-    <!-- ============================================
-         MODAL: Project Details
-         ============================================ -->
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="modal">
             <button class="modal__close" id="modalClose" aria-label="Close">&times;</button>
@@ -1404,9 +1285,6 @@
     </div>
 
     <script>
-        /* ============================================
-           PROJECT DATA
-           ============================================ */
         const projects = {
             knowledge: {
                 title: 'KnowledgeAssistant',
@@ -1414,14 +1292,7 @@
                 tagline: 'RAG-powered AI assistant for SAP Business One documentation',
                 overview: 'A Retrieval-Augmented Generation (RAG) application built with .NET that ingests PDF documents, indexes them with OpenAI embeddings into a Qdrant vector database, and answers user questions by retrieving the most relevant document chunks and passing them as context to an LLM.',
                 architecture: 'Clean Architecture with four layers: Domain (core entities & DTOs), Application (interfaces & service orchestration), Infrastructure (OpenAI, Qdrant, PDF extraction, EF Core + SQL Server), API (REST API with <code>/api/chat</code>), and BlazorUI (Blazor Server frontend).',
-                highlights: [
-                    'OpenAI text-embedding-3-small for embeddings + GPT for chat',
-                    'Qdrant vector database for similarity search',
-                    'PdfPig for PDF text extraction',
-                    'Entity Framework Core with SQL Server for document metadata',
-                    'Swagger UI for API documentation and testing',
-                    'Blazor Server UI (scaffolded)'
-                ],
+                highlights: ['OpenAI text-embedding-3-small for embeddings + GPT for chat','Qdrant vector database for similarity search','PdfPig for PDF text extraction','Entity Framework Core with SQL Server for document metadata','Swagger UI for API documentation and testing','Blazor Server UI (scaffolded)'],
                 endpoint: 'POST /api/chat — Ask questions about SAP B1 procedures'
             },
             aiassistant: {
@@ -1430,15 +1301,7 @@
                 tagline: 'Dual-mode AI assistant with local Ollama LLMs and live SAP data',
                 overview: 'A clean-architecture .NET 10 AI assistant for SAP Business One, powered by local Ollama LLMs. Supports two modes — a business-user mode for SAP data lookup and Q&A, and a developer mode for SAP B1 C# code generation.',
                 architecture: 'Domain → Application → Infrastructure pattern. Features include multi-model support (switchable per message), live SAP Service Layer data grounding, persistent SQLite conversation history, and a RAG knowledge base with nomic-embed-text embeddings.',
-                highlights: [
-                    'Multiple Ollama models switchable via UI dropdown',
-                    'Live SAP Business One data grounding via Service Layer',
-                    'Two modes: BusinessUser (Q&A) and Developer (code generation)',
-                    'RAG knowledge base with text document upload and cosine similarity retrieval',
-                    '60 tests (48 unit + 12 integration)',
-                    'Health checks for Ollama, SQLite, and SAP connectivity',
-                    'Correlation ID tracing + RFC 9457 ProblemDetails error handling'
-                ],
+                highlights: ['Multiple Ollama models switchable via UI dropdown','Live SAP Business One data grounding via Service Layer','Two modes: BusinessUser (Q&A) and Developer (code generation)','RAG knowledge base with text document upload and cosine similarity retrieval','60 tests (48 unit + 12 integration)','Health checks for Ollama, SQLite, and SAP connectivity','Correlation ID tracing + RFC 9457 ProblemDetails error handling'],
                 endpoint: 'POST /api/chat/messages — Send messages with mode & model selection'
             },
             cleansync: {
@@ -1447,35 +1310,16 @@
                 tagline: 'Bidirectional Business Partner sync between SAP B1 and E-commerce',
                 overview: 'A .NET 10 solution that facilitates bidirectional synchronization of Business Partners (customers) between SAP Business One and various e-commerce platforms (Shopify, Amazon, etc.). Provides a REST API for managing sync operations and a Blazor Web interface for monitoring.',
                 architecture: 'Clean Architecture with four projects: CleanSync.Api (REST API), CleanSync.Application (business logic & DTOs), CleanSync.Domain (entities & interfaces), and CleanSync.Infrastructure (data access & external services). Features demo mode with in-memory database and mock services for development.',
-                highlights: [
-                    'Bidirectional sync: E-commerce ↔ SAP and vice versa',
-                    'Interface-based design for Shopify, Amazon, and other platforms',
-                    'Demo mode with in-memory database and mock services',
-                    'Health checks for database, SAP, and e-commerce connectivity',
-                    'Swagger documentation at /swagger',
-                    'Blazor Server monitoring dashboard',
-                    'MIT Licensed'
-                ],
+                highlights: ['Bidirectional sync: E-commerce ↔ SAP and vice versa','Interface-based design for Shopify, Amazon, and other platforms','Demo mode with in-memory database and mock services','Health checks for database, SAP, and e-commerce connectivity','Swagger documentation at /swagger','Blazor Server monitoring dashboard','MIT Licensed'],
                 endpoint: 'POST /api/sync/start — Trigger synchronization jobs'
             },
             dtwservicelayer: {
                 title: 'ServiceLayer.DTW',
                 gradient: 'var(--gradient-card-5)',
                 tagline: 'Bulk import master data into SAP B1 via Service Layer — no DTW, no DI API, no SAP client',
-                overview: 'A modern replacement for SAP Business One\'s Data Transfer Workbench (DTW), built entirely on the Service Layer REST API. Accepts CSV, TXT, and Excel (.xlsx) files and bulk-imports Business Partners (with addresses and contacts) into SAP B1 via HTTP — no SAP client installation or DI API required.',
+                overview: "A modern replacement for SAP Business One's Data Transfer Workbench (DTW), built entirely on the Service Layer REST API. Accepts CSV, TXT, and Excel (.xlsx) files and bulk-imports Business Partners (with addresses and contacts) into SAP B1 via HTTP — no SAP client installation or DI API required.",
                 architecture: 'Clean Architecture with five layers: Domain (entities, enums, interfaces), Application (use cases via MediatR, validators via FluentValidation), Infrastructure (Service Layer client, CsvHelper/EPPlus parsers, mappers), Shared (DTOs), API (ASP.NET Core Web API with Scalar docs), and Web (Blazor WebAssembly UI).',
-                highlights: [
-                    'Bulk import from CSV, TXT (tab/delimiter), and Excel (.xlsx) files',
-                    'Three import modes: Add Only, Update Only, Upsert',
-                    'Per-row validation with detailed, human-readable error messages',
-                    'Stop-on-error or continue-and-collect-errors strategies',
-                    'Downloadable result log (CSV) with row-by-row status',
-                    'CsvHelper for robust CSV/TXT parsing, EPPlus for Excel',
-                    'MediatR for clean CQRS-style request handling',
-                    'FluentValidation for declarative input validation',
-                    'Blazor WebAssembly frontend with file upload UI',
-                    'Scalar interactive API docs at /scalar/v1'
-                ],
+                highlights: ['Bulk import from CSV, TXT (tab/delimiter), and Excel (.xlsx) files','Three import modes: Add Only, Update Only, Upsert','Per-row validation with detailed, human-readable error messages','Stop-on-error or continue-and-collect-errors strategies','Downloadable result log (CSV) with row-by-row status','CsvHelper for robust CSV/TXT parsing, EPPlus for Excel','MediatR for clean CQRS-style request handling','FluentValidation for declarative input validation','Blazor WebAssembly frontend with file upload UI','Scalar interactive API docs at /scalar/v1'],
                 endpoint: 'POST /api/import/business-partners — Upload file and run import'
             },
             inspector: {
@@ -1484,22 +1328,11 @@
                 tagline: 'Semi-live SAP B1 UI form inspection with Blazor + SignalR',
                 overview: 'A semi-live inspection system that captures SAP Business One UI form metadata at runtime via the SwissAddonFramework and exposes it through a Blazor Server viewer with SignalR real-time updates. Read-only by design — never modifies SAP UI or data.',
                 architecture: 'Split into three tiers: SAP B1 Add-on (SwissAddonFramework event listeners, form/field/matrix inspectors, JSON snapshot builder, REST publisher), Clean Architecture Backend (Domain → Application → Infrastructure → Presentation with REST API + SignalR hub), and Blazor Server Viewer with live form tree and semi-live updates.',
-                highlights: [
-                    'Captures form-level, item-level, and matrix/grid column metadata',
-                    'SignalR hub at /snapshothub for real-time SnapshotUpdated broadcasts',
-                    'Event throttling prevents SAP client UI freezes (1000ms per form type)',
-                    'Schema versioning for forward compatibility',
-                    'In-memory storage with swappable persistence (SQLite/SQL Server)',
-                    'Zero external dependencies in Domain layer',
-                    'Structural UI events only — FormLoad, FormActivate, FormVisible, FormModeChange'
-                ],
+                highlights: ['Captures form-level, item-level, and matrix/grid column metadata','SignalR hub at /snapshothub for real-time SnapshotUpdated broadcasts','Event throttling prevents SAP client UI freezes (1000ms per form type)','Schema versioning for forward compatibility','In-memory storage with swappable persistence (SQLite/SQL Server)','Zero external dependencies in Domain layer','Structural UI events only — FormLoad, FormActivate, FormVisible, FormModeChange'],
                 endpoint: 'POST /api/snapshot — Receive snapshots from SAP add-on'
             }
         };
 
-        /* ============================================
-           MODAL LOGIC
-           ============================================ */
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
         const modalClose = document.getElementById('modalClose');
@@ -1507,126 +1340,104 @@
         function openModal(projectKey) {
             const p = projects[projectKey];
             if (!p) return;
-
-            modalContent.innerHTML = `
-                <div style="height: 4px; background: ${p.gradient}; border-radius: 2px; margin-bottom: 1.5rem;"></div>
-                <h2 class="modal__title">${p.title}</h2>
-                <p class="modal__subtitle" style="color: var(--text-secondary); font-weight: 500;">${p.tagline}</p>
-
-                <div class="modal__section">
-                    <h3>Overview</h3>
-                    <p>${p.overview}</p>
-                </div>
-
-                <div class="modal__section">
-                    <h3>Architecture</h3>
-                    <p>${p.architecture}</p>
-                </div>
-
-                <div class="modal__section">
-                    <h3>Key Highlights</h3>
-                    <ul>
-                        ${p.highlights.map(h => `<li>${h}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div class="modal__section">
-                    <h3>Primary Endpoint</h3>
-                    <pre>${p.endpoint}</pre>
-                </div>
-            `;
-
+            modalContent.innerHTML = `<div style="height:4px;background:${p.gradient};border-radius:2px;margin-bottom:1.5rem;"></div><h2 class="modal__title">${p.title}</h2><p class="modal__subtitle" style="color:var(--text-secondary);font-weight:500;">${p.tagline}</p><div class="modal__section"><h3>Overview</h3><p>${p.overview}</p></div><div class="modal__section"><h3>Architecture</h3><p>${p.architecture}</p></div><div class="modal__section"><h3>Key Highlights</h3><ul>${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div><div class="modal__section"><h3>Primary Endpoint</h3><pre>${p.endpoint}</pre></div>`;
             modalOverlay.classList.add('modal-overlay--open');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal() {
             modalOverlay.classList.remove('modal-overlay--open');
             document.body.style.overflow = '';
         }
 
-        // Click-to-open for project cards (entire card)
         document.querySelectorAll('.project-card').forEach(card => {
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('[data-open]')) return;
-                const key = card.dataset.project;
-                if (key) openModal(key);
-            });
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    if (e.target.closest('[data-open]')) return;
-                    const key = card.dataset.project;
-                    if (key) openModal(key);
-                }
-            });
+            card.setAttribute('tabindex','0');
+            card.setAttribute('role','button');
+            card.addEventListener('click', e => { if(e.target.closest('[data-open]')) return; const k=card.dataset.project; if(k) openModal(k); });
+            card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); if(e.target.closest('[data-open]')) return; const k=card.dataset.project; if(k) openModal(k); }});
         });
-
-        // "Details" buttons inside cards
         document.querySelectorAll('[data-open]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const key = btn.dataset.open;
-                if (key) openModal(key);
-            });
+            btn.addEventListener('click', e => { e.stopPropagation(); const k=btn.dataset.open; if(k) openModal(k); });
         });
-
         modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        modalOverlay.addEventListener('click', e => { if(e.target===modalOverlay) closeModal(); });
+        document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-        /* ============================================
-           NAVIGATION SCROLL EFFECT
-           ============================================ */
+        // Nav scroll effect
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
-                nav.classList.add('nav--scrolled');
-            } else {
-                nav.classList.remove('nav--scrolled');
-            }
-        });
+        window.addEventListener('scroll', () => { nav.classList.toggle('nav--scrolled', window.scrollY > 60); });
 
-        /* ============================================
-           MOBILE NAV TOGGLE
-           ============================================ */
+        // Mobile nav
         const navToggle = document.getElementById('navToggle');
-        navToggle.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('nav--open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-        });
+        navToggle.addEventListener('click', () => { const open = nav.classList.toggle('nav--open'); navToggle.setAttribute('aria-expanded', open); });
+        document.querySelectorAll('.nav__links a').forEach(link => { link.addEventListener('click', () => { nav.classList.remove('nav--open'); }); });
 
-        // Close mobile nav on link click
-        document.querySelectorAll('.nav__links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('nav--open');
-            });
-        });
-
-        /* ============================================
-           SCROLL REVEAL ANIMATIONS
-           ============================================ */
+        // Scroll reveal
         const revealElements = document.querySelectorAll('.reveal');
-
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal--visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
+            entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('reveal--visible'); observer.unobserve(entry.target); }});
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         revealElements.forEach(el => observer.observe(el));
+
+        // Scroll to top
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollTop.classList.toggle('scroll-top--visible', window.scrollY > 500); });
+        scrollTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // Particle canvas
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, particles = [];
+            function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+            function createParticles() {
+                particles = [];
+                const count = Math.min(60, Math.floor((w * h) / 25000));
+                for(let i=0;i<count;i++){
+                    particles.push({
+                        x: Math.random()*w, y: Math.random()*h,
+                        r: Math.random()*1.5+0.5,
+                        dx: (Math.random()-0.5)*0.3,
+                        dy: (Math.random()-0.5)*0.3,
+                        opacity: Math.random()*0.4+0.1,
+                        color: ['#1a73e8','#8b5cf6','#06b6d4'][Math.floor(Math.random()*3)]
+                    });
+                }
+            }
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                particles.forEach(p => {
+                    p.x += p.dx; p.y += p.dy;
+                    if(p.x<0||p.x>w) p.dx *= -1;
+                    if(p.y<0||p.y>h) p.dy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fill();
+                });
+                ctx.globalAlpha = 1;
+                for(let i=0;i<particles.length;i++){
+                    for(let j=i+1;j<particles.length;j++){
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx*dx+dy*dy);
+                        if(dist<120){
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = particles[i].color;
+                            ctx.globalAlpha = 0.08 * (1 - dist/120);
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(draw);
+            }
+            resize(); createParticles(); draw();
+            window.addEventListener('resize', () => { resize(); createParticles(); });
+        })();
     </script>
 </body>
 </html>
