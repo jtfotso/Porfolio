@@ -173,6 +173,38 @@
             transition: width 0.3s ease; border-radius: 1px;
         }
         .nav__links a:hover::after { width: 100%; }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(255,255,255,0.03);
+        }
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 999px;
+            padding: 0.35rem 0.55rem;
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.05);
+        }
+        .lang-btn--active {
+            color: var(--text-primary);
+            border-color: var(--border-medium);
+            background: rgba(26,115,232,0.16);
+        }
         .nav__toggle {
             display: none; background: none; border: none;
             color: var(--text-primary); font-size: 1.5rem;
@@ -762,6 +794,7 @@
         @media (max-width: 768px) {
             .nav__links { display: none; }
             .nav__cta { display: none; }
+            .lang-switcher { margin-left: auto; margin-right: 0.6rem; }
             .nav__toggle { display: block; }
             .nav--open .nav__links {
                 display: flex; flex-direction: column; position: absolute;
@@ -808,6 +841,10 @@
                 <li><a href="#tech">Tech Stack</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="lang-switcher" aria-label="Language switcher">
+                <button class="lang-btn lang-btn--active" id="langEn" data-lang="en" aria-pressed="true" aria-label="Switch to English">🇬🇧 EN</button>
+                <button class="lang-btn" id="langDe" data-lang="de" aria-pressed="false" aria-label="Auf Deutsch wechseln">🇩🇪 DE</button>
+            </div>
             <a href="#contact" class="nav__cta">Book a Consultation</a>
             <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
         </div>
@@ -843,11 +880,11 @@
             <div class="hero__cta">
                 <a href="#projects" class="btn btn--primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                    View Projects
+                    <span class="btn__label">View Projects</span>
                 </a>
                 <a href="#contact" class="btn btn--ghost">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Get In Touch
+                    <span class="btn__label">Get In Touch</span>
                 </a>
             </div>
 
@@ -1246,15 +1283,15 @@
             <div class="cta-card__buttons">
                 <a href="mailto:taptso@yahoo.fr" class="btn btn--primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Request a Project Discussion
+                    <span class="btn__label">Request a Project Discussion</span>
                 </a>
                 <a href="https://www.linkedin.com/in/jules-taptso/" target="_blank" rel="noopener" class="btn btn--secondary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    Connect on LinkedIn
+                    <span class="btn__label">Connect on LinkedIn</span>
                 </a>
                 <a href="https://github.com/jtfotso" target="_blank" rel="noopener" class="btn btn--ghost">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    Review GitHub Work
+                    <span class="btn__label">Review GitHub Work</span>
                 </a>
             </div>
         </div>
@@ -1352,11 +1389,194 @@
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
         const modalClose = document.getElementById('modalClose');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const appMetaDescription = document.querySelector('meta[name="description"]');
+
+        const projectTranslations = {
+            de: {
+                knowledge: {
+                    tagline: 'RAG-gestutzter KI-Assistent fur SAP Business One Dokumentation',
+                    overview: 'Eine Retrieval-Augmented-Generation-Losung auf .NET-Basis, die PDFs einliest, mit OpenAI-Embeddings in Qdrant indexiert und Fragen mithilfe relevanter Dokumentkontexte beantwortet.',
+                    architecture: 'Clean Architecture mit vier Schichten: Domain (Kernentitaten und DTOs), Application (Schnittstellen und Orchestrierung), Infrastructure (OpenAI, Qdrant, PDF-Extraktion, EF Core + SQL Server), API (REST-Endpunkte mit <code>/api/chat</code>) sowie BlazorUI.',
+                    highlights: ['OpenAI text-embedding-3-small + GPT fur Embeddings und Antworten','Qdrant-Vektordatenbank fur Ahnlichkeitssuche','PdfPig fur PDF-Text-Extraktion','Entity Framework Core mit SQL Server fur Metadaten','Swagger fur API-Dokumentation und Tests','Blazor-Server-Oberflache'],
+                    endpoint: 'POST /api/chat - Fragen zu SAP-B1-Prozessen'
+                },
+                aiassistant: {
+                    tagline: 'KI-Assistent mit zwei Modi, lokalen Ollama-LLMs und SAP-Datenbezug',
+                    overview: 'Ein .NET-10-Assistent in Clean Architecture fur SAP Business One mit lokalen Ollama-Modellen. Zwei Modi: Business (SAP-Daten, Q&A) und Developer (C#-Codegenerierung).',
+                    architecture: 'Domain -> Application -> Infrastructure. Mit Modellwechsel pro Nachricht, Live-Data-Grounding uber SAP Service Layer, persistenter SQLite-Historie und RAG-Wissensbasis.',
+                    highlights: ['Mehrere Ollama-Modelle per UI auswahlen','Live-Datenbezug uber SAP Service Layer','Business- und Developer-Modus','RAG mit Dokument-Upload und Cosine-Similarity','60 Tests (Unit + Integration)','Health Checks fur Ollama, SQLite und SAP','Korrelations-IDs und RFC-9457-ProblemDetails'],
+                    endpoint: 'POST /api/chat/messages - Nachrichten mit Modus und Modell senden'
+                },
+                cleansync: {
+                    tagline: 'Bidirektionale Synchronisierung von Geschaftspartnern zwischen SAP B1 und E-Commerce',
+                    overview: 'Eine .NET-10-Losung zur bidirektionalen Synchronisierung von Business Partners zwischen SAP Business One und Plattformen wie Shopify oder Amazon, inklusive API und Blazor-Monitoring.',
+                    architecture: 'Clean Architecture mit vier Projekten: API, Application, Domain und Infrastructure. Enthalt einen Demo-Modus mit In-Memory-Datenbank und Mock-Services.',
+                    highlights: ['Bidirektionale Synchronisierung in beide Richtungen','Schnittstellenbasiertes Design fur mehrere Plattformen','Demo-Modus mit In-Memory-Setup','Health Checks fur Datenbank, SAP und E-Commerce','Swagger unter /swagger','Blazor-Server-Dashboard','MIT-Lizenz'],
+                    endpoint: 'POST /api/sync/start - Synchronisierung starten'
+                },
+                dtwservicelayer: {
+                    tagline: 'Massendatenimport in SAP B1 uber Service Layer - ohne DTW, DI API oder SAP Client',
+                    overview: 'Eine moderne Alternative zur SAP-DTW auf Basis der Service-Layer-REST-API. Unterstutzt CSV, TXT und Excel (.xlsx) fur den Massenimport von Geschaftspartnern per HTTP.',
+                    architecture: 'Clean Architecture mit funf Schichten: Domain, Application (MediatR + FluentValidation), Infrastructure (Service Layer Client, CsvHelper/EPPlus), Shared DTOs, API und Blazor-WASM-Webfrontend.',
+                    highlights: ['Import aus CSV, TXT und Excel','Drei Modi: Add, Update, Upsert','Validierung pro Zeile mit klaren Fehlermeldungen','Stop-on-error oder continue-and-collect-errors','Ergebnis-CSV zum Download','CsvHelper und EPPlus fur robustes Parsing','MediatR fur saubere Use Cases','FluentValidation fur Eingabeprufung','Blazor-WASM-Upload-UI','Interaktive Scalar-Dokumentation'],
+                    endpoint: 'POST /api/import/business-partners - Datei hochladen und Import starten'
+                },
+                inspector: {
+                    tagline: 'Semi-live SAP-B1-UI-Inspektion mit Blazor und SignalR',
+                    overview: 'Ein semi-live Inspektionssystem, das SAP-B1-Formularmetadaten zur Laufzeit uber SwissAddonFramework erfasst und in einem Blazor-Viewer mit SignalR bereitstellt. Read-only, ohne Datenmanipulation.',
+                    architecture: 'Drei Ebenen: SAP-B1-Add-on (Event Listener, Form/Item/Matrix-Inspektoren), Clean-Architecture-Backend (REST API + SignalR Hub) und Blazor-Server-Viewer mit Live-Formularbaum.',
+                    highlights: ['Erfasst Formular-, Item- und Matrix-Metadaten','SignalR-Hub unter /snapshothub fur Live-Updates','Event-Throttling verhindert UI-Blockaden','Schema-Versionierung fur Vorwartskompatibilitat','In-Memory-Storage mit optionaler Persistenz','Keine externen Abhangigkeiten im Domain-Layer','Nur strukturelle UI-Events'],
+                    endpoint: 'POST /api/snapshot - Snapshots vom SAP-Add-on empfangen'
+                }
+            }
+        };
+
+        const i18n = {
+            en: {
+                htmlLang: 'en',
+                metaTitle: 'Jules Taptso | SAP Business One & .NET Solutions Architect',
+                metaDescription: 'Professional portfolio of Jules Taptso, SAP Business One and .NET solutions architect delivering AI assistants, data synchronization platforms, and enterprise developer tooling.',
+                nav: ['About', 'Projects', 'Tech Stack', 'Contact'],
+                navCta: 'Book a Consultation',
+                navToggle: 'Toggle navigation',
+                heroBadge: 'Available for Consulting Engagements',
+                heroTitle: 'I design and deliver <strong>SAP Business One solutions</strong> for growth-focused teams, including AI assistants, integration platforms, and developer tooling built on <strong>.NET &amp; Clean Architecture</strong>.',
+                heroButtons: ['View Projects', 'Get In Touch'],
+                stats: ['Production Projects', 'Modern Platform', 'Architecture', 'Enterprise Focus'],
+                aboutLabel: 'About Me',
+                aboutHeading: 'Solutions Architect & Developer',
+                aboutRole: 'SAP B1 & .NET Solutions Architect',
+                aboutLocation: 'Available Worldwide',
+                aboutBio1: "I'm a passionate solutions architect specializing in the SAP Business One ecosystem. Over the years, I've built production-ready tools that solve real-world ERP challenges - from AI-powered knowledge assistants that make SAP documentation searchable with natural language, to real-time data synchronization systems that keep e-commerce and SAP in sync.",
+                aboutBio2: 'My approach is rooted in <strong>Clean Architecture</strong> principles, ensuring every project is maintainable, testable, and built to scale. I believe great software should be both powerful and elegant - delivering business value while remaining a joy to work with for fellow developers.',
+                aboutHighlightsTitles: ['Problem Solver', 'Clean Architecture', 'AI Integration', 'Real-Time Sync'],
+                aboutHighlightsDescs: ['Transforming complex SAP B1 challenges into elegant, scalable solutions', 'Every project follows SOLID principles with layered, testable designs', 'Bringing LLMs, RAG, and embeddings to the SAP ecosystem', 'Building bidirectional data flows between SAP and modern platforms'],
+                impactLabel: 'Impact',
+                impactHeading: 'What Drives My Work',
+                impactSubtitle: 'Building tools that make SAP Business One more accessible, intelligent, and connected to the modern software ecosystem.',
+                impactTitles: ['Production Projects', 'Automated Tests', 'Clean Architecture'],
+                impactDescs: ['Shipped and maintained enterprise-grade SAP B1 solutions with real-world usage', 'Unit and integration tests ensuring reliability across all project layers', 'Every project follows layered architecture with domain-driven design principles'],
+                projectsLabel: 'What I Build',
+                projectsHeading: 'Featured Projects',
+                projectsSubtitle: 'Each project follows <strong>Clean Architecture</strong>, is built on <strong>.NET</strong>, and targets real-world <strong>SAP Business One</strong> challenges.',
+                projectDescs: {
+                    knowledge: 'RAG-powered AI assistant for SAP Business One. Ingests PDFs, indexes with OpenAI embeddings into Qdrant, and answers questions with context-aware LLM responses.',
+                    aiassistant: 'Dual-mode .NET 10 assistant with local Ollama LLMs. Business mode for SAP data lookup and developer mode for C# code generation - with RAG knowledge base and Service Layer grounding.',
+                    cleansync: 'Bidirectional Business Partner sync between SAP B1 and e-commerce platforms (Shopify, Amazon). REST API with Blazor monitoring dashboard and mock services for development.',
+                    inspector: 'Semi-live SAP B1 UI inspection system capturing form metadata at runtime via SwissAddonFramework, exposed through Blazor Server with SignalR real-time updates.',
+                    dtwservicelayer: "Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel - no SAP client installation required."
+                },
+                projectStats: {
+                    knowledge: '4-layer Clean Architecture',
+                    aiassistant: '60 tests · Health Checks',
+                    cleansync: 'MIT Licensed',
+                    inspector: 'Real-time · SignalR',
+                    dtwservicelayer: 'Add · Update · Upsert modes'
+                },
+                projectDetails: 'Details ->',
+                techLabel: 'Technologies',
+                techHeading: 'Tech Stack & Expertise',
+                techSubtitle: 'Tools and frameworks I use across all projects to deliver production-quality solutions.',
+                contactLabel: "Let's Work Together",
+                contactHeading: 'Need an SAP B1 Solution?',
+                contactText: 'I help teams modernize SAP Business One workflows with robust .NET architectures, practical AI capabilities, and reliable integration pipelines.',
+                contactButtons: ['Request a Project Discussion', 'Connect on LinkedIn', 'Review GitHub Work'],
+                footerLinks: ['About', 'Projects', 'Tech Stack', 'Contact'],
+                footerCopy: '© 2026 Jules Taptso. Professional SAP B1 and .NET solutions portfolio.',
+                scrollTop: 'Scroll to top',
+                modalClose: 'Close',
+                modalSections: ['Overview', 'Architecture', 'Key Highlights', 'Primary Endpoint'],
+                switchToEnglish: 'Switch to English',
+                switchToGerman: 'Auf Deutsch wechseln'
+            },
+            de: {
+                htmlLang: 'de',
+                metaTitle: 'Jules Taptso | SAP Business One & .NET Losungsarchitekt',
+                metaDescription: 'Professionelles Portfolio von Jules Taptso, SAP-Business-One- und .NET-Losungsarchitekt fur KI-Assistenten, Datensynchronisierung und Enterprise-Tooling.',
+                nav: ['Uber mich', 'Projekte', 'Technologie', 'Kontakt'],
+                navCta: 'Beratung anfragen',
+                navToggle: 'Navigation umschalten',
+                heroBadge: 'Verfugbar fur Beratungsprojekte',
+                heroTitle: 'Ich konzipiere und realisiere <strong>SAP-Business-One-Losungen</strong> fur wachstumsorientierte Teams, darunter KI-Assistenten, Integrationsplattformen und Developer-Tooling auf <strong>.NET &amp; Clean Architecture</strong>.',
+                heroButtons: ['Projekte ansehen', 'Kontakt aufnehmen'],
+                stats: ['Produktive Projekte', 'Moderne Plattform', 'Architektur', 'Enterprise-Fokus'],
+                aboutLabel: 'Uber mich',
+                aboutHeading: 'Losungsarchitekt & Entwickler',
+                aboutRole: 'SAP B1 & .NET Losungsarchitekt',
+                aboutLocation: 'Weltweit verfugbar',
+                aboutBio1: 'Ich bin Losungsarchitekt mit Fokus auf das SAP-Business-One-Okosystem. In den letzten Jahren habe ich produktive Werkzeuge entwickelt, die reale ERP-Herausforderungen losen - von KI-gestutzten Wissensassistenten bis zu Echtzeit-Synchronisation zwischen E-Commerce und SAP.',
+                aboutBio2: 'Mein Ansatz basiert auf <strong>Clean Architecture</strong>. Dadurch bleiben Projekte wartbar, testbar und skalierbar. Ich bin uberzeugt, dass starke Software gleichzeitig leistungsfahig und elegant sein sollte.',
+                aboutHighlightsTitles: ['Problemloser', 'Clean Architecture', 'KI-Integration', 'Echtzeit-Sync'],
+                aboutHighlightsDescs: ['Komplexe SAP-B1-Herausforderungen in skalierbare Losungen uberfuhren', 'Jedes Projekt folgt SOLID-Prinzipien mit klaren Schichten', 'LLMs, RAG und Embeddings sinnvoll in SAP integrieren', 'Bidirektionale Datenflusse zwischen SAP und modernen Plattformen'],
+                impactLabel: 'Wirkung',
+                impactHeading: 'Was meine Arbeit antreibt',
+                impactSubtitle: 'Ich entwickle Werkzeuge, die SAP Business One zuganglicher, intelligenter und starker mit modernen Systemen verbinden.',
+                impactTitles: ['Produktive Projekte', 'Automatisierte Tests', 'Clean Architecture'],
+                impactDescs: ['Enterprise-Losungen fur SAP B1 produktiv eingefuhrt und betrieben', 'Unit- und Integrationstests sichern Zuverlassigkeit uber alle Schichten', 'Alle Projekte folgen einer sauberen, domanenorientierten Architektur'],
+                projectsLabel: 'Was ich entwickle',
+                projectsHeading: 'Ausgewaehlte Projekte',
+                projectsSubtitle: 'Jedes Projekt folgt <strong>Clean Architecture</strong>, basiert auf <strong>.NET</strong> und adressiert reale <strong>SAP-Business-One</strong>-Anforderungen.',
+                projectDescs: {
+                    knowledge: 'RAG-gestutzter KI-Assistent fur SAP Business One. Liest PDFs ein, indexiert mit OpenAI-Embeddings in Qdrant und beantwortet Fragen mit kontextbezogenen LLM-Antworten.',
+                    aiassistant: 'KI-Assistent auf .NET 10 mit lokalen Ollama-LLMs. Business-Modus fur SAP-Daten und Developer-Modus fur C#-Codegenerierung - inklusive RAG-Wissensbasis.',
+                    cleansync: 'Bidirektionale Synchronisierung von Geschaftspartnern zwischen SAP B1 und E-Commerce-Plattformen. REST-API mit Blazor-Monitoring und Mock-Services.',
+                    inspector: 'Semi-live SAP-B1-UI-Inspektion, die Formularmetadaten zur Laufzeit uber SwissAddonFramework erfasst und uber Blazor + SignalR bereitstellt.',
+                    dtwservicelayer: 'Moderne Alternative zur SAP-DTW auf Basis des Service-Layer-REST-API. Massenimport aus CSV, TXT und Excel - ohne SAP-Client-Installation.'
+                },
+                projectStats: {
+                    knowledge: '4-Schichten Clean Architecture',
+                    aiassistant: '60 Tests · Health Checks',
+                    cleansync: 'MIT-lizenziert',
+                    inspector: 'Echtzeit · SignalR',
+                    dtwservicelayer: 'Add · Update · Upsert Modi'
+                },
+                projectDetails: 'Details ->',
+                techLabel: 'Technologien',
+                techHeading: 'Tech-Stack & Expertise',
+                techSubtitle: 'Werkzeuge und Frameworks, mit denen ich in allen Projekten produktionsreife Losungen liefere.',
+                contactLabel: 'Lassen Sie uns zusammenarbeiten',
+                contactHeading: 'Brauchen Sie eine SAP-B1-Losung?',
+                contactText: 'Ich unterstutze Teams bei der Modernisierung von SAP-Business-One-Prozessen mit robuster .NET-Architektur, praxisnaher KI und zuverlassigen Integrationspipelines.',
+                contactButtons: ['Projektgesprach anfragen', 'Auf LinkedIn vernetzen', 'GitHub-Projekte ansehen'],
+                footerLinks: ['Uber mich', 'Projekte', 'Technologie', 'Kontakt'],
+                footerCopy: '© 2026 Jules Taptso. Professionelles Portfolio fur SAP-B1- und .NET-Losungen.',
+                scrollTop: 'Nach oben scrollen',
+                modalClose: 'Schliessen',
+                modalSections: ['Uberblick', 'Architektur', 'Wesentliche Punkte', 'Hauptendpunkt'],
+                switchToEnglish: 'Switch to English',
+                switchToGerman: 'Auf Deutsch wechseln'
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        function setIconLabel(el, label) {
+            if (!el) return;
+            const icon = el.querySelector('svg');
+            if (icon) {
+                el.innerHTML = '';
+                el.appendChild(icon);
+                el.appendChild(document.createTextNode(label));
+                return;
+            }
+            el.textContent = label;
+        }
+
+        function getLocalizedProject(projectKey) {
+            const base = projects[projectKey];
+            if (!base) return null;
+            if (currentLanguage === 'de' && projectTranslations.de[projectKey]) {
+                return { ...base, ...projectTranslations.de[projectKey] };
+            }
+            return base;
+        }
 
         function openModal(projectKey) {
-            const p = projects[projectKey];
+            const p = getLocalizedProject(projectKey);
             if (!p) return;
-            modalContent.innerHTML = `<div style="height:4px;background:${p.gradient};border-radius:2px;margin-bottom:1.5rem;"></div><h2 class="modal__title">${p.title}</h2><p class="modal__subtitle" style="color:var(--text-secondary);font-weight:500;">${p.tagline}</p><div class="modal__section"><h3>Overview</h3><p>${p.overview}</p></div><div class="modal__section"><h3>Architecture</h3><p>${p.architecture}</p></div><div class="modal__section"><h3>Key Highlights</h3><ul>${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div><div class="modal__section"><h3>Primary Endpoint</h3><pre>${p.endpoint}</pre></div>`;
+            const labels = i18n[currentLanguage].modalSections;
+            modalContent.innerHTML = `<div style="height:4px;background:${p.gradient};border-radius:2px;margin-bottom:1.5rem;"></div><h2 class="modal__title">${p.title}</h2><p class="modal__subtitle" style="color:var(--text-secondary);font-weight:500;">${p.tagline}</p><div class="modal__section"><h3>${labels[0]}</h3><p>${p.overview}</p></div><div class="modal__section"><h3>${labels[1]}</h3><p>${p.architecture}</p></div><div class="modal__section"><h3>${labels[2]}</h3><ul>${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div><div class="modal__section"><h3>${labels[3]}</h3><pre>${p.endpoint}</pre></div>`;
             modalOverlay.classList.add('modal-overlay--open');
             document.body.style.overflow = 'hidden';
         }
@@ -1364,6 +1584,143 @@
             modalOverlay.classList.remove('modal-overlay--open');
             document.body.style.overflow = '';
         }
+
+        function applyLanguage(lang) {
+            const t = i18n[lang] || i18n.en;
+            currentLanguage = lang;
+            document.documentElement.lang = t.htmlLang;
+            document.title = t.metaTitle;
+            if (appMetaDescription) appMetaDescription.setAttribute('content', t.metaDescription);
+
+            const navLinks = document.querySelectorAll('.nav__links a');
+            if (navLinks.length >= 4) {
+                navLinks[0].textContent = t.nav[0];
+                navLinks[1].textContent = t.nav[1];
+                navLinks[2].textContent = t.nav[2];
+                navLinks[3].textContent = t.nav[3];
+            }
+
+            const navCta = document.querySelector('.nav__cta');
+            if (navCta) navCta.textContent = t.navCta;
+            navToggle.setAttribute('aria-label', t.navToggle);
+            modalClose.setAttribute('aria-label', t.modalClose);
+            document.getElementById('scrollTop').setAttribute('aria-label', t.scrollTop);
+
+            const heroBadge = document.querySelector('.hero__badge');
+            if (heroBadge) heroBadge.lastChild.textContent = ` ${t.heroBadge}`;
+            const heroTitle = document.querySelector('.hero__title');
+            if (heroTitle) heroTitle.innerHTML = t.heroTitle;
+
+            const heroButtons = document.querySelectorAll('.hero__cta .btn .btn__label');
+            if (heroButtons.length >= 2) {
+                heroButtons[0].textContent = t.heroButtons[0];
+                heroButtons[1].textContent = t.heroButtons[1];
+            }
+
+            const statsLabels = document.querySelectorAll('.stats__label');
+            if (statsLabels.length >= 4) {
+                statsLabels[0].textContent = t.stats[0];
+                statsLabels[1].textContent = t.stats[1];
+                statsLabels[2].textContent = t.stats[2];
+                statsLabels[3].textContent = t.stats[3];
+            }
+
+            const sectionLabels = document.querySelectorAll('.section__label');
+            const sectionHeadings = document.querySelectorAll('.section__heading');
+            if (sectionLabels.length >= 5) {
+                sectionLabels[0].textContent = t.aboutLabel;
+                sectionLabels[1].textContent = t.impactLabel;
+                sectionLabels[2].textContent = t.projectsLabel;
+                sectionLabels[3].textContent = t.techLabel;
+                sectionLabels[4].textContent = t.contactLabel;
+            }
+            if (sectionHeadings.length >= 4) {
+                sectionHeadings[0].textContent = t.aboutHeading;
+                sectionHeadings[1].textContent = t.impactHeading;
+                sectionHeadings[2].textContent = t.projectsHeading;
+                sectionHeadings[3].textContent = t.techHeading;
+            }
+
+            const aboutRole = document.querySelector('.about__role');
+            if (aboutRole) aboutRole.textContent = t.aboutRole;
+            const aboutLocation = document.querySelector('.about__location');
+            if (aboutLocation) aboutLocation.lastChild.textContent = ` ${t.aboutLocation}`;
+
+            const bios = document.querySelectorAll('.about__bio');
+            if (bios.length >= 2) {
+                bios[0].textContent = t.aboutBio1;
+                bios[1].innerHTML = t.aboutBio2;
+            }
+
+            const highlightTitles = document.querySelectorAll('.about__highlight-title');
+            const highlightDescs = document.querySelectorAll('.about__highlight-desc');
+            highlightTitles.forEach((el, i) => { if (t.aboutHighlightsTitles[i]) el.textContent = t.aboutHighlightsTitles[i]; });
+            highlightDescs.forEach((el, i) => { if (t.aboutHighlightsDescs[i]) el.textContent = t.aboutHighlightsDescs[i]; });
+
+            const subtitles = document.querySelectorAll('.section__subtitle');
+            if (subtitles.length >= 3) {
+                subtitles[0].textContent = t.impactSubtitle;
+                subtitles[1].innerHTML = t.projectsSubtitle;
+                subtitles[2].textContent = t.techSubtitle;
+            }
+
+            const impactTitles = document.querySelectorAll('.impact-card__title');
+            const impactDescs = document.querySelectorAll('.impact-card__desc');
+            impactTitles.forEach((el, i) => { if (t.impactTitles[i]) el.textContent = t.impactTitles[i]; });
+            impactDescs.forEach((el, i) => { if (t.impactDescs[i]) el.textContent = t.impactDescs[i]; });
+
+            const projectOrder = ['knowledge', 'aiassistant', 'cleansync', 'inspector', 'dtwservicelayer'];
+            projectOrder.forEach((key) => {
+                const card = document.querySelector(`[data-project="${key}"]`);
+                if (!card) return;
+                const desc = card.querySelector('.project-card__desc');
+                if (desc) desc.textContent = t.projectDescs[key];
+                const stat = card.querySelector('.project-card__stat');
+                setIconLabel(stat, t.projectStats[key]);
+                const detailsBtn = card.querySelector('[data-open]');
+                if (detailsBtn) detailsBtn.textContent = t.projectDetails;
+            });
+
+            const contactHeading = document.querySelector('.cta-card__heading');
+            const contactText = document.querySelector('.cta-card__text');
+            if (contactHeading) contactHeading.textContent = t.contactHeading;
+            if (contactText) contactText.textContent = t.contactText;
+
+            const contactButtons = document.querySelectorAll('.cta-card__buttons .btn .btn__label');
+            contactButtons.forEach((el, i) => { if (t.contactButtons[i]) el.textContent = t.contactButtons[i]; });
+
+            const footerLinks = document.querySelectorAll('.footer__links a');
+            if (footerLinks.length >= 4) {
+                footerLinks[0].textContent = t.footerLinks[0];
+                footerLinks[1].textContent = t.footerLinks[1];
+                footerLinks[2].textContent = t.footerLinks[2];
+                footerLinks[3].textContent = t.footerLinks[3];
+            }
+
+            const footerCopy = document.querySelector('.footer__copy');
+            if (footerCopy) footerCopy.textContent = t.footerCopy;
+
+            const langEn = document.getElementById('langEn');
+            const langDe = document.getElementById('langDe');
+            if (langEn && langDe) {
+                const enActive = lang === 'en';
+                langEn.classList.toggle('lang-btn--active', enActive);
+                langDe.classList.toggle('lang-btn--active', !enActive);
+                langEn.setAttribute('aria-pressed', String(enActive));
+                langDe.setAttribute('aria-pressed', String(!enActive));
+                langEn.setAttribute('aria-label', t.switchToEnglish);
+                langDe.setAttribute('aria-label', t.switchToGerman);
+            }
+
+            localStorage.setItem('portfolio-lang', lang);
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+        });
+
+        const preferredLang = localStorage.getItem('portfolio-lang') || (navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en');
+        applyLanguage(preferredLang === 'de' ? 'de' : 'en');
 
         document.querySelectorAll('.project-card').forEach(card => {
             card.setAttribute('tabindex','0');
