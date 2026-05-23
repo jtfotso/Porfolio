@@ -844,6 +844,7 @@
             <div class="lang-switcher" aria-label="Language switcher">
                 <button class="lang-btn lang-btn--active" id="langEn" data-lang="en" aria-pressed="true" aria-label="Switch to English">🇬🇧 EN</button>
                 <button class="lang-btn" id="langDe" data-lang="de" aria-pressed="false" aria-label="Auf Deutsch wechseln">🇩🇪 DE</button>
+                <button class="lang-btn" id="langFr" data-lang="fr" aria-pressed="false" aria-label="Passer en francais">🇫🇷 FR</button>
             </div>
             <a href="#contact" class="nav__cta">Book a Consultation</a>
             <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
@@ -1431,6 +1432,43 @@
                     highlights: ['Erfasst Formular-, Item- und Matrix-Metadaten','SignalR-Hub unter /snapshothub fur Live-Updates','Event-Throttling verhindert UI-Blockaden','Schema-Versionierung fur Vorwartskompatibilitat','In-Memory-Storage mit optionaler Persistenz','Keine externen Abhangigkeiten im Domain-Layer','Nur strukturelle UI-Events'],
                     endpoint: 'POST /api/snapshot - Snapshots vom SAP-Add-on empfangen'
                 }
+            },
+            fr: {
+                knowledge: {
+                    tagline: 'Assistant IA RAG pour la documentation SAP Business One',
+                    overview: 'Application RAG en .NET qui ingere des PDF, indexe les contenus avec des embeddings OpenAI dans Qdrant, puis repond aux questions avec un contexte pertinent.',
+                    architecture: 'Clean Architecture en quatre couches: Domain (entites et DTOs), Application (interfaces et orchestration), Infrastructure (OpenAI, Qdrant, extraction PDF, EF Core + SQL Server), API (REST avec <code>/api/chat</code>) et BlazorUI.',
+                    highlights: ['Embeddings OpenAI text-embedding-3-small + GPT pour les reponses','Base vectorielle Qdrant pour la recherche par similarite','Extraction de texte PDF avec PdfPig','EF Core + SQL Server pour les metadonnees','Swagger pour documenter et tester l API','Interface Blazor Server'],
+                    endpoint: 'POST /api/chat - Poser des questions sur les processus SAP B1'
+                },
+                aiassistant: {
+                    tagline: 'Assistant IA double mode avec Ollama local et donnees SAP',
+                    overview: 'Assistant .NET 10 en Clean Architecture pour SAP Business One, propulse par des LLM Ollama locaux. Deux modes: metier et developpeur.',
+                    architecture: 'Pattern Domain -> Application -> Infrastructure avec selection de modele, grounding de donnees SAP via Service Layer, historique SQLite et base de connaissance RAG.',
+                    highlights: ['Plusieurs modeles Ollama selectionnables dans l interface','Grounding en direct sur les donnees SAP Service Layer','Deux modes: BusinessUser et Developer','Base RAG avec upload de documents et similarite cosinus','60 tests (unitaires + integration)','Health checks pour Ollama, SQLite et SAP','Tracing avec correlation ID et erreurs RFC 9457'],
+                    endpoint: 'POST /api/chat/messages - Envoyer des messages avec mode et modele'
+                },
+                cleansync: {
+                    tagline: 'Synchronisation bidirectionnelle Business Partner entre SAP B1 et e-commerce',
+                    overview: 'Solution .NET 10 assurant la synchronisation bidirectionnelle des Business Partners entre SAP Business One et des plateformes comme Shopify ou Amazon.',
+                    architecture: 'Clean Architecture avec quatre projets: API, Application, Domain, Infrastructure. Inclut un mode demo avec base In-Memory et services mockes.',
+                    highlights: ['Sync bidirectionnelle dans les deux sens','Design base sur interfaces pour plusieurs plateformes','Mode demo avec services mockes','Health checks base de donnees, SAP et e-commerce','Documentation Swagger sur /swagger','Dashboard de monitoring Blazor Server','Licence MIT'],
+                    endpoint: 'POST /api/sync/start - Demarrer les jobs de synchronisation'
+                },
+                dtwservicelayer: {
+                    tagline: 'Import massif vers SAP B1 via Service Layer - sans DTW ni client SAP',
+                    overview: 'Remplacement moderne du DTW SAP Business One base sur le Service Layer REST API. Prend en charge CSV, TXT et Excel pour importer des donnees en masse.',
+                    architecture: 'Clean Architecture a cinq couches: Domain, Application (MediatR + FluentValidation), Infrastructure (client Service Layer, CsvHelper/EPPlus), Shared DTOs, API et frontend Blazor WASM.',
+                    highlights: ['Import depuis CSV, TXT et Excel (.xlsx)','Trois modes: Add, Update, Upsert','Validation ligne par ligne avec messages detaillees','Mode stop-on-error ou collecte continue des erreurs','Export CSV des resultats d import','Parsing robuste avec CsvHelper et EPPlus','MediatR pour un traitement clair des use cases','FluentValidation pour la validation declarative','Frontend Blazor WASM avec upload','Documentation API interactive via Scalar'],
+                    endpoint: 'POST /api/import/business-partners - Televerser le fichier et lancer l import'
+                },
+                inspector: {
+                    tagline: 'Inspection semi-live des formulaires SAP B1 avec Blazor + SignalR',
+                    overview: 'Systeme semi-live qui capture les metadonnees UI SAP Business One via SwissAddonFramework et les expose dans un viewer Blazor Server en temps reel avec SignalR.',
+                    architecture: 'Trois niveaux: Add-on SAP B1 (ecouteurs d evenements, inspecteurs, snapshots JSON), backend Clean Architecture (API REST + SignalR), et viewer Blazor Server.',
+                    highlights: ['Capture metadonnees formulaire, item et matrice','Hub SignalR /snapshothub pour diffusion en temps reel','Throttling des evenements pour eviter les blocages UI','Versionnement de schema pour compatibilite future','Stockage In-Memory avec persistance interchangeable','Aucune dependance externe dans le Domain layer','Evenements UI structuraux uniquement'],
+                    endpoint: 'POST /api/snapshot - Recevoir les snapshots depuis l add-on SAP'
+                }
             }
         };
 
@@ -1490,7 +1528,8 @@
                 modalClose: 'Close',
                 modalSections: ['Overview', 'Architecture', 'Key Highlights', 'Primary Endpoint'],
                 switchToEnglish: 'Switch to English',
-                switchToGerman: 'Auf Deutsch wechseln'
+                switchToGerman: 'Auf Deutsch wechseln',
+                switchToFrench: 'Passer en francais'
             },
             de: {
                 htmlLang: 'de',
@@ -1547,7 +1586,66 @@
                 modalClose: 'Schliessen',
                 modalSections: ['Uberblick', 'Architektur', 'Wesentliche Punkte', 'Hauptendpunkt'],
                 switchToEnglish: 'Switch to English',
-                switchToGerman: 'Auf Deutsch wechseln'
+                switchToGerman: 'Auf Deutsch wechseln',
+                switchToFrench: 'Passer en francais'
+            },
+            fr: {
+                htmlLang: 'fr',
+                metaTitle: 'Jules Taptso | Architecte Solutions SAP Business One et .NET',
+                metaDescription: 'Portfolio professionnel de Jules Taptso, architecte solutions SAP Business One et .NET, specialise en assistants IA, synchronisation de donnees et outillage entreprise.',
+                nav: ['A propos', 'Projets', 'Technologies', 'Contact'],
+                navCta: 'Planifier une consultation',
+                navToggle: 'Basculer la navigation',
+                heroBadge: 'Disponible pour des missions de conseil',
+                heroTitle: 'Je conçois et delivre des <strong>solutions SAP Business One</strong> pour des equipes en croissance, incluant des assistants IA, des plateformes d integration et des outils developpeur construits sur <strong>.NET et la Clean Architecture</strong>.',
+                heroButtons: ['Voir les projets', 'Prendre contact'],
+                stats: ['Projets en production', 'Plateforme moderne', 'Architecture', 'Focus entreprise'],
+                aboutLabel: 'A propos',
+                aboutHeading: 'Architecte Solutions et Developpeur',
+                aboutRole: 'Architecte Solutions SAP B1 et .NET',
+                aboutLocation: 'Disponible partout dans le monde',
+                aboutBio1: 'Je suis architecte solutions specialise dans l ecosystème SAP Business One. Au fil des annees, j ai construit des outils en production qui resolvent des defis ERP concrets, des assistants de connaissance IA aux plateformes de synchronisation en temps reel entre e-commerce et SAP.',
+                aboutBio2: 'Mon approche repose sur les principes de <strong>Clean Architecture</strong>, afin de garantir des projets maintenables, testables et evolutifs. Je crois qu un excellent logiciel doit etre a la fois puissant et elegant.',
+                aboutHighlightsTitles: ['Resolution de problemes', 'Clean Architecture', 'Integration IA', 'Synchronisation temps reel'],
+                aboutHighlightsDescs: ['Transformer des enjeux SAP B1 complexes en solutions elegantes et evolutives', 'Chaque projet suit les principes SOLID avec des couches claires et testables', 'Apporter LLM, RAG et embeddings a l ecosysteme SAP', 'Construire des flux bidirectionnels entre SAP et les plateformes modernes'],
+                impactLabel: 'Impact',
+                impactHeading: 'Ce qui guide mon travail',
+                impactSubtitle: 'Concevoir des outils qui rendent SAP Business One plus accessible, plus intelligent et mieux connecte a l ecosysteme logiciel moderne.',
+                impactTitles: ['Projets en production', 'Tests automatises', 'Clean Architecture'],
+                impactDescs: ['Des solutions SAP B1 entreprise livrees et exploitees en conditions reelles', 'Tests unitaires et d integration pour garantir la fiabilite de chaque couche', 'Tous les projets suivent une architecture en couches orientee domaine'],
+                projectsLabel: 'Ce que je construis',
+                projectsHeading: 'Projets phares',
+                projectsSubtitle: 'Chaque projet suit la <strong>Clean Architecture</strong>, est construit sur <strong>.NET</strong> et cible des besoins concrets autour de <strong>SAP Business One</strong>.',
+                projectDescs: {
+                    knowledge: 'Assistant IA base sur le RAG pour SAP Business One. Ingestion de PDF, indexation via embeddings OpenAI dans Qdrant, puis reponses contextuelles avec LLM.',
+                    aiassistant: 'Assistant .NET 10 a double mode avec des LLM Ollama locaux. Mode metier pour la recherche SAP et mode developpeur pour la generation de code C#, avec base RAG.',
+                    cleansync: 'Synchronisation bidirectionnelle des Business Partners entre SAP B1 et des plateformes e-commerce (Shopify, Amazon). API REST avec dashboard Blazor.',
+                    inspector: 'Systeme d inspection semi-live de l UI SAP B1 capturant les metadonnees de formulaires via SwissAddonFramework, exposees dans Blazor avec SignalR en temps reel.',
+                    dtwservicelayer: 'Alternative moderne au DTW de SAP B1, construite sur le Service Layer REST API. Import massif depuis CSV, TXT et Excel, sans client SAP local.'
+                },
+                projectStats: {
+                    knowledge: 'Clean Architecture sur 4 couches',
+                    aiassistant: '60 tests · Health Checks',
+                    cleansync: 'Sous licence MIT',
+                    inspector: 'Temps reel · SignalR',
+                    dtwservicelayer: 'Modes Add · Update · Upsert'
+                },
+                projectDetails: 'Details ->',
+                techLabel: 'Technologies',
+                techHeading: 'Stack technique et expertise',
+                techSubtitle: 'Outils et frameworks que j utilise pour livrer des solutions robustes, prêtes pour la production.',
+                contactLabel: 'Travaillons ensemble',
+                contactHeading: 'Besoin d une solution SAP B1 ?',
+                contactText: 'J accompagne les equipes dans la modernisation de leurs processus SAP Business One avec une architecture .NET solide, une IA pragmatique et des integrations fiables.',
+                contactButtons: ['Demander un echange projet', 'Se connecter sur LinkedIn', 'Voir les projets GitHub'],
+                footerLinks: ['A propos', 'Projets', 'Technologies', 'Contact'],
+                footerCopy: '© 2026 Jules Taptso. Portfolio professionnel de solutions SAP B1 et .NET.',
+                scrollTop: 'Revenir en haut',
+                modalClose: 'Fermer',
+                modalSections: ['Vue d ensemble', 'Architecture', 'Points cles', 'Endpoint principal'],
+                switchToEnglish: 'Switch to English',
+                switchToGerman: 'Auf Deutsch wechseln',
+                switchToFrench: 'Passer en francais'
             }
         };
 
@@ -1568,8 +1666,9 @@
         function getLocalizedProject(projectKey) {
             const base = projects[projectKey];
             if (!base) return null;
-            if (currentLanguage === 'de' && projectTranslations.de[projectKey]) {
-                return { ...base, ...projectTranslations.de[projectKey] };
+            const localizedSet = projectTranslations[currentLanguage];
+            if (localizedSet && localizedSet[projectKey]) {
+                return { ...base, ...localizedSet[projectKey] };
             }
             return base;
         }
@@ -1702,17 +1801,18 @@
             const footerCopy = document.querySelector('.footer__copy');
             if (footerCopy) footerCopy.textContent = t.footerCopy;
 
-            const langEn = document.getElementById('langEn');
-            const langDe = document.getElementById('langDe');
-            if (langEn && langDe) {
-                const enActive = lang === 'en';
-                langEn.classList.toggle('lang-btn--active', enActive);
-                langDe.classList.toggle('lang-btn--active', !enActive);
-                langEn.setAttribute('aria-pressed', String(enActive));
-                langDe.setAttribute('aria-pressed', String(!enActive));
-                langEn.setAttribute('aria-label', t.switchToEnglish);
-                langDe.setAttribute('aria-label', t.switchToGerman);
-            }
+            const buttonAriaLabels = {
+                en: t.switchToEnglish,
+                de: t.switchToGerman,
+                fr: t.switchToFrench
+            };
+            langButtons.forEach((btn) => {
+                const isActive = btn.dataset.lang === lang;
+                btn.classList.toggle('lang-btn--active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+                const label = buttonAriaLabels[btn.dataset.lang];
+                if (label) btn.setAttribute('aria-label', label);
+            });
 
             localStorage.setItem('portfolio-lang', lang);
         }
@@ -1721,8 +1821,9 @@
             btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
         });
 
-        const preferredLang = localStorage.getItem('portfolio-lang') || (navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en');
-        applyLanguage(preferredLang === 'de' ? 'de' : 'en');
+        const browserLanguage = (navigator.language || '').toLowerCase();
+        const preferredLang = localStorage.getItem('portfolio-lang') || (browserLanguage.startsWith('de') ? 'de' : browserLanguage.startsWith('fr') ? 'fr' : 'en');
+        applyLanguage(['en', 'de', 'fr'].includes(preferredLang) ? preferredLang : 'en');
 
         document.querySelectorAll('.project-card').forEach(card => {
             card.setAttribute('tabindex','0');
