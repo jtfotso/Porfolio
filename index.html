@@ -1389,6 +1389,8 @@
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
         const modalClose = document.getElementById('modalClose');
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
         const langButtons = document.querySelectorAll('.lang-btn');
         const appMetaDescription = document.querySelector('meta[name="description"]');
 
@@ -1736,11 +1738,9 @@
         document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
         // Nav scroll effect
-        const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => { nav.classList.toggle('nav--scrolled', window.scrollY > 60); });
 
         // Mobile nav
-        const navToggle = document.getElementById('navToggle');
         navToggle.addEventListener('click', () => { const open = nav.classList.toggle('nav--open'); navToggle.setAttribute('aria-expanded', open); });
         document.querySelectorAll('.nav__links a').forEach(link => { link.addEventListener('click', () => { nav.classList.remove('nav--open'); }); });
 
