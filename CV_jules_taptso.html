@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jules Valere Taptso Fotso – CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-page: #eef1f6;
+      --bg-card: #ffffff;
+      --bg-sidebar: #0f172a;
+      --bg-sidebar-section: rgba(255,255,255,0.05);
+
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-sidebar: #e2e8f0;
+      --text-sidebar-muted: #94a3b8;
+      --text-sidebar-heading: #93c5fd;
+
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --accent-glow: rgba(37,99,235,0.12);
+
+      --border: #e2e8f0;
+      --divider-sidebar: rgba(255,255,255,0.1);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 999px;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 30px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LANGUAGE SWITCHER ===== */
+    .lang-bar {
+      max-width: 1200px;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font);
+      white-space: nowrap;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-page);
+    }
+
+    .lang-btn--active {
+      color: var(--accent);
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+
+    .lang-flag {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* PDF Download Button */
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font);
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+      letter-spacing: 0.01em;
+    }
+
+    .pdf-btn:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.35);
+      transform: translateY(-1px);
+    }
+
+    .pdf-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(37,99,235,0.2);
+    }
+
+    .pdf-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: 350px 1fr;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      background: linear-gradient(175deg, #0f172a 0%, #1a2744 100%);
+      color: white;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      bottom: 100px;
+      left: -40px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(147,197,253,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Profile / Picture area */
+    .profile-area {
+      padding: 50px 35px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .picture-placeholder {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 0 auto 22px;
+      background: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+      position: relative;
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.1), 0 8px 32px rgba(37,99,235,0.35);
+      letter-spacing: -0.02em;
+      user-select: none;
+    }
+
+    .picture-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,0.15);
+      animation: spin 90s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .picture-note {
+      font-size: 10px;
+      color: var(--text-sidebar-muted);
+      margin-top: 6px;
+      font-style: italic;
+      opacity: 0.6;
+    }
+
+    .profile-area h1 {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .profile-area h2 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    /* Sidebar sections */
+    .sidebar-content {
+      padding: 0 35px 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .sidebar-section h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      color: var(--text-sidebar-heading);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--divider-sidebar);
+    }
+
+    .sidebar-section h3 .sec-icon {
+      font-size: 15px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .sidebar-section p,
+    .sidebar-section li {
+      font-size: 13.5px;
+      color: var(--text-sidebar);
+      margin-bottom: 9px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .sidebar-section p .info-icon {
+      flex-shrink: 0;
+      width: 18px;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .sidebar-section ul li::before {
+      content: '';
+      display: none;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13.5px;
+      color: var(--text-sidebar);
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(37,99,235,0.5);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main {
+      padding: 50px 50px 50px 45px;
+      position: relative;
+    }
+
+    .main-section {
+      margin-bottom: 42px;
+    }
+
+    .main-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .main-section h2 {
+      font-size: 23px;
+      font-weight: 800;
+      margin-bottom: 22px;
+      color: var(--text-primary);
+      position: relative;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .main-section h2 .heading-icon {
+      font-size: 22px;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .main-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50px;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Summary */
+    .summary {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-top: 4px;
+    }
+
+    /* Job cards */
+    .job {
+      margin-bottom: 28px;
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #fafbfc;
+      transition: all 0.25s ease;
+    }
+
+    .job:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .job:last-child { margin-bottom: 0; }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .job-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .job-company {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .job-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .job ul {
+      padding-left: 18px;
+      list-style: none;
+    }
+
+    .job ul li {
+      margin-bottom: 7px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 4px;
+    }
+
+    .job ul li::before {
+      content: '▸';
+      position: absolute;
+      left: -18px;
+      color: var(--accent);
+      font-size: 12px;
+      top: 2px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .project-card {
+      background: #fafbfc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .project-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .ptag {
+      font-size: 11px;
+      background: var(--bg-page);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Contact links */
+    .contact-link {
+      color: var(--text-sidebar-heading);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .contact-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 22px;
+      padding: 18px 22px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #fafbfc;
+      transition: all 0.25s ease;
+    }
+
+    .education-item:last-child { margin-bottom: 0; }
+
+    .education-item:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: var(--shadow-md);
+    }
+
+    .education-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .education-item p {
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 7px 15px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      margin: 4px 7px 4px 0;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .badge:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 950px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        padding-bottom: 20px;
+      }
+
+      .profile-area {
+        padding: 40px 30px 25px;
+      }
+
+      .sidebar-content {
+        padding: 0 30px 25px;
+      }
+
+      .main {
+        padding: 35px 25px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      body { padding: 10px 8px; }
+
+      .lang-bar {
+        margin-bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .pdf-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .lang-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+
+      .lang-flag { font-size: 14px; }
+
+      .profile-area {
+        padding: 30px 20px 20px;
+      }
+
+      .picture-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 36px;
+      }
+
+      .profile-area h1 { font-size: 24px; }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar-content { padding: 0 20px 20px; }
+
+      .main { padding: 25px 18px; }
+
+      .job-header { flex-direction: column; }
+      .job { padding: 16px; }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .lang-bar { display: none; }
+
+      .container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        grid-template-columns: 320px 1fr;
+      }
+
+      .sidebar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .job:hover,
+      .education-item:hover,
+      .badge:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .picture-placeholder::after {
+        display: none;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+  <script>
+    // Restore saved language preference before page renders to avoid flash
+    (function(){
+      var lang;
+      try { lang = localStorage.getItem('cv-lang'); } catch(e) {}
+      if (lang && (lang === 'en' || lang === 'fr')) {
+        document.documentElement.setAttribute('lang', lang);
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== TOP BAR: PDF DOWNLOAD + LANGUAGE SWITCHER ===== -->
+  <div class="lang-bar">
+    <button class="pdf-btn" onclick="window.print()" title="Als PDF speichern">
+      <span class="pdf-icon">📄</span> <span data-i18n="downloadPdf">Als PDF speichern</span>
+    </button>
+    <div class="lang-switcher" aria-label="Language">
+      <button class="lang-btn lang-btn--active" data-lang="de" aria-pressed="true">
+        <span class="lang-flag">🇩🇪</span> DE
+      </button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false">
+        <span class="lang-flag">🇬🇧</span> EN
+      </button>
+      <button class="lang-btn" data-lang="fr" aria-pressed="false">
+        <span class="lang-flag">🇫🇷</span> FR
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== CV CONTAINER ===== -->
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Profile area with picture placeholder -->
+      <div class="profile-area">
+        <div class="picture-placeholder" id="pictureInit">JT</div>
+        <div class="picture-note" data-i18n="picturePlaceholder">Bild hier einfügen</div>
+        <h1>Jules Valere<br>Taptso Fotso</h1>
+        <h2 data-i18n="role">IT Business Analyst &amp; SAP Business One Developer</h2>
+      </div>
+
+      <!-- Sidebar sections -->
+      <div class="sidebar-content">
+
+        <!-- Contact -->
+        <div class="sidebar-section">
+          <h3><span class="sec-icon">📋</span> <span data-i18n="contact">Kontakt</span></h3>
+          <p><span class="info-icon">📍</span> <span data-i18n="location">Essen, Deutschland</span></p>
+          <p><span class="info-icon">📞</span> <a href="tel:+4917684702215" class="contact-link">0176 24 54 90 03</a></p>
+          <p><span class="info-icon">✉️</span> <a href="mailto:taptso@yahoo.fr" class="contact-link">taptso@yahoo.fr</a></p>
+          <p><span class="info-icon">🔗</span> <a href="https://www.linkedin.com/in/jules-valere-taptso-fotso-9a6817203/" target="_blank" class="contact-link" data-i18n="linkedin">LinkedIn</a></p>
+          <p><span class="info-icon">🐙</span> <a href="https://github.com/jtfotso" target="_blank" class="contact-link" data-i18n="github">GitHub</a></p>
+          <p style="margin-top:8px;">
+            <span class="info-icon">🌐</span>
+            <span>
+              <span style="display:block;" data-i18n="langDe">🇩🇪 Deutsch (C1)</span>
+              <span style="display:block;" data-i18n="langEn">🇬🇧 Englisch (B2)</span>
+              <span style="display:block;" data-i18n="langFr">🇫🇷 Französisch (Muttersprache)</span>
+            </span>
+          </p>
+        </div>
+
+        <!-- Technologies -->
+        <div class="sidebar-section">
+          <h3><span class="sec-icon">💻</span> <span data-i18n="tech">Technologien</span></h3>
+          <div class="skill-item"><span class="skill-dot"></span> C# / .NET / .NET 9</div>
+          <div class="skill-item"><span class="skill-dot"></span> SAP Business One</div>
+          <div class="skill-item"><span class="skill-dot"></span> SAP DI API &amp; Service Layer</div>
+          <div class="skill-item"><span class="skill-dot"></span> REST APIs &amp; Integrationen</div>
+          <div class="skill-item"><span class="skill-dot"></span> SQL Server &amp; EF Core</div>
+          <div class="skill-item"><span class="skill-dot"></span> Blazor &amp; ASP.NET</div>
+          <div class="skill-item"><span class="skill-dot"></span> Power BI &amp; Crystal Reports</div>
+          <div class="skill-item"><span class="skill-dot"></span> HTML, CSS, JavaScript</div>
+          <div class="skill-item"><span class="skill-dot"></span> Git &amp; Azure DevOps</div>
+          <div class="skill-item"><span class="skill-dot"></span> n8n &amp; Automatisierung</div>
+        </div>
+
+        <!-- Strengths -->
+        <div class="sidebar-section">
+          <h3><span class="sec-icon">⭐</span> <span data-i18n="strengths">Stärken</span></h3>
+          <ul>
+            <li data-i18n="str1">Analytisches Denken</li>
+            <li data-i18n="str2">Interkulturelle Kommunikation</li>
+            <li data-i18n="str3">Verantwortungsbewusstsein</li>
+            <li data-i18n="str4">Technische Problemlösung</li>
+            <li data-i18n="str5">Selbstständige Arbeitsweise</li>
+            <li data-i18n="str6">Teamfähigkeit &amp; Leadership</li>
+          </ul>
+        </div>
+
+        <!-- Interests -->
+        <div class="sidebar-section">
+          <h3><span class="sec-icon">🎯</span> <span data-i18n="interests">Interessen</span></h3>
+          <ul>
+            <li data-i18n="int1">Softwareentwicklung &amp; KI</li>
+            <li data-i18n="int2">Musik (Gitarre &amp; Klavier)</li>
+            <li data-i18n="int3">Lesen &amp; Weiterbildung</li>
+            <li data-i18n="int4">Familie &amp; Ehrenamt</li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- Profile / Summary -->
+      <section class="main-section">
+        <h2><span class="heading-icon">👤</span> <span data-i18n="profile">Profil</span></h2>
+        <p class="summary" data-i18n="summary">
+          Erfahrener IT Business Analyst und Softwareentwickler mit Schwerpunkt auf SAP Business One,
+          Unternehmensintegrationen und .NET-Entwicklung. Mehr als 10 Jahre Erfahrung in der Entwicklung
+          von Geschäftsanwendungen, Prozessautomatisierung und ERP-Integration. Spezialisiert auf SAP B1
+          Service Layer, DI API, REST APIs, Reporting-Lösungen und moderne Webtechnologien.
+          Leidenschaft für digitale Transformation, Prozessoptimierung und innovative Softwarelösungen für KMUs.
+        </p>
+      </section>
+
+      <!-- Projects -->
+      <section class="main-section">
+        <h2><span class="heading-icon">🚀</span> <span data-i18n="projects">Projekte</span></h2>
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <div class="project-title">KnowledgeAssistant</div>
+            <div class="project-desc" data-i18n="proj1desc">RAG AI assistant for SAP B1 documentation — ingests PDFs, indexes with OpenAI embeddings into Qdrant, answers questions from retrieved context. Built with Clean Architecture on .NET 8.</div>
+            <div class="project-tags">
+              <span class="ptag">.NET 8</span>
+              <span class="ptag">OpenAI</span>
+              <span class="ptag">Qdrant</span>
+              <span class="ptag">RAG</span>
+              <span class="ptag">Blazor</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">SAP B1 AI Assistant</div>
+            <div class="project-desc" data-i18n="proj2desc">Dual-mode AI assistant for SAP Business One, powered by local Ollama LLMs. Business-user mode for SAP data Q&A, developer mode for C# code generation. Live SAP grounding via Service Layer.</div>
+            <div class="project-tags">
+              <span class="ptag">.NET 10</span>
+              <span class="ptag">Ollama</span>
+              <span class="ptag">Service Layer</span>
+              <span class="ptag">Blazor</span>
+              <span class="ptag">SQLite</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">CleanSync</div>
+            <div class="project-desc" data-i18n="proj3desc">Bidirectional business partner synchronization between SAP Business One and e-commerce platforms (Shopify, Amazon). Clean Architecture, REST API, Blazor monitoring dashboard.</div>
+            <div class="project-tags">
+              <span class="ptag">.NET 10</span>
+              <span class="ptag">SAP B1</span>
+              <span class="ptag">Shopify</span>
+              <span class="ptag">REST API</span>
+              <span class="ptag">Blazor</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">Form Metadata Inspector</div>
+            <div class="project-desc" data-i18n="proj4desc">Semi-live SAP B1 UI form metadata inspection system. Captures form structure at runtime via SwissAddonFramework, exposes through SignalR to a Blazor Server viewer with real-time updates.</div>
+            <div class="project-tags">
+              <span class="ptag">.NET 10</span>
+              <span class="ptag">SignalR</span>
+              <span class="ptag">SwissAddon</span>
+              <span class="ptag">Blazor</span>
+              <span class="ptag">Clean Architecture</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">ServiceLayer.DTW</div>
+            <div class="project-desc" data-i18n="proj5desc">Modern replacement for SAP B1 Data Transfer Workbench (DTW). Imports CSV/Excel files via Service Layer REST API — no SAP client needed. Blazor WebAssembly UI with validation and error handling.</div>
+            <div class="project-tags">
+              <span class="ptag">.NET 10</span>
+              <span class="ptag">Service Layer</span>
+              <span class="ptag">Blazor WASM</span>
+              <span class="ptag">MediatR</span>
+              <span class="ptag">EPPlus</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="main-section">
+        <h2><span class="heading-icon">💼</span> <span data-i18n="experience">Berufserfahrung</span></h2>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title" data-i18n="job1title">IT Business Analyst / SAP Business One Developer</div>
+              <div class="job-company">PSG Germany GmbH (Dover Corporation)</div>
+            </div>
+            <div class="job-date" data-i18n="job1date">Seit Juli 2019</div>
+          </div>
+          <ul>
+            <li data-i18n="job1li1">Leitende Entwicklung von SAP Business One Lösungen und Unternehmensintegrationen für internationale Teams der Dover Corporation Gruppe.</li>
+            <li data-i18n="job1li2">Architektur und Lieferung von SAP B1 Erweiterungen mit DI API und Service Layer in C# — Reduzierung manueller Datenverarbeitung um über 60 %.</li>
+            <li data-i18n="job1li3">Entwicklung einer REST API-Integrationsschicht zur Anbindung von SAP B1 an Shopify, Power BI und CRM-Systeme — Eliminierung manueller Dateneingaben in 3 internationalen Teams.</li>
+            <li data-i18n="job1li4">Automatisierung kritischer Geschäftsprozesse und Optimierung interner Workflows durch maßgeschneiderte .NET-Tools.</li>
+            <li data-i18n="job1li5">Erstellung von Power BI Dashboards und Crystal Reports für Echtzeittransparenz der Betriebsabläufe über mehrere Dover-Tochtergesellschaften hinweg.</li>
+            <li data-i18n="job1li6">Brücke zwischen Business und Technik — Übersetzung komplexer Anforderungen internationaler Stakeholder in skalierbare technische Lösungen.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title" data-i18n="job2title">.NET Software Engineer</div>
+              <div class="job-company">Balcke Dürr GmbH</div>
+            </div>
+            <div class="job-date" data-i18n="job2date">09/2017 – 07/2019</div>
+          </div>
+          <ul>
+            <li data-i18n="job2li1">Entwicklung geschäftskritischer Desktop- und Business-Anwendungen mit C# und .NET für industrielle Engineering-Workflows.</li>
+            <li data-i18n="job2li2">Design und Implementierung moderner Softwarearchitekturen — Migration von Legacy-Systemen zu wartbaren .NET-Lösungen.</li>
+            <li data-i18n="job2li3">Aufbau und Optimierung von REST APIs und Datenzugriffsschichten — Steigerung der Systemleistung um 40 %.</li>
+            <li data-i18n="job2li4">Partnerschaftliche Zusammenarbeit mit Engineering- und Fachabteilungen zur Digitalisierung manueller Prozesse und Beschleunigung von Projektzyklen.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title" data-i18n="job3title">Junior Development Engineer</div>
+              <div class="job-company">COMPRION GmbH – Paderborn</div>
+            </div>
+            <div class="job-date" data-i18n="job3date">06/2013 – 06/2017</div>
+          </div>
+          <ul>
+            <li data-i18n="job3li1">Automatisierung von Testsuiten mit C# im .NET Umfeld — Reduzierung des manuellen QA-Aufwands um über 50 %.</li>
+            <li data-i18n="job3li2">Entwicklung technischer Testlösungen und Validierungsprozesse für Smartcard- und NFC-Prüfgeräte.</li>
+            <li data-i18n="job3li3">Analyse technischer Anforderungen und Implementierung von Qualitätssicherungs-Frameworks für Produktionsreleases.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title" data-i18n="job4title">Forschung &amp; Praktische Projekte</div>
+              <div class="job-company">KIT &amp; Fraunhofer Institut</div>
+            </div>
+            <div class="job-date" data-i18n="job4date">2010 – 2012</div>
+          </div>
+          <ul>
+            <li data-i18n="job4li1">Entwicklung und Untersuchung von Stromregelungen mit MATLAB &amp; Simulink für die erneuerbare Energieforschung.</li>
+            <li data-i18n="job4li2">Programmierung grafischer Benutzeroberflächen mit Visual C++ zur Steuerung von Laborinstrumenten.</li>
+            <li data-i18n="job4li3">Erstellung umfassender technischer Dokumentationen und Installationsanleitungen für Forschungsteams.</li>
+            <li data-i18n="job4li4">Integration von dsPIC-Mikroprozessoren über USB-Schnittstellen für Echtzeit-Messsysteme.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="main-section">
+        <h2><span class="heading-icon">🎓</span> <span data-i18n="education">Ausbildung</span></h2>
+
+        <div class="education-item">
+          <h4 data-i18n="edu1title">Diplom-Ingenieur Elektrotechnik &amp; Informationstechnik</h4>
+          <p data-i18n="edu1desc">KIT – Karlsruher Institut für Technologie | Schwerpunkt: Regenerative Energien | 2004 – 2012</p>
+        </div>
+
+        <div class="education-item">
+          <h4 data-i18n="edu2title">Deutsch Sprachprüfung (DHS – B1)</h4>
+          <p data-i18n="edu2desc">Karlsruhe | 2003 – 2004</p>
+        </div>
+
+        <div class="education-item">
+          <h4 data-i18n="edu3title">Abitur</h4>
+          <p data-i18n="edu3desc">Collège Evangelique de New-Bell Douala, Kamerun | Schwerpunkt: Mathematik, Physik, Chemie &amp; Biologie</p>
+        </div>
+      </section>
+
+      <!-- Core Competencies -->
+      <section class="main-section">
+        <h2><span class="heading-icon">🔧</span> <span data-i18n="competencies">Kernkompetenzen</span></h2>
+        <span class="badge">SAP Business One</span>
+        <span class="badge">DI API</span>
+        <span class="badge">Service Layer</span>
+        <span class="badge">C# &amp; .NET</span>
+        <span class="badge">Blazor</span>
+        <span class="badge">ASP.NET Core</span>
+        <span class="badge">SQL Server</span>
+        <span class="badge">Entity Framework Core</span>
+        <span class="badge">REST APIs</span>
+        <span class="badge">Power BI</span>
+        <span class="badge">Crystal Reports</span>
+        <span class="badge" data-i18n="compBA">Business Analysis</span>
+        <span class="badge" data-i18n="compERP">ERP Integration</span>
+        <span class="badge" data-i18n="compAuto">Automation</span>
+      </section>
+
+      <!-- Volunteer & Personal -->
+      <section class="main-section">
+        <h2><span class="heading-icon">🤝</span> <span data-i18n="volunteer">Ehrenamt &amp; Persönliches</span></h2>
+        <p class="summary" data-i18n="volunteerText">
+          Stellvertretender Verantwortlicher eines christlichen Vereins in Essen.
+          Engagiert in der Förderung von Gemeinschaft, Bildung und persönlicher Entwicklung.
+          Familienorientiert und leidenschaftlich an kontinuierlichem Lernen, Technologie und Innovation interessiert.
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== LANGUAGE SWITCHING SCRIPT ===== -->
+  <script>
+  (function() {
+    var translations = {
+      de: {
+        downloadPdf: 'Als PDF speichern',
+        picturePlaceholder: 'Bild hier einf\u00fcgen',
+        role: 'IT Business Analyst & SAP Business One Developer',
+        contact: 'Kontakt',
+        location: 'Essen, Deutschland',
+        linkedin: 'LinkedIn',
+        github: 'GitHub',
+        langDe: '\uD83C\uDDE9\uD83C\uDDEA Deutsch (C1)',
+        langEn: '\uD83C\uDDEC\uD83C\uDDE7 Englisch (B2)',
+        langFr: '\uD83C\uDDEB\uD83C\uDDF7 Franz\u00f6sisch (Muttersprache)',
+        tech: 'Technologien',
+        strengths: 'St\u00e4rken',
+        str1: 'Analytisches Denken',
+        str2: 'Interkulturelle Kommunikation',
+        str3: 'Verantwortungsbewusstsein',
+        str4: 'Technische Probleml\u00f6sung',
+        str5: 'Selbstst\u00e4ndige Arbeitsweise',
+        str6: 'Teamf\u00e4higkeit & Leadership',
+        interests: 'Interessen',
+        int1: 'Softwareentwicklung & KI',
+        int2: 'Musik (Gitarre & Klavier)',
+        int3: 'Lesen & Weiterbildung',
+        int4: 'Familie & Ehrenamt',
+        profile: 'Profil',
+        summary: 'Erfahrener IT Business Analyst und Softwareentwickler mit Schwerpunkt auf SAP Business One, Unternehmensintegrationen und .NET-Entwicklung. Mehr als 10 Jahre Erfahrung in der Entwicklung von Gesch\u00e4ftsanwendungen, Prozessautomatisierung und ERP-Integration. Spezialisiert auf SAP B1 Service Layer, DI API, REST APIs, Reporting-L\u00f6sungen und moderne Webtechnologien. Leidenschaft f\u00fcr digitale Transformation, Prozessoptimierung und innovative Softwarel\u00f6sungen f\u00fcr KMUs.',
+        projects: 'Projekte',
+        proj1desc: 'RAG AI-Assistent f\u00fcr SAP B1 Dokumentation \u2013 verarbeitet PDFs, indiziert sie mit OpenAI Embeddings in Qdrant und beantwortet Fragen aus abgerufenen Kontexten. Clean Architecture auf .NET 8.',
+        proj2desc: 'Dual-Mode KI-Assistent f\u00fcr SAP Business One, betrieben mit lokalen Ollama LLMs. Business-User-Modus f\u00fcr SAP-Datenabfragen, Entwicklermodus f\u00fcr C# Codegenerierung. Live SAP-Anbindung via Service Layer.',
+        proj3desc: 'Bidirektionale Gesch\u00e4ftspartnersynchronisation zwischen SAP Business One und E-Commerce-Plattformen (Shopify, Amazon). Clean Architecture, REST API, Blazor Monitoring-Dashboard.',
+        proj4desc: 'Semi-Live Inspektionssystem f\u00fcr SAP B1 UI-Formularmetadaten. Erfasst Formularstrukturen zur Laufzeit via SwissAddonFramework und stellt sie via SignalR in einem Blazor Server Viewer mit Echtzeit-Updates dar.',
+        proj5desc: 'Moderner Ersatz f\u00fcr SAP B1 Data Transfer Workbench (DTW). Importiert CSV/Excel-Dateien via Service Layer REST API \u2013 ohne SAP-Client. Blazor WebAssembly UI mit Validierung und Fehlerbehandlung.',
+        experience: 'Berufserfahrung',
+        job1title: 'IT Business Analyst / SAP Business One Developer',
+        job1date: 'Seit Juli 2019',
+        job1li1: 'Leitende Entwicklung von SAP Business One L\u00f6sungen und Unternehmensintegrationen f\u00fcr internationale Teams der Dover Corporation Gruppe.',
+        job1li2: 'Architektur und Lieferung von SAP B1 Erweiterungen mit DI API und Service Layer in C# \u2014 Reduzierung manueller Datenverarbeitung um \u00fcber 60 %.',
+        job1li3: 'Entwicklung einer REST API-Integrationsschicht zur Anbindung von SAP B1 an Shopify, Power BI und CRM-Systeme \u2014 Eliminierung manueller Dateneingaben in 3 internationalen Teams.',
+        job1li4: 'Automatisierung kritischer Gesch\u00e4ftsprozesse und Optimierung interner Workflows durch ma\u00dfgeschneiderte .NET-Tools.',
+        job1li5: 'Erstellung von Power BI Dashboards und Crystal Reports f\u00fcr Echtzeittransparenz der Betriebsabl\u00e4ufe \u00fcber mehrere Dover-Tochtergesellschaften hinweg.',
+        job1li6: 'Br\u00fccke zwischen Business und Technik \u2014 \u00dcbersetzung komplexer Anforderungen internationaler Stakeholder in skalierbare technische L\u00f6sungen.',
+        job2title: '.NET Software Engineer',
+        job2date: '09/2017 \u2013 07/2019',
+        job2li1: 'Entwicklung gesch\u00e4ftskritischer Desktop- und Business-Anwendungen mit C# und .NET f\u00fcr industrielle Engineering-Workflows.',
+        job2li2: 'Design und Implementierung moderner Softwarearchitekturen \u2014 Migration von Legacy-Systemen zu wartbaren .NET-L\u00f6sungen.',
+        job2li3: 'Aufbau und Optimierung von REST APIs und Datenzugriffsschichten \u2014 Steigerung der Systemleistung um 40 %.',
+        job2li4: 'Partnerschaftliche Zusammenarbeit mit Engineering- und Fachabteilungen zur Digitalisierung manueller Prozesse und Beschleunigung von Projektzyklen.',
+        job3title: 'Junior Development Engineer',
+        job3date: '06/2013 \u2013 06/2017',
+        job3li1: 'Automatisierung von Testsuiten mit C# im .NET Umfeld \u2014 Reduzierung des manuellen QA-Aufwands um \u00fcber 50 %.',
+        job3li2: 'Entwicklung technischer Testl\u00f6sungen und Validierungsprozesse f\u00fcr Smartcard- und NFC-Pr\u00fcfger\u00e4te.',
+        job3li3: 'Analyse technischer Anforderungen und Implementierung von Qualit\u00e4tssicherungs-Frameworks f\u00fcr Produktionsreleases.',
+        job4title: 'Forschung & Praktische Projekte',
+        job4date: '2010 \u2013 2012',
+        job4li1: 'Entwicklung und Untersuchung von Stromregelungen mit MATLAB & Simulink f\u00fcr die erneuerbare Energieforschung.',
+        job4li2: 'Programmierung grafischer Benutzeroberfl\u00e4chen mit Visual C++ zur Steuerung von Laborinstrumenten.',
+        job4li3: 'Erstellung umfassender technischer Dokumentationen und Installationsanleitungen f\u00fcr Forschungsteams.',
+        job4li4: 'Integration von dsPIC-Mikroprozessoren \u00fcber USB-Schnittstellen f\u00fcr Echtzeit-Messsysteme.',
+        education: 'Ausbildung',
+        edu1title: 'Diplom-Ingenieur Elektrotechnik & Informationstechnik',
+        edu1desc: 'KIT \u2013 Karlsruher Institut f\u00fcr Technologie | Schwerpunkt: Regenerative Energien | 2004 \u2013 2012',
+        edu2title: 'Deutsch Sprachpr\u00fcfung (DHS \u2013 B1)',
+        edu2desc: 'Karlsruhe | 2003 \u2013 2004',
+        edu3title: 'Abitur',
+        edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Kamerun | Schwerpunkt: Mathematik, Physik, Chemie & Biologie',
+        competencies: 'Kernkompetenzen',
+        compBA: 'Business Analysis',
+        compERP: 'ERP Integration',
+        compAuto: 'Automation',
+        volunteer: 'Ehrenamt & Pers\u00f6nliches',
+        volunteerText: 'Stellvertretender Verantwortlicher eines christlichen Vereins in Essen. Engagiert in der F\u00f6rderung von Gemeinschaft, Bildung und pers\u00f6nlicher Entwicklung. Familienorientiert und leidenschaftlich an kontinuierlichem Lernen, Technologie und Innovation interessiert.'
+      },
+      en: {
+        downloadPdf: 'Download as PDF',
+        picturePlaceholder: 'Insert photo here',
+        role: 'IT Business Analyst & SAP Business One Developer',
+        contact: 'Contact',
+        location: 'Essen, Germany',
+        linkedin: 'LinkedIn',
+        github: 'GitHub',
+        langDe: '\uD83C\uDDE9\uD83C\uDDEA German (C1)',
+        langEn: '\uD83C\uDDEC\uD83C\uDDE7 English (B2)',
+        langFr: '\uD83C\uDDEB\uD83C\uDDF7 French (Native)',
+        tech: 'Technologies',
+        strengths: 'Strengths',
+        str1: 'Analytical Thinking',
+        str2: 'Intercultural Communication',
+        str3: 'Sense of Responsibility',
+        str4: 'Technical Problem Solving',
+        str5: 'Independent Working Style',
+        str6: 'Teamwork & Leadership',
+        interests: 'Interests',
+        int1: 'Software Development & AI',
+        int2: 'Music (Guitar & Piano)',
+        int3: 'Reading & Continuing Education',
+        int4: 'Family & Volunteering',
+        profile: 'Profile',
+        summary: 'Experienced IT Business Analyst and Software Developer with a focus on SAP Business One, enterprise integrations, and .NET development. Over 10 years of experience in developing business applications, process automation, and ERP integration. Specialized in SAP B1 Service Layer, DI API, REST APIs, reporting solutions, and modern web technologies. Passionate about digital transformation, process optimization, and innovative software solutions for SMEs.',
+        projects: 'Projects',
+        proj1desc: 'RAG AI assistant for SAP B1 documentation \u2014 ingests PDFs, indexes with OpenAI embeddings into Qdrant, answers questions from retrieved context. Clean Architecture on .NET 8.',
+        proj2desc: 'Dual-mode AI assistant for SAP Business One, powered by local Ollama LLMs. Business-user mode for SAP data Q&A, developer mode for C# code generation. Live SAP grounding via Service Layer.',
+        proj3desc: 'Bidirectional business partner synchronization between SAP Business One and e-commerce platforms (Shopify, Amazon). Clean Architecture, REST API, Blazor monitoring dashboard.',
+        proj4desc: 'Semi-live SAP B1 UI form metadata inspection system. Captures form structure at runtime via SwissAddonFramework, exposes through SignalR to a Blazor Server viewer with real-time updates.',
+        proj5desc: 'Modern replacement for SAP B1 Data Transfer Workbench (DTW). Imports CSV/Excel files via Service Layer REST API \u2014 no SAP client needed. Blazor WebAssembly UI with validation and error handling.',
+        experience: 'Professional Experience',
+        job1title: 'IT Business Analyst / SAP Business One Developer',
+        job1date: 'Since July 2019',
+        job1li1: 'Lead development of SAP Business One solutions and enterprise integrations serving international teams across the Dover Corporation group.',
+        job1li2: 'Architected and delivered SAP B1 extensions using DI API and Service Layer in C# \u2014 reducing manual data handling by over 60%.',
+        job1li3: 'Designed and built REST API integration layer connecting SAP B1 with Shopify, Power BI, and CRM systems \u2014 eliminating manual data entry across 3 international teams.',
+        job1li4: 'Automated critical business processes and optimized internal workflows through custom .NET tooling.',
+        job1li5: 'Engineered Power BI dashboards and Crystal Reports enabling real-time visibility into operations across multiple Dover subsidiaries.',
+        job1li6: 'Bridged business and technology \u2014 translated complex requirements from international stakeholders into scalable technical solutions.',
+        job2title: '.NET Software Engineer',
+        job2date: '09/2017 \u2013 07/2019',
+        job2li1: 'Developed mission-critical desktop and business applications with C# and .NET for industrial engineering workflows.',
+        job2li2: 'Designed and implemented modern software architectures \u2014 transitioning legacy systems to maintainable .NET solutions.',
+        job2li3: 'Built and optimized REST APIs and data access layers, improving system performance by 40%.',
+        job2li4: 'Partnered with engineering and business teams to digitize manual processes, accelerating project delivery cycles.',
+        job3title: 'Junior Development Engineer',
+        job3date: '06/2013 \u2013 06/2017',
+        job3li1: 'Automated test suites with C# in .NET, reducing manual QA effort by over 50%.',
+        job3li2: 'Developed technical test solutions and validation processes for smart card and NFC testing equipment.',
+        job3li3: 'Analyzed technical requirements and implemented quality assurance frameworks for production releases.',
+        job4title: 'Research & Practical Projects',
+        job4date: '2010 \u2013 2012',
+        job4li1: 'Developed and analyzed current control systems with MATLAB & Simulink for renewable energy research.',
+        job4li2: 'Programmed graphical user interfaces with Visual C++ for lab instrumentation control.',
+        job4li3: 'Created comprehensive technical documentation and installation guides used by research teams.',
+        job4li4: 'Integrated dsPIC microprocessors via USB interfaces for real-time measurement systems.',
+        education: 'Education',
+        edu1title: 'Diploma in Electrical Engineering & Information Technology',
+        edu1desc: 'KIT \u2013 Karlsruhe Institute of Technology | Focus: Renewable Energies | 2004 \u2013 2012',
+        edu2title: 'German Language Certificate (DHS \u2013 B1)',
+        edu2desc: 'Karlsruhe | 2003 \u2013 2004',
+        edu3title: 'A-Levels (Abitur)',
+        edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Cameroon | Focus: Mathematics, Physics, Chemistry & Biology',
+        competencies: 'Core Competencies',
+        compBA: 'Business Analysis',
+        compERP: 'ERP Integration',
+        compAuto: 'Automation',
+        volunteer: 'Volunteering & Personal',
+        volunteerText: 'Deputy head of a Christian association in Essen. Committed to fostering community, education, and personal development. Family-oriented and passionate about continuous learning, technology, and innovation.'
+      },
+      fr: {
+        downloadPdf: 'T\u00e9l\u00e9charger en PDF',
+        picturePlaceholder: 'Ins\u00e9rer une photo ici',
+        role: 'IT Business Analyst & D\u00e9veloppeur SAP Business One',
+        contact: 'Contact',
+        location: 'Essen, Allemagne',
+        linkedin: 'LinkedIn',
+        github: 'GitHub',
+        langDe: '\uD83C\uDDE9\uD83C\uDDEA Allemand (C1)',
+        langEn: '\uD83C\uDDEC\uD83C\uDDE7 Anglais (B2)',
+        langFr: '\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais (Langue maternelle)',
+        tech: 'Technologies',
+        strengths: 'Atouts',
+        str1: 'Pens\u00e9e analytique',
+        str2: 'Communication interculturelle',
+        str3: 'Sens des responsabilit\u00e9s',
+        str4: 'R\u00e9solution technique de probl\u00e8mes',
+        str5: 'Travail autonome',
+        str6: 'Travail d\u2019\u00e9quipe & Leadership',
+        interests: 'Centres d\u2019int\u00e9r\u00eat',
+        int1: 'D\u00e9veloppement logiciel & IA',
+        int2: 'Musique (Guitare & Piano)',
+        int3: 'Lecture & Formation continue',
+        int4: 'Famille & B\u00e9n\u00e9volat',
+        profile: 'Profil',
+        summary: 'IT Business Analyst et D\u00e9veloppeur logiciel exp\u00e9riment\u00e9, sp\u00e9cialis\u00e9 dans SAP Business One, les int\u00e9grations d\u2019entreprise et le d\u00e9veloppement .NET. Plus de 10 ans d\u2019exp\u00e9rience dans le d\u00e9veloppement d\u2019applications m\u00e9tier, l\u2019automatisation des processus et l\u2019int\u00e9gration ERP. Sp\u00e9cialis\u00e9 dans SAP B1 Service Layer, DI API, les API REST, les solutions de reporting et les technologies web modernes. Passionn\u00e9 par la transformation digitale, l\u2019optimisation des processus et les solutions logicielles innovantes pour les PME.',
+        projects: 'Projets',
+        proj1desc: 'Assistant IA RAG pour la documentation SAP B1 \u2014 ing\u00e8re des PDF, les indexe avec des embeddings OpenAI dans Qdrant et r\u00e9pond aux questions \u00e0 partir du contexte r\u00e9cup\u00e9r\u00e9. Clean Architecture sur .NET 8.',
+        proj2desc: 'Assistant IA bimodal pour SAP Business One, propuls\u00e9 par des LLM Ollama locaux. Mode utilisateur m\u00e9tier pour les requ\u00eates SAP, mode d\u00e9veloppeur pour la g\u00e9n\u00e9ration de code C#. Connexion SAP en direct via Service Layer.',
+        proj3desc: 'Synchronisation bidirectionnelle des partenaires commerciaux entre SAP Business One et les plateformes e-commerce (Shopify, Amazon). Clean Architecture, API REST, tableau de bord Blazor.',
+        proj4desc: 'Syst\u00e8me d\u2019inspection semi-live des m\u00e9tadonn\u00e9es de formulaires SAP B1 UI. Capture la structure des formulaires en temps r\u00e9el via SwissAddonFramework et les expose via SignalR dans un visualiseur Blazor Server avec mises \u00e0 jour en direct.',
+        proj5desc: 'Remplacement moderne de SAP B1 Data Transfer Workbench (DTW). Importe des fichiers CSV/Excel via l\u2019API REST Service Layer \u2014 sans client SAP. Interface Blazor WebAssembly avec validation et gestion des erreurs.',
+        experience: 'Exp\u00e9rience Professionnelle',
+        job1title: 'IT Business Analyst / D\u00e9veloppeur SAP Business One',
+        job1date: 'Depuis juillet 2019',
+        job1li1: 'D\u00e9veloppement principal des solutions SAP Business One et des int\u00e9grations d\u2019entreprise pour les \u00e9quipes internationales du groupe Dover Corporation.',
+        job1li2: 'Architecture et livraison d\u2019extensions SAP B1 avec DI API et Service Layer en C# \u2014 r\u00e9duction du traitement manuel des donn\u00e9es de plus de 60 %.',
+        job1li3: 'Conception d\u2019une couche d\u2019int\u00e9gration API REST connectant SAP B1 \u00e0 Shopify, Power BI et aux syst\u00e8mes CRM \u2014 \u00e9limination des saisies manuelles dans 3 \u00e9quipes internationales.',
+        job1li4: 'Automatisation des processus m\u00e9tier critiques et optimisation des flux internes gr\u00e2ce \u00e0 des outils .NET sur mesure.',
+        job1li5: 'Cr\u00e9ation de tableaux de bord Power BI et de rapports Crystal Reports offrant une visibilit\u00e9 en temps r\u00e9el sur les op\u00e9rations de plusieurs filiales Dover.',
+        job1li6: 'Pont entre le m\u00e9tier et la technique \u2014 traduction des besoins complexes des parties prenantes internationales en solutions techniques \u00e9volutives.',
+        job2title: 'Ing\u00e9nieur Logiciel .NET',
+        job2date: '09/2017 \u2013 07/2019',
+        job2li1: 'D\u00e9veloppement d\u2019applications desktop et m\u00e9tier critiques avec C# et .NET pour des flux d\u2019ing\u00e9nierie industrielle.',
+        job2li2: 'Conception et impl\u00e9mentation d\u2019architectures logicielles modernes \u2014 migration de syst\u00e8mes legacy vers des solutions .NET maintenables.',
+        job2li3: 'Cr\u00e9ation et optimisation d\u2019API REST et de couches d\u2019acc\u00e8s aux donn\u00e9es, am\u00e9liorant les performances du syst\u00e8me de 40 %.',
+        job2li4: 'Partenariat avec les \u00e9quipes d\u2019ing\u00e9nierie et m\u00e9tier pour digitaliser les processus manuels et acc\u00e9l\u00e9rer les cycles de livraison.',
+        job3title: 'Ing\u00e9nieur D\u00e9veloppement Junior',
+        job3date: '06/2013 \u2013 06/2017',
+        job3li1: 'Automatisation des suites de tests avec C# dans un environnement .NET, r\u00e9duisant l\u2019effort QA manuel de plus de 50 %.',
+        job3li2: 'D\u00e9veloppement de solutions de test techniques et de processus de validation pour les \u00e9quipements de test de cartes \u00e0 puce et NFC.',
+        job3li3: 'Analyse des exigences techniques et impl\u00e9mentation de cadres d\u2019assurance qualit\u00e9 pour les versions de production.',
+        job4title: 'Recherche & Projets Pratiques',
+        job4date: '2010 \u2013 2012',
+        job4li1: 'D\u00e9veloppement et analyse de syst\u00e8mes de r\u00e9gulation de courant avec MATLAB & Simulink pour la recherche en \u00e9nergies renouvelables.',
+        job4li2: 'Programmation d\u2019interfaces graphiques avec Visual C++ pour le contr\u00f4le d\u2019instruments de laboratoire.',
+        job4li3: 'Cr\u00e9ation de documentation technique compl\u00e8te et de guides d\u2019installation utilis\u00e9s par les \u00e9quipes de recherche.',
+        job4li4: 'Int\u00e9gration de microprocesseurs dsPIC via des interfaces USB pour des syst\u00e8mes de mesure en temps r\u00e9el.',
+        education: 'Formation',
+        edu1title: 'Dipl\u00f4me d\u2019Ing\u00e9nieur en G\u00e9nie \u00c9lectrique & Technologies de l\u2019Information',
+        edu1desc: 'KIT \u2013 Institut de Technologie de Karlsruhe | Sp\u00e9cialisation : \u00c9nergies Renouvelables | 2004 \u2013 2012',
+        edu2title: 'Certificat de Langue Allemande (DHS \u2013 B1)',
+        edu2desc: 'Karlsruhe | 2003 \u2013 2004',
+        edu3title: 'Baccalaur\u00e9at (Abitur)',
+        edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Cameroun | Sp\u00e9cialisation : Math\u00e9matiques, Physique, Chimie & Biologie',
+        competencies: 'Comp\u00e9tences Cl\u00e9s',
+        compBA: 'Analyse M\u00e9tier',
+        compERP: 'Int\u00e9gration ERP',
+        compAuto: 'Automatisation',
+        volunteer: 'B\u00e9n\u00e9volat & Vie Personnelle',
+        volunteerText: 'Responsable adjoint d\u2019une association chr\u00e9tienne \u00e0 Essen. Engag\u00e9 dans la promotion de la communaut\u00e9, de l\u2019\u00e9ducation et du d\u00e9veloppement personnel. Orient\u00e9 vers la famille et passionn\u00e9 par l\u2019apprentissage continu, la technologie et l\u2019innovation.'
+      }
+    };
+
+    var langButtons = document.querySelectorAll('.lang-btn');
+    var htmlEl = document.documentElement;
+
+    function switchLang(lang) {
+      // Update buttons
+      langButtons.forEach(function(btn) {
+        var isActive = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('lang-btn--active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // Update html lang attribute
+      htmlEl.setAttribute('lang', lang);
+
+      // Update all data-i18n elements
+      var elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Store preference
+      try {
+        localStorage.setItem('cv-lang', lang);
+      } catch(e) {}
+    }
+
+    // Click handlers
+    langButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var lang = btn.getAttribute('data-lang');
+        switchLang(lang);
+      });
+    });
+
+    // On load, restore saved preference or use default (de)
+    var savedLang = null;
+    try {
+      savedLang = localStorage.getItem('cv-lang');
+    } catch(e) {}
+
+    if (savedLang && translations[savedLang]) {
+      switchLang(savedLang);
+    }
+  })();
+  </script>
+</body>
+</html>
