@@ -6,46 +6,52 @@
   <title>Jules Valere Taptso Fotso – CV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg-page: #eef1f6;
-      --bg-card: #ffffff;
-      --bg-sidebar: #0f172a;
-      --bg-sidebar-section: rgba(255,255,255,0.05);
+      --bg-page: #f3efe7;
+      --bg-card: #fffefc;
+      --bg-sidebar: #132238;
+      --bg-sidebar-section: rgba(255,255,255,0.06);
 
-      --text-primary: #1e293b;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --text-sidebar: #e2e8f0;
-      --text-sidebar-muted: #94a3b8;
-      --text-sidebar-heading: #93c5fd;
+      --text-primary: #172236;
+      --text-secondary: #3f536f;
+      --text-muted: #61738f;
+      --text-sidebar: #e9eef7;
+      --text-sidebar-muted: #b1c0d6;
+      --text-sidebar-heading: #b9d3ff;
 
-      --accent: #2563eb;
-      --accent-light: #dbeafe;
-      --accent-glow: rgba(37,99,235,0.12);
+      --accent: #0f6a79;
+      --accent-strong: #0d5561;
+      --accent-light: #d9eef2;
+      --accent-glow: rgba(15,106,121,0.18);
 
-      --border: #e2e8f0;
-      --divider-sidebar: rgba(255,255,255,0.1);
+      --border: #d7dfe9;
+      --divider-sidebar: rgba(255,255,255,0.14);
 
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 22px;
       --radius-full: 999px;
 
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 24px rgba(0,0,0,0.06);
-      --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+      --shadow-sm: 0 1px 2px rgba(12, 23, 40, 0.06);
+      --shadow-md: 0 10px 30px rgba(12, 23, 40, 0.09);
+      --shadow-lg: 0 18px 58px rgba(12, 23, 40, 0.14);
 
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
+      --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+      --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
     }
 
     body {
-      font-family: var(--font);
-      background: var(--bg-page);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at 7% 12%, rgba(15,106,121,0.12), transparent 30%),
+        radial-gradient(circle at 95% 88%, rgba(19,34,56,0.14), transparent 32%),
+        linear-gradient(140deg, #f6f2ea 0%, #edf4f8 45%, #f7f4ee 100%);
       color: var(--text-primary);
       line-height: 1.6;
       padding: 30px 20px;
@@ -70,6 +76,7 @@
       border-radius: var(--radius-full);
       padding: 4px;
       box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(4px);
     }
 
     .lang-btn {
@@ -85,7 +92,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.25s ease;
-      font-family: var(--font);
+      font-family: var(--font-heading);
       white-space: nowrap;
     }
 
@@ -95,7 +102,7 @@
     }
 
     .lang-btn--active {
-      color: var(--accent);
+      color: var(--accent-strong);
       background: var(--accent-light);
       border-color: var(--accent);
     }
@@ -110,7 +117,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
       color: #ffffff;
       border: none;
       border-radius: var(--radius-full);
@@ -119,21 +126,21 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s ease;
-      font-family: var(--font);
+      font-family: var(--font-heading);
       white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+      box-shadow: 0 2px 8px rgba(15,106,121,0.3);
       letter-spacing: 0.01em;
     }
 
     .pdf-btn:hover {
-      background: #1d4ed8;
-      box-shadow: 0 4px 16px rgba(37,99,235,0.35);
+      background: linear-gradient(135deg, #0d5561 0%, #0f6a79 100%);
+      box-shadow: 0 6px 18px rgba(15,106,121,0.32);
       transform: translateY(-1px);
     }
 
     .pdf-btn:active {
       transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(37,99,235,0.2);
+      box-shadow: 0 2px 6px rgba(15,106,121,0.24);
     }
 
     .pdf-icon {
@@ -143,19 +150,20 @@
 
     /* ===== MAIN CONTAINER ===== */
     .container {
-      max-width: 1200px;
+      max-width: 1220px;
       margin: 0 auto;
       background: var(--bg-card);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       display: grid;
-      grid-template-columns: 350px 1fr;
+      grid-template-columns: 335px 1fr;
+      border: 1px solid rgba(157, 172, 193, 0.28);
     }
 
     /* ===== SIDEBAR ===== */
     .sidebar {
-      background: linear-gradient(175deg, #0f172a 0%, #1a2744 100%);
+      background: linear-gradient(165deg, #132238 0%, #1f3555 55%, #24486a 100%);
       color: white;
       padding: 0;
       display: flex;
@@ -171,7 +179,7 @@
       right: -60px;
       width: 200px;
       height: 200px;
-      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(185,211,255,0.22) 0%, transparent 72%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -183,7 +191,7 @@
       left: -40px;
       width: 150px;
       height: 150px;
-      background: radial-gradient(circle, rgba(147,197,253,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(15,106,121,0.24) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -201,7 +209,7 @@
       height: 130px;
       border-radius: 50%;
       margin: 0 auto 22px;
-      background: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
+      background: linear-gradient(135deg, #0f6a79 0%, #367ea1 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -209,9 +217,46 @@
       font-weight: 800;
       color: #fff;
       position: relative;
-      box-shadow: 0 0 0 5px rgba(255,255,255,0.1), 0 8px 32px rgba(37,99,235,0.35);
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.13), 0 12px 30px rgba(15,106,121,0.35);
       letter-spacing: -0.02em;
       user-select: none;
+      font-family: var(--font-heading);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .profile-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 26%;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 1;
+    }
+
+    .picture-fallback {
+      position: relative;
+      z-index: 2;
+    }
+
+    .picture-frame--loaded {
+      background: #dce5ee;
+    }
+
+    .picture-frame--loaded .profile-photo {
+      opacity: 1;
+    }
+
+    .picture-frame--loaded .picture-fallback {
+      opacity: 0;
+    }
+
+    .picture-frame--loaded::after {
+      display: none;
     }
 
     .picture-placeholder::after {
@@ -242,13 +287,38 @@
       line-height: 1.15;
       margin-bottom: 8px;
       letter-spacing: -0.02em;
+      font-family: var(--font-heading);
     }
 
     .profile-area h2 {
       font-size: 14px;
       font-weight: 500;
-      color: #94a3b8;
+      color: #c2d0e3;
       line-height: 1.5;
+      font-family: var(--font-heading);
+    }
+
+    .focus-roles {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .focus-chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(185,211,255,0.45);
+      border-radius: var(--radius-full);
+      padding: 4px 10px;
+      font-size: 11px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #e7effd;
+      background: rgba(255,255,255,0.08);
+      font-family: var(--font-mono);
+      line-height: 1.2;
     }
 
     /* Sidebar sections */
@@ -274,6 +344,7 @@
       gap: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--divider-sidebar);
+      font-family: var(--font-mono);
     }
 
     .sidebar-section h3 .sec-icon {
@@ -329,13 +400,25 @@
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
-      box-shadow: 0 0 6px rgba(37,99,235,0.5);
+      box-shadow: 0 0 6px rgba(15,106,121,0.7);
     }
 
     /* ===== MAIN CONTENT ===== */
     .main {
       padding: 50px 50px 50px 45px;
       position: relative;
+    }
+
+    .main::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,106,121,0.12) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .main-section {
@@ -356,6 +439,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      font-family: var(--font-heading);
     }
 
     .main-section h2 .heading-icon {
@@ -368,6 +452,7 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      color: var(--accent-strong);
     }
 
     .main-section h2::after {
@@ -381,6 +466,54 @@
       border-radius: 2px;
     }
 
+    .impact-strip {
+      margin-bottom: 34px;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, #f7fbfd 0%, #eef4f8 45%, #f8f7f4 100%);
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55), var(--shadow-sm);
+    }
+
+    .impact-headline {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--accent-strong);
+      margin-bottom: 12px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .impact-card {
+      border: 1px solid rgba(15,106,121,0.2);
+      border-radius: 12px;
+      padding: 12px 12px 10px;
+      background: rgba(255,255,255,0.78);
+      min-height: 92px;
+    }
+
+    .impact-number {
+      font-family: var(--font-heading);
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 5px;
+      color: var(--text-primary);
+    }
+
+    .impact-label {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
     /* Summary */
     .summary {
       font-size: 15px;
@@ -389,14 +522,38 @@
       margin-top: 4px;
     }
 
+    .ats-line {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      background: #eef4f7;
+      border: 1px solid #d8e4ea;
+      border-radius: 10px;
+      padding: 8px 11px;
+      line-height: 1.5;
+    }
+
     /* Job cards */
     .job {
       margin-bottom: 28px;
       padding: 22px 24px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
-      background: #fafbfc;
+      background: linear-gradient(180deg, #fcfdff 0%, #f8fbfd 100%);
       transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .job::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent) 0%, rgba(15,106,121,0.18) 100%);
     }
 
     .job:hover {
@@ -422,11 +579,12 @@
       font-weight: 700;
       color: var(--text-primary);
       letter-spacing: -0.01em;
+      font-family: var(--font-heading);
     }
 
     .job-company {
       font-size: 14px;
-      color: var(--accent);
+      color: var(--accent-strong);
       font-weight: 600;
       margin-top: 2px;
     }
@@ -434,8 +592,9 @@
     .job-date {
       font-size: 13px;
       color: var(--text-muted);
-      font-weight: 500;
-      background: var(--accent-light);
+      font-weight: 600;
+      font-family: var(--font-mono);
+      background: #e7f2f5;
       padding: 4px 12px;
       border-radius: var(--radius-full);
       white-space: nowrap;
@@ -460,7 +619,7 @@
       content: '▸';
       position: absolute;
       left: -18px;
-      color: var(--accent);
+      color: var(--accent-strong);
       font-size: 12px;
       top: 2px;
     }
@@ -473,7 +632,7 @@
       margin-top: 8px;
     }
     .project-card {
-      background: #fafbfc;
+      background: linear-gradient(180deg, #fdffff 0%, #f5fbfd 100%);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 16px;
@@ -493,6 +652,7 @@
       color: var(--text-primary);
       margin-bottom: 6px;
       letter-spacing: -0.01em;
+      font-family: var(--font-heading);
     }
     .project-desc {
       font-size: 13px;
@@ -508,11 +668,12 @@
     }
     .ptag {
       font-size: 11px;
-      background: var(--bg-page);
+      background: #e8f3f5;
       color: var(--text-muted);
       padding: 3px 8px;
       border-radius: 4px;
       font-weight: 600;
+      border: 1px solid rgba(15,106,121,0.2);
     }
 
     /* Contact links */
@@ -532,7 +693,7 @@
       padding: 18px 22px;
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
-      background: #fafbfc;
+      background: linear-gradient(180deg, #fcfdff 0%, #f7fafd 100%);
       transition: all 0.25s ease;
     }
 
@@ -549,6 +710,7 @@
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 4px;
+      font-family: var(--font-heading);
     }
 
     .education-item p {
@@ -560,8 +722,8 @@
     /* Badges */
     .badge {
       display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
+      background: #e8f3f5;
+      color: var(--accent-strong);
       padding: 7px 15px;
       border-radius: var(--radius-full);
       font-size: 13px;
@@ -575,6 +737,53 @@
       border-color: var(--accent);
       transform: translateY(-1px);
       box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .main-section,
+    .sidebar-section,
+    .project-card,
+    .job,
+    .education-item,
+    .impact-card {
+      animation: revealUp 0.6s ease both;
+    }
+
+    .main-section:nth-of-type(2),
+    .sidebar-section:nth-of-type(2),
+    .project-card:nth-of-type(2),
+    .job:nth-of-type(2) { animation-delay: 0.04s; }
+
+    .main-section:nth-of-type(3),
+    .sidebar-section:nth-of-type(3),
+    .project-card:nth-of-type(3),
+    .job:nth-of-type(3) { animation-delay: 0.08s; }
+
+    .main-section:nth-of-type(4),
+    .sidebar-section:nth-of-type(4),
+    .project-card:nth-of-type(4),
+    .job:nth-of-type(4) { animation-delay: 0.12s; }
+
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-section,
+      .sidebar-section,
+      .project-card,
+      .job,
+      .education-item,
+      .impact-card,
+      .picture-placeholder::after {
+        animation: none !important;
+      }
     }
 
     /* ===== RESPONSIVE ===== */
@@ -597,6 +806,14 @@
 
       .main {
         padding: 35px 25px;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-card {
+        min-height: auto;
       }
     }
 
@@ -722,10 +939,17 @@
 
       <!-- Profile area with picture placeholder -->
       <div class="profile-area">
-        <div class="picture-placeholder" id="pictureInit">JT</div>
+        <div class="picture-placeholder" id="pictureFrame">
+          <img src="photo.png" alt="Jules Valere Taptso Fotso" class="profile-photo" id="profilePhoto" />
+          <span class="picture-fallback" id="pictureInit">JT</span>
+        </div>
         <div class="picture-note" data-i18n="picturePlaceholder">Bild hier einfügen</div>
         <h1>Jules Valere<br>Taptso Fotso</h1>
-        <h2 data-i18n="role">IT Business Analyst &amp; SAP Business One Developer</h2>
+        <h2 data-i18n="role">SAP Business One Solution Architect</h2>
+        <div class="focus-roles">
+          <span class="focus-chip" data-i18n="focus1">Target Role: SAP B1 Solution Architect</span>
+          <span class="focus-chip" data-i18n="focus2">ERP Integration Architecture</span>
+        </div>
       </div>
 
       <!-- Sidebar sections -->
@@ -752,16 +976,16 @@
         <!-- Technologies -->
         <div class="sidebar-section">
           <h3><span class="sec-icon">💻</span> <span data-i18n="tech">Technologien</span></h3>
-          <div class="skill-item"><span class="skill-dot"></span> C# / .NET / .NET 9</div>
-          <div class="skill-item"><span class="skill-dot"></span> SAP Business One</div>
+          <div class="skill-item"><span class="skill-dot"></span> SAP B1 Solution Architecture</div>
           <div class="skill-item"><span class="skill-dot"></span> SAP DI API &amp; Service Layer</div>
-          <div class="skill-item"><span class="skill-dot"></span> REST APIs &amp; Integrationen</div>
+          <div class="skill-item"><span class="skill-dot"></span> C# / .NET / ASP.NET Core</div>
+          <div class="skill-item"><span class="skill-dot"></span> ERP Integration Design (REST)</div>
           <div class="skill-item"><span class="skill-dot"></span> SQL Server &amp; EF Core</div>
-          <div class="skill-item"><span class="skill-dot"></span> Blazor &amp; ASP.NET</div>
+          <div class="skill-item"><span class="skill-dot"></span> Blazor (Server/WASM)</div>
           <div class="skill-item"><span class="skill-dot"></span> Power BI &amp; Crystal Reports</div>
-          <div class="skill-item"><span class="skill-dot"></span> HTML, CSS, JavaScript</div>
+          <div class="skill-item"><span class="skill-dot"></span> Integration Governance &amp; Security</div>
           <div class="skill-item"><span class="skill-dot"></span> Git &amp; Azure DevOps</div>
-          <div class="skill-item"><span class="skill-dot"></span> n8n &amp; Automatisierung</div>
+          <div class="skill-item"><span class="skill-dot"></span> Process Automation (n8n)</div>
         </div>
 
         <!-- Strengths -->
@@ -794,21 +1018,39 @@
     <!-- MAIN CONTENT -->
     <main class="main">
 
+      <section class="impact-strip">
+        <div class="impact-headline" data-i18n="impactTitle">Karriere-Highlights</div>
+        <div class="impact-grid">
+          <article class="impact-card">
+            <div class="impact-number">10+</div>
+            <div class="impact-label" data-i18n="impact1">Jahre SAP B1 ERP- und Schnittstellenarchitektur im industriellen Umfeld</div>
+          </article>
+          <article class="impact-card">
+            <div class="impact-number">60%</div>
+            <div class="impact-label" data-i18n="impact2">Weniger manuelle Datenarbeit durch SAP-Automatisierung</div>
+          </article>
+          <article class="impact-card">
+            <div class="impact-number">3</div>
+            <div class="impact-label" data-i18n="impact3">Internationale Teams über skalierbare Integrationsplattformen verbunden</div>
+          </article>
+        </div>
+      </section>
+
       <!-- Profile / Summary -->
       <section class="main-section">
         <h2><span class="heading-icon">👤</span> <span data-i18n="profile">Profil</span></h2>
         <p class="summary" data-i18n="summary">
-          Erfahrener IT Business Analyst und Softwareentwickler mit Schwerpunkt auf SAP Business One,
-          Unternehmensintegrationen und .NET-Entwicklung. Mehr als 10 Jahre Erfahrung in der Entwicklung
-          von Geschäftsanwendungen, Prozessautomatisierung und ERP-Integration. Spezialisiert auf SAP B1
-          Service Layer, DI API, REST APIs, Reporting-Lösungen und moderne Webtechnologien.
-          Leidenschaft für digitale Transformation, Prozessoptimierung und innovative Softwarelösungen für KMUs.
+          SAP Business One Solution Architect mit über 10 Jahren Erfahrung in ERP-Projekten für den industriellen Mittelstand.
+          Spezialisiert auf End-to-End Architektur für SAP B1 Erweiterungen, Schnittstellenarchitektur,
+          Anforderungsmanagement und datengetriebene Prozessautomatisierung. Verbindet Business-Analyse,
+          technisches Design und technische Projektleitung zu stabilen, skalierbaren Lösungen mit messbarem operativem Nutzen.
         </p>
+        <p class="ats-line" data-i18n="atsKeywords">ATS-Keywords: SAP Business One Solution Architect, SAP Business One Berater, SAP B1, DI API, Service Layer, C#, .NET, REST API, SQL Server, Blazor, Schnittstellenarchitektur, ERP Prozessautomatisierung</p>
       </section>
 
       <!-- Projects -->
       <section class="main-section">
-        <h2><span class="heading-icon">🚀</span> <span data-i18n="projects">Projekte</span></h2>
+        <h2><span class="heading-icon">🚀</span> <span data-i18n="projects">Architekturprojekte</span></h2>
         <div class="projects-grid">
 
           <div class="project-card">
@@ -881,18 +1123,18 @@
         <div class="job">
           <div class="job-header">
             <div>
-              <div class="job-title" data-i18n="job1title">IT Business Analyst / SAP Business One Developer</div>
+              <div class="job-title" data-i18n="job1title">SAP Business One Solution Architect</div>
               <div class="job-company">PSG Germany GmbH (Dover Corporation)</div>
             </div>
             <div class="job-date" data-i18n="job1date">Seit Juli 2019</div>
           </div>
           <ul>
-            <li data-i18n="job1li1">Leitende Entwicklung von SAP Business One Lösungen und Unternehmensintegrationen für internationale Teams der Dover Corporation Gruppe.</li>
+            <li data-i18n="job1li1">Architekturverantwortung für SAP Business One Lösungen und Integrationsplattformen für internationale Teams der Dover Corporation Gruppe.</li>
             <li data-i18n="job1li2">Architektur und Lieferung von SAP B1 Erweiterungen mit DI API und Service Layer in C# — Reduzierung manueller Datenverarbeitung um über 60 %.</li>
             <li data-i18n="job1li3">Entwicklung einer REST API-Integrationsschicht zur Anbindung von SAP B1 an Shopify, Power BI und CRM-Systeme — Eliminierung manueller Dateneingaben in 3 internationalen Teams.</li>
-            <li data-i18n="job1li4">Automatisierung kritischer Geschäftsprozesse und Optimierung interner Workflows durch maßgeschneiderte .NET-Tools.</li>
+            <li data-i18n="job1li4">Definition von Integrationsstandards, Fehlerbehandlungskonzepten und Governance-Richtlinien für nachhaltige Systemlandschaften.</li>
             <li data-i18n="job1li5">Erstellung von Power BI Dashboards und Crystal Reports für Echtzeittransparenz der Betriebsabläufe über mehrere Dover-Tochtergesellschaften hinweg.</li>
-            <li data-i18n="job1li6">Brücke zwischen Business und Technik — Übersetzung komplexer Anforderungen internationaler Stakeholder in skalierbare technische Lösungen.</li>
+            <li data-i18n="job1li6">Führung der technischen Entscheidungsfindung zwischen Business, Fachabteilungen und Entwicklungsteams zur Priorisierung von Architektur-Roadmaps.</li>
           </ul>
         </div>
 
@@ -966,7 +1208,7 @@
 
       <!-- Core Competencies -->
       <section class="main-section">
-        <h2><span class="heading-icon">🔧</span> <span data-i18n="competencies">Kernkompetenzen</span></h2>
+        <h2><span class="heading-icon">🔧</span> <span data-i18n="competencies">Architektur- &amp; Kernkompetenzen</span></h2>
         <span class="badge">SAP Business One</span>
         <span class="badge">DI API</span>
         <span class="badge">Service Layer</span>
@@ -978,9 +1220,9 @@
         <span class="badge">REST APIs</span>
         <span class="badge">Power BI</span>
         <span class="badge">Crystal Reports</span>
-        <span class="badge" data-i18n="compBA">Business Analysis</span>
-        <span class="badge" data-i18n="compERP">ERP Integration</span>
-        <span class="badge" data-i18n="compAuto">Automation</span>
+        <span class="badge" data-i18n="compBA">Solution Architecture</span>
+        <span class="badge" data-i18n="compERP">ERP Integration Architecture</span>
+        <span class="badge" data-i18n="compAuto">Process Automation</span>
       </section>
 
       <!-- Volunteer & Personal -->
@@ -1003,7 +1245,9 @@
       de: {
         downloadPdf: 'Als PDF speichern',
         picturePlaceholder: 'Bild hier einf\u00fcgen',
-        role: 'IT Business Analyst & SAP Business One Developer',
+        role: 'SAP Business One Solution Architect',
+        focus1: 'Zielrolle: SAP B1 Solution Architect',
+        focus2: 'ERP Integrationsarchitektur',
         contact: 'Kontakt',
         location: 'Essen, Deutschland',
         linkedin: 'LinkedIn',
@@ -1011,36 +1255,41 @@
         langDe: '\uD83C\uDDE9\uD83C\uDDEA Deutsch (C1)',
         langEn: '\uD83C\uDDEC\uD83C\uDDE7 Englisch (B2)',
         langFr: '\uD83C\uDDEB\uD83C\uDDF7 Franz\u00f6sisch (Muttersprache)',
+        impactTitle: 'Solution-Architecture Highlights',
+        impact1: 'Jahre SAP B1 ERP- und Schnittstellenarchitektur im industriellen Umfeld',
+        impact2: 'Weniger manuelle Datenarbeit durch Architektur- und Automatisierungsinitiativen',
+        impact3: 'Internationale Teams über skalierbare Integrationsplattformen verbunden',
         tech: 'Technologien',
         strengths: 'St\u00e4rken',
-        str1: 'Analytisches Denken',
-        str2: 'Interkulturelle Kommunikation',
-        str3: 'Verantwortungsbewusstsein',
-        str4: 'Technische Probleml\u00f6sung',
-        str5: 'Selbstst\u00e4ndige Arbeitsweise',
-        str6: 'Teamf\u00e4higkeit & Leadership',
+        str1: 'Architekturanalyse & Dom\u00e4nenmodellierung',
+        str2: 'Stakeholder-Alignment \u00fcber Business und IT',
+        str3: 'Technische Entscheidungsst\u00e4rke',
+        str4: 'Integrations- und Risikoanalyse',
+        str5: 'Delivery Governance',
+        str6: 'Leadership in cross-funktionalen Teams',
         interests: 'Interessen',
-        int1: 'Softwareentwicklung & KI',
-        int2: 'Musik (Gitarre & Klavier)',
-        int3: 'Lesen & Weiterbildung',
-        int4: 'Familie & Ehrenamt',
+        int1: 'ERP-Architektur & Integrationsmuster',
+        int2: 'Cloud- und API-Strategien',
+        int3: 'Technologie-Research & Weiterbildung',
+        int4: 'Mentoring & Community-Arbeit',
         profile: 'Profil',
-        summary: 'Erfahrener IT Business Analyst und Softwareentwickler mit Schwerpunkt auf SAP Business One, Unternehmensintegrationen und .NET-Entwicklung. Mehr als 10 Jahre Erfahrung in der Entwicklung von Gesch\u00e4ftsanwendungen, Prozessautomatisierung und ERP-Integration. Spezialisiert auf SAP B1 Service Layer, DI API, REST APIs, Reporting-L\u00f6sungen und moderne Webtechnologien. Leidenschaft f\u00fcr digitale Transformation, Prozessoptimierung und innovative Softwarel\u00f6sungen f\u00fcr KMUs.',
-        projects: 'Projekte',
-        proj1desc: 'RAG AI-Assistent f\u00fcr SAP B1 Dokumentation \u2013 verarbeitet PDFs, indiziert sie mit OpenAI Embeddings in Qdrant und beantwortet Fragen aus abgerufenen Kontexten. Clean Architecture auf .NET 8.',
-        proj2desc: 'Dual-Mode KI-Assistent f\u00fcr SAP Business One, betrieben mit lokalen Ollama LLMs. Business-User-Modus f\u00fcr SAP-Datenabfragen, Entwicklermodus f\u00fcr C# Codegenerierung. Live SAP-Anbindung via Service Layer.',
-        proj3desc: 'Bidirektionale Gesch\u00e4ftspartnersynchronisation zwischen SAP Business One und E-Commerce-Plattformen (Shopify, Amazon). Clean Architecture, REST API, Blazor Monitoring-Dashboard.',
-        proj4desc: 'Semi-Live Inspektionssystem f\u00fcr SAP B1 UI-Formularmetadaten. Erfasst Formularstrukturen zur Laufzeit via SwissAddonFramework und stellt sie via SignalR in einem Blazor Server Viewer mit Echtzeit-Updates dar.',
-        proj5desc: 'Moderner Ersatz f\u00fcr SAP B1 Data Transfer Workbench (DTW). Importiert CSV/Excel-Dateien via Service Layer REST API \u2013 ohne SAP-Client. Blazor WebAssembly UI mit Validierung und Fehlerbehandlung.',
+        summary: 'SAP Business One Solution Architect mit \u00fcber 10 Jahren Erfahrung in ERP-Projekten f\u00fcr den industriellen Mittelstand. Spezialisiert auf End-to-End Architektur f\u00fcr SAP B1 Erweiterungen, Schnittstellenarchitektur, Anforderungsmanagement und datengetriebene Prozessautomatisierung. Verbindet Business-Analyse, technisches Design und technische Projektleitung zu stabilen, skalierbaren L\u00f6sungen mit messbarem operativem Nutzen.',
+        atsKeywords: 'ATS-Keywords: SAP Business One Solution Architect, SAP Business One Berater, SAP B1, DI API, Service Layer, C#, .NET, REST API, SQL Server, Blazor, Schnittstellenarchitektur, ERP Prozessautomatisierung',
+        projects: 'Architekturprojekte',
+        proj1desc: 'Architektur eines RAG-Assistenten f\u00fcr SAP B1 Dokumentation mit Qdrant und OpenAI Embeddings. Fokus auf Wissensmodell, Retrieval-Qualit\u00e4t und produktionsreife .NET 8 Clean-Architecture.',
+        proj2desc: 'Konzeption eines Dual-Mode SAP B1 AI Assistant mit Live-Service-Layer-Anbindung. Trennung von Business-Q&A und Entwickler-Use-Cases durch klar definierte Servicegrenzen.',
+        proj3desc: 'Architektur einer bidirektionalen Integrationsplattform zwischen SAP B1 und E-Commerce-Kan\u00e4len. Robuste REST-Schnittstellen, Monitoring und Datenkonsistenz im Mittelpunkt.',
+        proj4desc: 'Design eines semi-live Metadaten-Inspektors f\u00fcr SAP B1 UI mit SignalR Event-Stream. Ziel: Transparenz, Diagnostik und schnellere Erweiterungsentscheidungen.',
+        proj5desc: 'Abl\u00f6sung klassischer DTW-Prozesse durch eine Service-Layer-zentrierte Importarchitektur. Skalierbare Validierung, Fehlerbehandlung und betriebssichere Batch-Verarbeitung.',
         experience: 'Berufserfahrung',
-        job1title: 'IT Business Analyst / SAP Business One Developer',
+        job1title: 'SAP Business One Solution Architect',
         job1date: 'Seit Juli 2019',
-        job1li1: 'Leitende Entwicklung von SAP Business One L\u00f6sungen und Unternehmensintegrationen f\u00fcr internationale Teams der Dover Corporation Gruppe.',
+        job1li1: 'Architekturverantwortung f\u00fcr SAP Business One L\u00f6sungen und Integrationsplattformen f\u00fcr internationale Teams der Dover Corporation Gruppe.',
         job1li2: 'Architektur und Lieferung von SAP B1 Erweiterungen mit DI API und Service Layer in C# \u2014 Reduzierung manueller Datenverarbeitung um \u00fcber 60 %.',
         job1li3: 'Entwicklung einer REST API-Integrationsschicht zur Anbindung von SAP B1 an Shopify, Power BI und CRM-Systeme \u2014 Eliminierung manueller Dateneingaben in 3 internationalen Teams.',
-        job1li4: 'Automatisierung kritischer Gesch\u00e4ftsprozesse und Optimierung interner Workflows durch ma\u00dfgeschneiderte .NET-Tools.',
+        job1li4: 'Definition von Integrationsstandards, Fehlerbehandlungskonzepten und Governance-Richtlinien f\u00fcr nachhaltige Systemlandschaften.',
         job1li5: 'Erstellung von Power BI Dashboards und Crystal Reports f\u00fcr Echtzeittransparenz der Betriebsabl\u00e4ufe \u00fcber mehrere Dover-Tochtergesellschaften hinweg.',
-        job1li6: 'Br\u00fccke zwischen Business und Technik \u2014 \u00dcbersetzung komplexer Anforderungen internationaler Stakeholder in skalierbare technische L\u00f6sungen.',
+        job1li6: 'F\u00fchrung der technischen Entscheidungsfindung zwischen Business, Fachabteilungen und Entwicklungsteams zur Priorisierung von Architektur-Roadmaps.',
         job2title: '.NET Software Engineer',
         job2date: '09/2017 \u2013 07/2019',
         job2li1: 'Entwicklung gesch\u00e4ftskritischer Desktop- und Business-Anwendungen mit C# und .NET f\u00fcr industrielle Engineering-Workflows.',
@@ -1065,17 +1314,19 @@
         edu2desc: 'Karlsruhe | 2003 \u2013 2004',
         edu3title: 'Abitur',
         edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Kamerun | Schwerpunkt: Mathematik, Physik, Chemie & Biologie',
-        competencies: 'Kernkompetenzen',
-        compBA: 'Business Analysis',
-        compERP: 'ERP Integration',
-        compAuto: 'Automation',
+        competencies: 'Architektur- & Kernkompetenzen',
+        compBA: 'Solution Architecture',
+        compERP: 'ERP Integration Architecture',
+        compAuto: 'Process Automation',
         volunteer: 'Ehrenamt & Pers\u00f6nliches',
-        volunteerText: 'Stellvertretender Verantwortlicher eines christlichen Vereins in Essen. Engagiert in der F\u00f6rderung von Gemeinschaft, Bildung und pers\u00f6nlicher Entwicklung. Familienorientiert und leidenschaftlich an kontinuierlichem Lernen, Technologie und Innovation interessiert.'
+        volunteerText: 'Stellvertretender Verantwortlicher eines christlichen Vereins in Essen. Fokus auf Teamorganisation, Verantwortung und nachhaltige Zusammenarbeit \u2014 Kompetenzen, die meine Architektur- und Leadership-Rolle im beruflichen Umfeld st\u00e4rken.'
       },
       en: {
         downloadPdf: 'Download as PDF',
         picturePlaceholder: 'Insert photo here',
-        role: 'IT Business Analyst & SAP Business One Developer',
+        role: 'SAP Business One Solution Architect',
+        focus1: 'Target Role: SAP B1 Solution Architect',
+        focus2: 'ERP Integration Architecture',
         contact: 'Contact',
         location: 'Essen, Germany',
         linkedin: 'LinkedIn',
@@ -1083,36 +1334,41 @@
         langDe: '\uD83C\uDDE9\uD83C\uDDEA German (C1)',
         langEn: '\uD83C\uDDEC\uD83C\uDDE7 English (B2)',
         langFr: '\uD83C\uDDEB\uD83C\uDDF7 French (Native)',
+        impactTitle: 'Solution Architecture Highlights',
+        impact1: 'Years architecting ERP and integration landscapes in SAP B1',
+        impact2: 'Less manual data handling through architecture-led automation',
+        impact3: 'International teams connected via scalable interface platforms',
         tech: 'Technologies',
         strengths: 'Strengths',
-        str1: 'Analytical Thinking',
-        str2: 'Intercultural Communication',
-        str3: 'Sense of Responsibility',
-        str4: 'Technical Problem Solving',
-        str5: 'Independent Working Style',
-        str6: 'Teamwork & Leadership',
+        str1: 'Architecture analysis & domain modeling',
+        str2: 'Stakeholder alignment across business and IT',
+        str3: 'Technical decision leadership',
+        str4: 'Integration and risk analysis',
+        str5: 'Delivery governance',
+        str6: 'Cross-functional team leadership',
         interests: 'Interests',
-        int1: 'Software Development & AI',
-        int2: 'Music (Guitar & Piano)',
-        int3: 'Reading & Continuing Education',
-        int4: 'Family & Volunteering',
+        int1: 'ERP architecture & integration patterns',
+        int2: 'Cloud and API strategy',
+        int3: 'Technology research & continuous learning',
+        int4: 'Mentoring & community leadership',
         profile: 'Profile',
-        summary: 'Experienced IT Business Analyst and Software Developer with a focus on SAP Business One, enterprise integrations, and .NET development. Over 10 years of experience in developing business applications, process automation, and ERP integration. Specialized in SAP B1 Service Layer, DI API, REST APIs, reporting solutions, and modern web technologies. Passionate about digital transformation, process optimization, and innovative software solutions for SMEs.',
-        projects: 'Projects',
-        proj1desc: 'RAG AI assistant for SAP B1 documentation \u2014 ingests PDFs, indexes with OpenAI embeddings into Qdrant, answers questions from retrieved context. Clean Architecture on .NET 8.',
-        proj2desc: 'Dual-mode AI assistant for SAP Business One, powered by local Ollama LLMs. Business-user mode for SAP data Q&A, developer mode for C# code generation. Live SAP grounding via Service Layer.',
-        proj3desc: 'Bidirectional business partner synchronization between SAP Business One and e-commerce platforms (Shopify, Amazon). Clean Architecture, REST API, Blazor monitoring dashboard.',
-        proj4desc: 'Semi-live SAP B1 UI form metadata inspection system. Captures form structure at runtime via SwissAddonFramework, exposes through SignalR to a Blazor Server viewer with real-time updates.',
-        proj5desc: 'Modern replacement for SAP B1 Data Transfer Workbench (DTW). Imports CSV/Excel files via Service Layer REST API \u2014 no SAP client needed. Blazor WebAssembly UI with validation and error handling.',
+        summary: 'SAP Business One Solution Architect with 10+ years delivering ERP-centered business applications. Specialized in end-to-end architecture for SAP B1 extensions, integration landscapes, and data-driven process automation. Combines business analysis, technical design, and delivery governance to implement stable, scalable solutions with measurable operational impact.',
+        atsKeywords: 'ATS keywords: SAP Business One Solution Architect, SAP B1, DI API, Service Layer, C#, .NET, REST API, SQL Server, Blazor, ERP Integration Architecture',
+        projects: 'Architecture Projects',
+        proj1desc: 'Architected a RAG assistant for SAP B1 documentation with Qdrant and OpenAI embeddings, focused on knowledge modeling, retrieval quality, and production-grade .NET 8 Clean Architecture.',
+        proj2desc: 'Designed a dual-mode SAP B1 AI Assistant with live Service Layer grounding, separating business Q&A and developer workflows through clearly defined service boundaries.',
+        proj3desc: 'Defined architecture for a bidirectional integration platform between SAP B1 and e-commerce channels, prioritizing resilient REST interfaces, monitoring, and data consistency.',
+        proj4desc: 'Designed a semi-live metadata inspection architecture for SAP B1 UI forms using SignalR event streams to improve observability and extension decision speed.',
+        proj5desc: 'Replaced legacy DTW workflows with a Service Layer-centered import architecture, enabling scalable validation, error handling, and reliable batch processing.',
         experience: 'Professional Experience',
-        job1title: 'IT Business Analyst / SAP Business One Developer',
+        job1title: 'SAP Business One Solution Architect',
         job1date: 'Since July 2019',
-        job1li1: 'Lead development of SAP Business One solutions and enterprise integrations serving international teams across the Dover Corporation group.',
+        job1li1: 'Owned architecture for SAP Business One solutions and enterprise integration platforms serving international teams across the Dover Corporation group.',
         job1li2: 'Architected and delivered SAP B1 extensions using DI API and Service Layer in C# \u2014 reducing manual data handling by over 60%.',
         job1li3: 'Designed and built REST API integration layer connecting SAP B1 with Shopify, Power BI, and CRM systems \u2014 eliminating manual data entry across 3 international teams.',
-        job1li4: 'Automated critical business processes and optimized internal workflows through custom .NET tooling.',
+        job1li4: 'Defined integration standards, error-handling strategies, and governance guidelines for sustainable enterprise system landscapes.',
         job1li5: 'Engineered Power BI dashboards and Crystal Reports enabling real-time visibility into operations across multiple Dover subsidiaries.',
-        job1li6: 'Bridged business and technology \u2014 translated complex requirements from international stakeholders into scalable technical solutions.',
+        job1li6: 'Led technical decision-making across business, domain teams, and engineering to prioritize architecture roadmaps and delivery outcomes.',
         job2title: '.NET Software Engineer',
         job2date: '09/2017 \u2013 07/2019',
         job2li1: 'Developed mission-critical desktop and business applications with C# and .NET for industrial engineering workflows.',
@@ -1137,17 +1393,19 @@
         edu2desc: 'Karlsruhe | 2003 \u2013 2004',
         edu3title: 'A-Levels (Abitur)',
         edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Cameroon | Focus: Mathematics, Physics, Chemistry & Biology',
-        competencies: 'Core Competencies',
-        compBA: 'Business Analysis',
-        compERP: 'ERP Integration',
-        compAuto: 'Automation',
+        competencies: 'Architecture & Core Competencies',
+        compBA: 'Solution Architecture',
+        compERP: 'ERP Integration Architecture',
+        compAuto: 'Process Automation',
         volunteer: 'Volunteering & Personal',
-        volunteerText: 'Deputy head of a Christian association in Essen. Committed to fostering community, education, and personal development. Family-oriented and passionate about continuous learning, technology, and innovation.'
+        volunteerText: 'Deputy head of a Christian association in Essen, focused on team coordination, responsibility, and sustainable collaboration. This leadership practice reinforces my architecture and delivery mindset in professional environments.'
       },
       fr: {
         downloadPdf: 'T\u00e9l\u00e9charger en PDF',
         picturePlaceholder: 'Ins\u00e9rer une photo ici',
-        role: 'IT Business Analyst & D\u00e9veloppeur SAP Business One',
+        role: 'SAP Business One Solution Architect',
+        focus1: 'R\u00f4le cibl\u00e9 : SAP B1 Solution Architect',
+        focus2: 'Architecture d\u2019int\u00e9gration ERP',
         contact: 'Contact',
         location: 'Essen, Allemagne',
         linkedin: 'LinkedIn',
@@ -1155,36 +1413,41 @@
         langDe: '\uD83C\uDDE9\uD83C\uDDEA Allemand (C1)',
         langEn: '\uD83C\uDDEC\uD83C\uDDE7 Anglais (B2)',
         langFr: '\uD83C\uDDEB\uD83C\uDDF7 Fran\u00e7ais (Langue maternelle)',
+        impactTitle: 'Highlights en architecture de solutions',
+        impact1: 'Ann\u00e9es d\u2019architecture ERP et d\u2019int\u00e9gration sur SAP B1',
+        impact2: 'Moins de traitement manuel gr\u00e2ce \u00e0 l\u2019automatisation pilot\u00e9e par l\u2019architecture',
+        impact3: '\u00c9quipes internationales reli\u00e9es via des plateformes d\u2019interfaces \u00e9volutives',
         tech: 'Technologies',
         strengths: 'Atouts',
-        str1: 'Pens\u00e9e analytique',
-        str2: 'Communication interculturelle',
-        str3: 'Sens des responsabilit\u00e9s',
-        str4: 'R\u00e9solution technique de probl\u00e8mes',
-        str5: 'Travail autonome',
-        str6: 'Travail d\u2019\u00e9quipe & Leadership',
+        str1: 'Analyse d\u2019architecture & mod\u00e9lisation de domaine',
+        str2: 'Alignement des parties prenantes m\u00e9tier/IT',
+        str3: 'Leadership dans les d\u00e9cisions techniques',
+        str4: 'Analyse d\u2019int\u00e9gration et des risques',
+        str5: 'Gouvernance de delivery',
+        str6: 'Leadership d\u2019\u00e9quipes transverses',
         interests: 'Centres d\u2019int\u00e9r\u00eat',
-        int1: 'D\u00e9veloppement logiciel & IA',
-        int2: 'Musique (Guitare & Piano)',
-        int3: 'Lecture & Formation continue',
-        int4: 'Famille & B\u00e9n\u00e9volat',
+        int1: 'Architecture ERP & patterns d\u2019int\u00e9gration',
+        int2: 'Strat\u00e9gie Cloud et API',
+        int3: 'Veille technologique & formation continue',
+        int4: 'Mentorat & leadership communautaire',
         profile: 'Profil',
-        summary: 'IT Business Analyst et D\u00e9veloppeur logiciel exp\u00e9riment\u00e9, sp\u00e9cialis\u00e9 dans SAP Business One, les int\u00e9grations d\u2019entreprise et le d\u00e9veloppement .NET. Plus de 10 ans d\u2019exp\u00e9rience dans le d\u00e9veloppement d\u2019applications m\u00e9tier, l\u2019automatisation des processus et l\u2019int\u00e9gration ERP. Sp\u00e9cialis\u00e9 dans SAP B1 Service Layer, DI API, les API REST, les solutions de reporting et les technologies web modernes. Passionn\u00e9 par la transformation digitale, l\u2019optimisation des processus et les solutions logicielles innovantes pour les PME.',
-        projects: 'Projets',
-        proj1desc: 'Assistant IA RAG pour la documentation SAP B1 \u2014 ing\u00e8re des PDF, les indexe avec des embeddings OpenAI dans Qdrant et r\u00e9pond aux questions \u00e0 partir du contexte r\u00e9cup\u00e9r\u00e9. Clean Architecture sur .NET 8.',
-        proj2desc: 'Assistant IA bimodal pour SAP Business One, propuls\u00e9 par des LLM Ollama locaux. Mode utilisateur m\u00e9tier pour les requ\u00eates SAP, mode d\u00e9veloppeur pour la g\u00e9n\u00e9ration de code C#. Connexion SAP en direct via Service Layer.',
-        proj3desc: 'Synchronisation bidirectionnelle des partenaires commerciaux entre SAP Business One et les plateformes e-commerce (Shopify, Amazon). Clean Architecture, API REST, tableau de bord Blazor.',
-        proj4desc: 'Syst\u00e8me d\u2019inspection semi-live des m\u00e9tadonn\u00e9es de formulaires SAP B1 UI. Capture la structure des formulaires en temps r\u00e9el via SwissAddonFramework et les expose via SignalR dans un visualiseur Blazor Server avec mises \u00e0 jour en direct.',
-        proj5desc: 'Remplacement moderne de SAP B1 Data Transfer Workbench (DTW). Importe des fichiers CSV/Excel via l\u2019API REST Service Layer \u2014 sans client SAP. Interface Blazor WebAssembly avec validation et gestion des erreurs.',
+        summary: 'SAP Business One Solution Architect avec plus de 10 ans d\u2019exp\u00e9rience dans les applications m\u00e9tier centr\u00e9es ERP. Sp\u00e9cialis\u00e9 en architecture bout-en-bout pour les extensions SAP B1, les paysages d\u2019int\u00e9gration et l\u2019automatisation de processus orient\u00e9e donn\u00e9es. Combine analyse m\u00e9tier, design technique et gouvernance de delivery pour d\u00e9ployer des solutions stables, \u00e9volutives et \u00e0 impact op\u00e9rationnel mesurable.',
+        atsKeywords: 'Mots-cl\u00e9s ATS : SAP Business One Solution Architect, SAP B1, DI API, Service Layer, C#, .NET, API REST, SQL Server, Blazor, Architecture d\u2019int\u00e9gration ERP',
+        projects: 'Projets d\u2019architecture',
+        proj1desc: 'Architecture d\u2019un assistant RAG pour la documentation SAP B1 avec Qdrant et embeddings OpenAI, centr\u00e9e sur la qualit\u00e9 de retrieval et une Clean Architecture .NET 8 pr\u00eate pour la production.',
+        proj2desc: 'Conception d\u2019un assistant IA SAP B1 bimodal avec ancrage live Service Layer, s\u00e9parant clairement les flux m\u00e9tier et les usages d\u00e9veloppeur via des fronti\u00e8res de services.',
+        proj3desc: 'D\u00e9finition d\u2019une architecture de plateforme d\u2019int\u00e9gration bidirectionnelle entre SAP B1 et les canaux e-commerce, avec priorit\u00e9 \u00e0 la r\u00e9silience des API REST et \u00e0 la coh\u00e9rence des donn\u00e9es.',
+        proj4desc: 'Design d\u2019une architecture d\u2019inspection semi-live des m\u00e9tadonn\u00e9es SAP B1 UI via flux \u00e9v\u00e9nementiels SignalR pour acc\u00e9l\u00e9rer la d\u00e9cision d\u2019extension.',
+        proj5desc: 'Remplacement des flux DTW legacy par une architecture d\u2019import centr\u00e9e Service Layer, avec validation \u00e9volutive, gestion d\u2019erreurs et traitements batch fiables.',
         experience: 'Exp\u00e9rience Professionnelle',
-        job1title: 'IT Business Analyst / D\u00e9veloppeur SAP Business One',
+        job1title: 'SAP Business One Solution Architect',
         job1date: 'Depuis juillet 2019',
-        job1li1: 'D\u00e9veloppement principal des solutions SAP Business One et des int\u00e9grations d\u2019entreprise pour les \u00e9quipes internationales du groupe Dover Corporation.',
+        job1li1: 'Responsabilit\u00e9 d\u2019architecture des solutions SAP Business One et des plateformes d\u2019int\u00e9gration pour les \u00e9quipes internationales du groupe Dover Corporation.',
         job1li2: 'Architecture et livraison d\u2019extensions SAP B1 avec DI API et Service Layer en C# \u2014 r\u00e9duction du traitement manuel des donn\u00e9es de plus de 60 %.',
         job1li3: 'Conception d\u2019une couche d\u2019int\u00e9gration API REST connectant SAP B1 \u00e0 Shopify, Power BI et aux syst\u00e8mes CRM \u2014 \u00e9limination des saisies manuelles dans 3 \u00e9quipes internationales.',
-        job1li4: 'Automatisation des processus m\u00e9tier critiques et optimisation des flux internes gr\u00e2ce \u00e0 des outils .NET sur mesure.',
+        job1li4: 'D\u00e9finition de standards d\u2019int\u00e9gration, de strat\u00e9gies de gestion d\u2019erreurs et de r\u00e8gles de gouvernance pour des syst\u00e8mes durables.',
         job1li5: 'Cr\u00e9ation de tableaux de bord Power BI et de rapports Crystal Reports offrant une visibilit\u00e9 en temps r\u00e9el sur les op\u00e9rations de plusieurs filiales Dover.',
-        job1li6: 'Pont entre le m\u00e9tier et la technique \u2014 traduction des besoins complexes des parties prenantes internationales en solutions techniques \u00e9volutives.',
+        job1li6: 'Pilotage des d\u00e9cisions techniques entre m\u00e9tier, \u00e9quipes fonctionnelles et ing\u00e9nierie pour prioriser les roadmaps d\u2019architecture.',
         job2title: 'Ing\u00e9nieur Logiciel .NET',
         job2date: '09/2017 \u2013 07/2019',
         job2li1: 'D\u00e9veloppement d\u2019applications desktop et m\u00e9tier critiques avec C# et .NET pour des flux d\u2019ing\u00e9nierie industrielle.',
@@ -1209,17 +1472,43 @@
         edu2desc: 'Karlsruhe | 2003 \u2013 2004',
         edu3title: 'Baccalaur\u00e9at (Abitur)',
         edu3desc: 'Coll\u00e8ge Evangelique de New-Bell Douala, Cameroun | Sp\u00e9cialisation : Math\u00e9matiques, Physique, Chimie & Biologie',
-        competencies: 'Comp\u00e9tences Cl\u00e9s',
-        compBA: 'Analyse M\u00e9tier',
-        compERP: 'Int\u00e9gration ERP',
-        compAuto: 'Automatisation',
+        competencies: 'Architecture & Comp\u00e9tences Cl\u00e9s',
+        compBA: 'Architecture de solutions',
+        compERP: 'Architecture d\u2019int\u00e9gration ERP',
+        compAuto: 'Automatisation des processus',
         volunteer: 'B\u00e9n\u00e9volat & Vie Personnelle',
-        volunteerText: 'Responsable adjoint d\u2019une association chr\u00e9tienne \u00e0 Essen. Engag\u00e9 dans la promotion de la communaut\u00e9, de l\u2019\u00e9ducation et du d\u00e9veloppement personnel. Orient\u00e9 vers la famille et passionn\u00e9 par l\u2019apprentissage continu, la technologie et l\u2019innovation.'
+        volunteerText: 'Responsable adjoint d\u2019une association chr\u00e9tienne \u00e0 Essen, avec un focus sur la coordination d\u2019\u00e9quipe, la responsabilit\u00e9 et la collaboration durable. Cette pratique renforce mon approche architecture et delivery en contexte professionnel.'
       }
     };
 
     var langButtons = document.querySelectorAll('.lang-btn');
     var htmlEl = document.documentElement;
+    var profilePhoto = document.getElementById('profilePhoto');
+    var pictureFrame = document.getElementById('pictureFrame');
+    var pictureNote = document.querySelector('.picture-note');
+
+    function setPhotoLoaded() {
+      if (!pictureFrame) { return; }
+      pictureFrame.classList.add('picture-frame--loaded');
+      if (pictureNote) {
+        pictureNote.style.display = 'none';
+      }
+    }
+
+    if (profilePhoto) {
+      profilePhoto.addEventListener('load', setPhotoLoaded);
+      profilePhoto.addEventListener('error', function() {
+        if (pictureFrame) {
+          pictureFrame.classList.remove('picture-frame--loaded');
+        }
+        if (pictureNote) {
+          pictureNote.style.display = '';
+        }
+      });
+      if (profilePhoto.complete && profilePhoto.naturalWidth > 0) {
+        setPhotoLoaded();
+      }
+    }
 
     function switchLang(lang) {
       // Update buttons
@@ -1261,9 +1550,7 @@
       savedLang = localStorage.getItem('cv-lang');
     } catch(e) {}
 
-    if (savedLang && translations[savedLang]) {
-      switchLang(savedLang);
-    }
+    switchLang(savedLang && translations[savedLang] ? savedLang : 'de');
   })();
   </script>
 </body>
