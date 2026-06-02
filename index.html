@@ -55,6 +55,7 @@
             --gradient-card-3: linear-gradient(135deg, #10b981, #06b6d4);
             --gradient-card-4: linear-gradient(135deg, #f59e0b, #f43f5e);
             --gradient-card-5: linear-gradient(135deg, #14b8a6, #6366f1);
+            --gradient-card-6: linear-gradient(135deg, #f97316, #1a73e8);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
@@ -512,6 +513,7 @@
         .project-card--3::before { background: var(--gradient-card-3); }
         .project-card--4::before { background: var(--gradient-card-4); }
         .project-card--5::before { background: var(--gradient-card-5); }
+        .project-card--6::before { background: var(--gradient-card-6); }
 
         .project-card__icon {
             width: 48px; height: 48px; border-radius: var(--radius-md);
@@ -523,6 +525,7 @@
         .project-card--3 .project-card__icon { background: rgba(16,185,129,0.15); color: var(--accent-emerald); }
         .project-card--4 .project-card__icon { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
         .project-card--5 .project-card__icon { background: rgba(20,184,166,0.15); color: #14b8a6; }
+        .project-card--6 .project-card__icon { background: rgba(249,115,22,0.15); color: #f97316; }
 
         .project-card__image {
             width: 100%; height: 180px; border-radius: var(--radius-md);
@@ -537,6 +540,7 @@
         .project-card--3 .project-card__image { background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.04) 100%); }
         .project-card--4 .project-card__image { background: linear-gradient(160deg, rgba(245,158,11,0.08) 0%, rgba(244,63,94,0.04) 100%); }
         .project-card--5 .project-card__image { background: linear-gradient(160deg, rgba(20,184,166,0.08) 0%, rgba(99,102,241,0.04) 100%); }
+        .project-card--6 .project-card__image { background: linear-gradient(160deg, rgba(249,115,22,0.08) 0%, rgba(26,115,232,0.04) 100%); }
 
         .project-card__title {
             font-size: 1.35rem; font-weight: 700;
@@ -781,6 +785,7 @@
         .reveal-delay-3 { transition-delay: 0.15s; }
         .reveal-delay-4 { transition-delay: 0.2s; }
         .reveal-delay-5 { transition-delay: 0.25s; }
+        .reveal-delay-6 { transition-delay: 0.3s; }
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -893,7 +898,7 @@
             <!-- Stats -->
             <div class="stats">
                 <div class="stats__item">
-                    <div class="stats__number">5</div>
+                    <div class="stats__number">6</div>
                     <div class="stats__label">Production Projects</div>
                 </div>
                 <div class="stats__item">
@@ -980,7 +985,7 @@
             <div class="impact-grid">
                 <div class="impact-card reveal reveal-delay-1">
                     <div class="impact-card__icon">🚀</div>
-                    <div class="impact-card__number">5+</div>
+                    <div class="impact-card__number">6+</div>
                     <div class="impact-card__title">Production Projects</div>
                     <div class="impact-card__desc">Shipped and maintained enterprise-grade SAP B1 solutions with real-world usage</div>
                 </div>
@@ -1197,7 +1202,7 @@
                 </article>
 
                 <!-- Project 5 -->
-                <article class="project-card project-card--5 reveal reveal-delay-5" data-project="dtwservicelayer" style="grid-column: 1 / -1;">
+                <article class="project-card project-card--5 reveal reveal-delay-5" data-project="dtwservicelayer">
                     <div class="project-card__image" aria-hidden="true">
                         <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="15" y="25" width="36" height="45" rx="4" fill="none" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
@@ -1247,6 +1252,56 @@
                         <button class="project-card__link" data-open="dtwservicelayer">Details &rarr;</button>
                     </div>
                 </article>
+
+                <!-- Project 6 -->
+                <article class="project-card project-card--6 reveal reveal-delay-6" data-project="b1connector">
+                    <div class="project-card__image" aria-hidden="true">
+                        <svg viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="30" width="80" height="100" rx="8" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.6"/>
+                            <text x="55" y="52" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="8" font-weight="700" opacity="0.8">Shopify</text>
+                            <text x="55" y="67" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="6.5" opacity="0.6">Webhook</text>
+                            <rect x="25" y="78" width="60" height="4" rx="2" fill="#f97316" opacity="0.15"/>
+                            <rect x="25" y="86" width="48" height="4" rx="2" fill="#f97316" opacity="0.15"/>
+                            <rect x="25" y="94" width="54" height="4" rx="2" fill="#f97316" opacity="0.15"/>
+                            <text x="55" y="120" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="6" opacity="0.5">New Order Event</text>
+                            <path d="M100,80 L145,80" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/></path>
+                            <rect x="150" y="40" width="60" height="80" rx="12" fill="none" stroke="#f97316" stroke-width="1.2" opacity="0.85"/>
+                            <text x="180" y="60" text-anchor="middle" fill="#fb923c" font-family="Inter,sans-serif" font-size="8" font-weight="700">B1</text>
+                            <text x="180" y="74" text-anchor="middle" fill="#fb923c" font-family="Inter,sans-serif" font-size="8" font-weight="700">Connector</text>
+                            <circle cx="180" cy="85" r="3" fill="#f97316"><animate attributeName="r" values="3;4;3" dur="1.5s" repeatCount="indefinite"/></circle>
+                            <text x="180" y="98" text-anchor="middle" fill="#fb923c" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">Verify &amp;</text>
+                            <text x="180" y="110" text-anchor="middle" fill="#fb923c" font-family="Inter,sans-serif" font-size="5.5" opacity="0.6">Translate</text>
+                            <path d="M215,80 L260,80" fill="none" stroke="#1a73e8" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.8s" repeatCount="indefinite"/></path>
+                            <rect x="265" y="30" width="80" height="100" rx="8" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.6"/>
+                            <text x="305" y="52" text-anchor="middle" fill="#1a73e8" font-family="Inter,sans-serif" font-size="8" font-weight="700" opacity="0.8">SAP</text>
+                            <text x="305" y="67" text-anchor="middle" fill="#1a73e8" font-family="Inter,sans-serif" font-size="7" font-weight="600" opacity="0.6">Business One</text>
+                            <rect x="273" y="78" width="64" height="4" rx="2" fill="#1a73e8" opacity="0.15"/>
+                            <rect x="273" y="86" width="52" height="4" rx="2" fill="#1a73e8" opacity="0.15"/>
+                            <rect x="273" y="94" width="58" height="4" rx="2" fill="#1a73e8" opacity="0.15"/>
+                            <text x="305" y="118" text-anchor="middle" fill="#1a73e8" font-family="Inter,sans-serif" font-size="6" opacity="0.5">Sales Order Created</text>
+                            <rect x="270" y="140" width="16" height="16" rx="3" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.4"/>
+                            <text x="278" y="152" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="5" opacity="0.5">T1</text>
+                            <rect x="292" y="140" width="16" height="16" rx="3" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.35"/>
+                            <text x="300" y="152" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="5" opacity="0.45">T2</text>
+                            <rect x="314" y="140" width="16" height="16" rx="3" fill="none" stroke="#f97316" stroke-width="0.8" opacity="0.3"/>
+                            <text x="322" y="152" text-anchor="middle" fill="#f97316" font-family="Inter,sans-serif" font-size="5" opacity="0.4">T3</text>
+                            <text x="180" y="170" text-anchor="middle" fill="#64748b" font-family="Inter,sans-serif" font-size="9" font-weight="600">Shopify Webhook → Verify &amp; Translate → SAP B1 Service Layer</text>
+                        </svg>
+                    </div>
+                    <div class="project-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    </div>
+                    <h3 class="project-card__title">B1Connector</h3>
+                    <p class="project-card__desc">Automated Shopify-to-SAP B1 order sync bridge with multi-tenant support, AES encryption, and live monitoring dashboard. Deployed on Azure.</p>
+                    <div class="project-card__tags">
+                        <span class="tag tag--dotnet">.NET 10</span><span class="tag tag--sap">SAP Service Layer</span><span class="tag">Shopify</span><span class="tag">Azure</span><span class="tag">REST API</span><span class="tag">Blazor</span>
+                    </div>
+                    <div class="project-card__footer">
+                        <span class="project-card__stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>Azure Deployed &middot; Multi-Tenant</span>
+                        <a href="https://b1connector-app-d2hxckecckavbag4.westeurope-01.azurewebsites.net/dashboard/login" target="_blank" rel="noopener" class="project-card__link" style="margin-right:0.5rem;">Live Demo &rarr;</a>
+                        <button class="project-card__link" data-open="b1connector">Details &rarr;</button>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1258,17 +1313,17 @@
             <h2 class="section__heading reveal">Tech Stack &amp; Expertise</h2>
             <p class="section__subtitle reveal">Tools and frameworks I use across all projects to deliver production-quality solutions.</p>
             <div class="tech-grid">
-                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#9889;</div><div class="tech-card__name">.NET 8/10</div><div class="tech-card__count">5 projects</div></div>
-                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#127959;</div><div class="tech-card__name">Clean Architecture</div><div class="tech-card__count">5 projects</div></div>
-                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#129513;</div><div class="tech-card__name">Blazor</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#9889;</div><div class="tech-card__name">.NET 8/10</div><div class="tech-card__count">6 projects</div></div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#127959;</div><div class="tech-card__name">Clean Architecture</div><div class="tech-card__count">6 projects</div></div>
+                <div class="tech-card reveal reveal-delay-1"><div class="tech-card__icon">&#129513;</div><div class="tech-card__name">Blazor</div><div class="tech-card__count">6 projects</div></div>
                 <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#129302;</div><div class="tech-card__name">OpenAI / Ollama</div><div class="tech-card__count">2 projects</div></div>
                 <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#128269;</div><div class="tech-card__name">RAG / Qdrant</div><div class="tech-card__count">2 projects</div></div>
-                <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#127970;</div><div class="tech-card__name">SAP Service Layer</div><div class="tech-card__count">3 projects</div></div>
+                <div class="tech-card reveal reveal-delay-2"><div class="tech-card__icon">&#127970;</div><div class="tech-card__name">SAP Service Layer</div><div class="tech-card__count">4 projects</div></div>
                 <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128225;</div><div class="tech-card__name">SignalR</div><div class="tech-card__count">1 project</div></div>
-                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128452;</div><div class="tech-card__name">EF Core</div><div class="tech-card__count">4 projects</div></div>
+                <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128452;</div><div class="tech-card__name">EF Core</div><div class="tech-card__count">5 projects</div></div>
                 <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#128202;</div><div class="tech-card__name">SQL Server</div><div class="tech-card__count">2 projects</div></div>
                 <div class="tech-card reveal reveal-delay-3"><div class="tech-card__icon">&#129718;</div><div class="tech-card__name">SQLite</div><div class="tech-card__count">1 project</div></div>
-                <div class="tech-card reveal reveal-delay-4"><div class="tech-card__icon">&#128196;</div><div class="tech-card__name">Swagger / Scalar</div><div class="tech-card__count">5 projects</div></div>
+                <div class="tech-card reveal reveal-delay-4"><div class="tech-card__icon">&#128196;</div><div class="tech-card__name">Swagger / Scalar</div><div class="tech-card__count">6 projects</div></div>
                 <div class="tech-card reveal reveal-delay-4"><div class="tech-card__icon">&#128051;</div><div class="tech-card__name">Docker</div><div class="tech-card__count">1 project</div></div>
                 <div class="tech-card reveal reveal-delay-5"><div class="tech-card__icon">&#128233;</div><div class="tech-card__name">MediatR</div><div class="tech-card__count">1 project</div></div>
                 <div class="tech-card reveal reveal-delay-5"><div class="tech-card__icon">&#9989;</div><div class="tech-card__name">FluentValidation</div><div class="tech-card__count">1 project</div></div>
@@ -1386,6 +1441,16 @@
                 architecture: 'Split into three tiers: SAP B1 Add-on (SwissAddonFramework event listeners, form/field/matrix inspectors, JSON snapshot builder, REST publisher), Clean Architecture Backend (Domain → Application → Infrastructure → Presentation with REST API + SignalR hub), and Blazor Server Viewer with live form tree and semi-live updates.',
                 highlights: ['Captures form-level, item-level, and matrix/grid column metadata','SignalR hub at /snapshothub for real-time SnapshotUpdated broadcasts','Event throttling prevents SAP client UI freezes (1000ms per form type)','Schema versioning for forward compatibility','In-memory storage with swappable persistence (SQLite/SQL Server)','Zero external dependencies in Domain layer','Structural UI events only — FormLoad, FormActivate, FormVisible, FormModeChange'],
                 endpoint: 'POST /api/snapshot — Receive snapshots from SAP add-on'
+            },
+            b1connector: {
+                title: 'B1Connector',
+                gradient: 'var(--gradient-card-6)',
+                tagline: 'Automated Shopify-to-SAP B1 order sync — multi-tenant, encrypted, Azure-deployed',
+                overview: 'A production bridge that automates order flow from Shopify into SAP Business One. Listens for Shopify webhooks, verifies digital signatures, translates orders into SAP B1 Service Layer payloads, and creates sales orders — all in seconds with full audit logging.',
+                architecture: 'Clean Architecture background service running on Azure. Webhook listener → Signature verification → Multi-tenant routing → Order translation → SAP B1 Service Layer API. Includes AES-encrypted credential storage, background job processing with automatic retry, and a Blazor dashboard with admin/client views.',
+                highlights: ['Multi-tenant: one installation serves many Shopify stores with isolated data','AES encryption for all sensitive credentials (API keys, passwords)','Live Blazor dashboard with per-store statistics and job history','Automatic retry on transient failures with detailed error logs','Extensible design — ready for WooCommerce, Magento, and more','Mock mode for testing without a real SAP B1 server','Full audit trail of every sync job'],
+                endpoint: 'POST /api/webhook/shopify — Receive Shopify order notifications',
+                demoUrl: 'https://b1connector-app-d2hxckecckavbag4.westeurope-01.azurewebsites.net/dashboard/login'
             }
         };
 
@@ -1433,6 +1498,13 @@
                     architecture: 'Drei Ebenen: SAP-B1-Add-on (Event Listener, Form/Item/Matrix-Inspektoren), Clean-Architecture-Backend (REST API + SignalR Hub) und Blazor-Server-Viewer mit Live-Formularbaum.',
                     highlights: ['Erfasst Formular-, Item- und Matrix-Metadaten','SignalR-Hub unter /snapshothub fur Live-Updates','Event-Throttling verhindert UI-Blockaden','Schema-Versionierung fur Vorwartskompatibilitat','In-Memory-Storage mit optionaler Persistenz','Keine externen Abhangigkeiten im Domain-Layer','Nur strukturelle UI-Events'],
                     endpoint: 'POST /api/snapshot - Snapshots vom SAP-Add-on empfangen'
+                },
+                b1connector: {
+                    tagline: 'Automatisierte Shopify-zu-SAP-B1-Auftragssynchronisation – mandantenfaehig, verschluesselt, Azure-gehostet',
+                    overview: 'Eine produktive Bruecke, die Auftraege von Shopify automatisch nach SAP Business One uebertraegt. Empfaengt Shopify-Webhooks, prueft Signaturen, uebersetzt Auftraege und erstellt Verkaufsbelege – mit vollstaendiger Audit-Protokollierung.',
+                    architecture: 'Clean-Architecture-Hintergrunddienst auf Azure. Webhook-Listener → Signaturpruefung → Mandanten-Routing → Auftragsuebersetzung → SAP-B1-Service-Layer-API. Mit AES-verschluesselten Anmeldedaten, Hintergrundjob-Verarbeitung mit Wiederholungslogik und Blazor-Dashboard.',
+                    highlights: ['Multimandantenfaehig: eine Installation fuer viele Shopify-Stores','AES-Verschluesselung fuer alle vertraulichen Zugangsdaten','Live-Blazor-Dashboard mit Store-Statistiken und Job-Historie','Automatische Wiederholung bei temporaeren Fehlern','Erweiterbares Design fuer WooCommerce, Magento und mehr','Mock-Modus fuer Tests ohne echten SAP-B1-Server','Vollstaendige Pruefprotokollierung jedes Sync-Jobs'],
+                    endpoint: 'POST /api/webhook/shopify - Shopify-Bestellbenachrichtigungen empfangen'
                 }
             },
             fr: {
@@ -1470,6 +1542,13 @@
                     architecture: 'Trois niveaux: Add-on SAP B1 (ecouteurs d evenements, inspecteurs, snapshots JSON), backend Clean Architecture (API REST + SignalR), et viewer Blazor Server.',
                     highlights: ['Capture metadonnees formulaire, item et matrice','Hub SignalR /snapshothub pour diffusion en temps reel','Throttling des evenements pour eviter les blocages UI','Versionnement de schema pour compatibilite future','Stockage In-Memory avec persistance interchangeable','Aucune dependance externe dans le Domain layer','Evenements UI structuraux uniquement'],
                     endpoint: 'POST /api/snapshot - Recevoir les snapshots depuis l add-on SAP'
+                },
+                b1connector: {
+                    tagline: 'Synchronisation automatique Shopify vers SAP B1 – multi-tenant, chiffree, deployee sur Azure',
+                    overview: 'Une passerelle de production qui automatise le flux de commandes de Shopify vers SAP Business One. Ecoute les webhooks Shopify, verifie les signatures, traduit les commandes et cree des documents de vente – le tout avec une journalisation complete.',
+                    architecture: 'Service d arriere-plan en Clean Architecture sur Azure. Ecouteur de webhooks → Verification de signature → Routage multi-tenant → Traduction de commandes → API SAP B1 Service Layer. Avec chiffrement AES des identifiants, traitement des jobs en arriere-plan avec reessais automatiques et tableau de bord Blazor.',
+                    highlights: ['Multi-tenant : une seule installation pour plusieurs boutiques Shopify','Chiffrement AES de tous les identifiants sensibles','Tableau de bord Blazor en direct avec statistiques par boutique','Reessais automatiques en cas d erreurs temporaires','Design extensible pour WooCommerce, Magento, etc.','Mode mock pour les tests sans serveur SAP B1 reel','Piste d audit complete pour chaque job de synchronisation'],
+                    endpoint: 'POST /api/webhook/shopify - Recevoir les notifications de commandes Shopify'
                 }
             }
         };
@@ -1507,14 +1586,16 @@
                     aiassistant: 'Dual-mode .NET 10 assistant with local Ollama LLMs. Business mode for SAP data lookup and developer mode for C# code generation - with RAG knowledge base and Service Layer grounding.',
                     cleansync: 'Bidirectional Business Partner sync between SAP B1 and e-commerce platforms (Shopify, Amazon). REST API with Blazor monitoring dashboard and mock services for development.',
                     inspector: 'Semi-live SAP B1 UI inspection system capturing form metadata at runtime via SwissAddonFramework, exposed through Blazor Server with SignalR real-time updates.',
-                    dtwservicelayer: "Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel - no SAP client installation required."
+                    dtwservicelayer: "Modern replacement for SAP B1's Data Transfer Workbench (DTW) built on the Service Layer REST API. Bulk-imports master data from CSV, TXT, and Excel - no SAP client installation required.",
+                    b1connector: 'Automated Shopify-to-SAP B1 order sync bridge with multi-tenant support, AES encryption, and live monitoring dashboard. Deployed on Azure.'
                 },
                 projectStats: {
                     knowledge: '4-layer Clean Architecture',
                     aiassistant: '60 tests · Health Checks',
                     cleansync: 'MIT Licensed',
                     inspector: 'Real-time · SignalR',
-                    dtwservicelayer: 'Add · Update · Upsert modes'
+                    dtwservicelayer: 'Add · Update · Upsert modes',
+                    b1connector: 'Azure Deployed · Multi-Tenant'
                 },
                 projectDetails: 'Details ->',
                 techLabel: 'Technologies',
@@ -1565,14 +1646,16 @@
                     aiassistant: 'KI-Assistent auf .NET 10 mit lokalen Ollama-LLMs. Business-Modus fur SAP-Daten und Developer-Modus fur C#-Codegenerierung - inklusive RAG-Wissensbasis.',
                     cleansync: 'Bidirektionale Synchronisierung von Geschaftspartnern zwischen SAP B1 und E-Commerce-Plattformen. REST-API mit Blazor-Monitoring und Mock-Services.',
                     inspector: 'Semi-live SAP-B1-UI-Inspektion, die Formularmetadaten zur Laufzeit uber SwissAddonFramework erfasst und uber Blazor + SignalR bereitstellt.',
-                    dtwservicelayer: 'Moderne Alternative zur SAP-DTW auf Basis des Service-Layer-REST-API. Massenimport aus CSV, TXT und Excel - ohne SAP-Client-Installation.'
+                    dtwservicelayer: 'Moderne Alternative zur SAP-DTW auf Basis des Service-Layer-REST-API. Massenimport aus CSV, TXT und Excel - ohne SAP-Client-Installation.',
+                    b1connector: 'Automatisierte Shopify-zu-SAP-B1-Auftragssynchronisation mit Mandantenfaehigkeit, AES-Verschluesselung und Live-Monitoring-Dashboard. Auf Azure bereitgestellt.'
                 },
                 projectStats: {
                     knowledge: '4-Schichten Clean Architecture',
                     aiassistant: '60 Tests · Health Checks',
                     cleansync: 'MIT-lizenziert',
                     inspector: 'Echtzeit · SignalR',
-                    dtwservicelayer: 'Add · Update · Upsert Modi'
+                    dtwservicelayer: 'Add · Update · Upsert Modi',
+                    b1connector: 'Azure · Multi-Tenant'
                 },
                 projectDetails: 'Details ->',
                 techLabel: 'Technologien',
@@ -1623,14 +1706,16 @@
                     aiassistant: 'Assistant .NET 10 a double mode avec des LLM Ollama locaux. Mode metier pour la recherche SAP et mode developpeur pour la generation de code C#, avec base RAG.',
                     cleansync: 'Synchronisation bidirectionnelle des Business Partners entre SAP B1 et des plateformes e-commerce (Shopify, Amazon). API REST avec dashboard Blazor.',
                     inspector: 'Systeme d inspection semi-live de l UI SAP B1 capturant les metadonnees de formulaires via SwissAddonFramework, exposees dans Blazor avec SignalR en temps reel.',
-                    dtwservicelayer: 'Alternative moderne au DTW de SAP B1, construite sur le Service Layer REST API. Import massif depuis CSV, TXT et Excel, sans client SAP local.'
+                    dtwservicelayer: 'Alternative moderne au DTW de SAP B1, construite sur le Service Layer REST API. Import massif depuis CSV, TXT et Excel, sans client SAP local.',
+                    b1connector: 'Passerelle automatisee de synchronisation des commandes Shopify vers SAP B1 avec support multi-tenant, chiffrement AES et tableau de bord en direct. Deployee sur Azure.'
                 },
                 projectStats: {
                     knowledge: 'Clean Architecture sur 4 couches',
                     aiassistant: '60 tests · Health Checks',
                     cleansync: 'Sous licence MIT',
                     inspector: 'Temps reel · SignalR',
-                    dtwservicelayer: 'Modes Add · Update · Upsert'
+                    dtwservicelayer: 'Modes Add · Update · Upsert',
+                    b1connector: 'Azure · Multi-Tenant'
                 },
                 projectDetails: 'Details ->',
                 techLabel: 'Technologies',
@@ -1679,7 +1764,7 @@
             const p = getLocalizedProject(projectKey);
             if (!p) return;
             const labels = i18n[currentLanguage].modalSections;
-            modalContent.innerHTML = `<div style="height:4px;background:${p.gradient};border-radius:2px;margin-bottom:1.5rem;"></div><h2 class="modal__title">${p.title}</h2><p class="modal__subtitle" style="color:var(--text-secondary);font-weight:500;">${p.tagline}</p><div class="modal__section"><h3>${labels[0]}</h3><p>${p.overview}</p></div><div class="modal__section"><h3>${labels[1]}</h3><p>${p.architecture}</p></div><div class="modal__section"><h3>${labels[2]}</h3><ul>${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div><div class="modal__section"><h3>${labels[3]}</h3><pre>${p.endpoint}</pre></div>`;
+            modalContent.innerHTML = `<div style="height:4px;background:${p.gradient};border-radius:2px;margin-bottom:1.5rem;"></div><h2 class="modal__title">${p.title}</h2><p class="modal__subtitle" style="color:var(--text-secondary);font-weight:500;">${p.tagline}</p><div class="modal__section"><h3>${labels[0]}</h3><p>${p.overview}</p></div><div class="modal__section"><h3>${labels[1]}</h3><p>${p.architecture}</p></div><div class="modal__section"><h3>${labels[2]}</h3><ul>${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul></div><div class="modal__section"><h3>${labels[3]}</h3><pre>${p.endpoint}</pre></div>${p.demoUrl ? `<div class="modal__section"><a href="${p.demoUrl}" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Launch Live Demo</a></div>` : ''}`;
             modalOverlay.classList.add('modal-overlay--open');
             document.body.style.overflow = 'hidden';
         }
@@ -1772,7 +1857,7 @@
             impactTitles.forEach((el, i) => { if (t.impactTitles[i]) el.textContent = t.impactTitles[i]; });
             impactDescs.forEach((el, i) => { if (t.impactDescs[i]) el.textContent = t.impactDescs[i]; });
 
-            const projectOrder = ['knowledge', 'aiassistant', 'cleansync', 'inspector', 'dtwservicelayer'];
+            const projectOrder = ['knowledge', 'aiassistant', 'cleansync', 'inspector', 'dtwservicelayer', 'b1connector'];
             projectOrder.forEach((key) => {
                 const card = document.querySelector(`[data-project="${key}"]`);
                 if (!card) return;
